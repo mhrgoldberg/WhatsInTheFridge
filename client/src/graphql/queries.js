@@ -12,6 +12,15 @@ const queries = {
       currentUser @client
     }
   `,
+  CURRENT_USER_RECIPES: gql`
+    query CurrentUser {
+      currentUser @client {
+        savedRecipes {
+          id
+        }
+      }
+    }
+  `,
 };
 
 export default queries;

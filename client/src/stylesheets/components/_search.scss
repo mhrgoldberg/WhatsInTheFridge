@@ -229,12 +229,112 @@
 }
 
 .as-form {
-  width: 50%;
+  width: 100%;
+  height: auto;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .as-search-btn {
   color: white;
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
+}
+
+.keyboard-inputs input {
+  background: rgba(80, 211, 122, 0.42);
+ 
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  width: 50px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+.option-dropdowns select{
+   background: rgba(80, 211, 122, 0.42);
+ 
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+.as-form label {
+  color: rgba(0,74,3);
+}
+
+i {
+  border: solid rgba(0,74,3);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.dietSection {
+  width: 50%;
+  display: flex;
+}
+
+.dietSection label {
+  margin: auto;
+}
+
+.mealSection {
+  width: 50%;
+  display: flex;
+}
+
+.mealSection label {
+  margin: auto;
+}
+
+.keyboard-input-1 {
+  width: 50%;
+  display: flex;
+}
+
+.keyboard-input-1 label {
+  margin: auto;
+}
+
+.healthSection {
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+}
+
+.cuisineSection {
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+}
+
+.dishSection { 
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+}
+
+.minMaxSection {
+  display: flex;
+}
+
+.minMaxSection > .as-dropdown { 
+  width: 50%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
+.excludeSection {
+  padding-left: 45%;
+  padding-right: auto;
 }

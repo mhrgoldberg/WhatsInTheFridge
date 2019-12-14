@@ -1,4 +1,4 @@
-# whats-in-the-fridge
+# What's in the Fridge?
 
 What’s in the Fridge? helps users find recipes for that user’s unique tastes and preferences based upon ingredients the user currently has at home. What’s in the Fridge? We drew inspiration from many recipe sites but ulitmately decided to create our own unique take on how to search for dinner tonight!
 

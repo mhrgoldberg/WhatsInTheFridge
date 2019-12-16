@@ -14,7 +14,7 @@ const register = async data => {
     if (!isValid) {
       throw new Error(message);
     }
-    const { name, email, password } = data;
+    const { username, password } = data;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       throw new Error("This user already exists");
@@ -22,8 +22,7 @@ const register = async data => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User(
       {
-        name,
-        email,
+        username,
         password: hashedPassword
       },
       err => {
@@ -61,9 +60,9 @@ const login = async data => {
     if (!isValid) {
       throw new Error(message);
     }
-    const { email, password } = data;
+    const { username, password } = data;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
     if (!user) throw new Error("This user does not exist");
 
     const isValidPassword = await bcrypt.compareSync(password, user.password);

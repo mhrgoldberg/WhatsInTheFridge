@@ -10,9 +10,8 @@ class Register extends Component {
     super(props);
 
     this.state = {
-      email: "",
-      password: "",
-      name: ""
+      username: "",
+      password: ""
     };
   }
 
@@ -45,22 +44,16 @@ class Register extends Component {
                 e.preventDefault();
                 registerUser({
                   variables: {
-                    email: this.state.email,
-                    password: this.state.password,
-                    name: this.state.name
+                    username: this.state.username,
+                    password: this.state.password
                   }
                 });
               }}
             >
               <input
-                value={this.state.name}
-                onChange={this.update("name")}
-                placeholder="Name"
-              />
-              <input
-                value={this.state.email}
-                onChange={this.update("email")}
-                placeholder="Email"
+                value={this.state.username}
+                onChange={this.update("username")}
+                placeholder="Username"
               />
               <input
                 value={this.state.password}

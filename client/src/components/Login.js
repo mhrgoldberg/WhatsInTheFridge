@@ -8,7 +8,7 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: ""
     };
   }
@@ -42,16 +42,16 @@ class Login extends Component {
                 e.preventDefault();
                 loginUser({
                   variables: {
-                    email: this.state.email,
+                    username: this.state.username,
                     password: this.state.password
                   }
                 });
               }}
             >
               <input
-                value={this.state.email}
-                onChange={this.update("email")}
-                placeholder="Email"
+                value={this.state.username}
+                onChange={this.update("username")}
+                placeholder="Username"
               />
               <input
                 value={this.state.password}

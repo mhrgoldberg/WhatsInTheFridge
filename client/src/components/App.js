@@ -7,12 +7,13 @@ import Login from "./Login.js";
 import Nav from "./Nav.js";
 import Register from "./Register.js";
 import AuthRoute from "../util/route_util.js";
+import '../stylesheets/main.scss';
 
 const App = () => {
   return (
     <div>
       <Nav />
-      <h1>Online Store</h1>
+      <h1 className="title">What's in the Fridge</h1>
       <Switch>
         <AuthRoute
           exact

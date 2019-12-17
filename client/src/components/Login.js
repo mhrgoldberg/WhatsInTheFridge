@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import mutations from "../graphql/mutations";
+import { withRouter } from 'react-router-dom';
+
 const { LOGIN_USER } = mutations;
 
 class Login extends Component {
@@ -68,4 +70,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

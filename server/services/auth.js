@@ -15,7 +15,7 @@ const register = async data => {
       throw new Error(message);
     }
     const { username, password } = data;
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
       throw new Error("This user already exists");
     }

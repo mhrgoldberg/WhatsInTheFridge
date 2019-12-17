@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 // import "./index.css";
-import App from "./components/App.js";
+import App from "./components/App.jsx";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
-import { ApolloLink } from "apollo-link";
+// import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
-import { Mutation } from "react-apollo";
+// import { Mutation } from "react-apollo";
 import mutations from "./graphql/mutations";
 
 const VERIFY_USER = mutations.VERIFY_USER;

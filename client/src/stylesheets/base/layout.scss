@@ -8,6 +8,33 @@
   width: 100%;
 }
 
-.title{
-  color: red;
+
+button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: rgba(110, 110, 110, 0.829);
+  color: rgba(243, 208, 8, 0.781);
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: rgb(114, 112, 112);
+}
+
+
+input{
+  border: 1px solid grey;
+  padding: 3px;
+  height: 30px;
+  width: 150px;
+  margin: 5px;
+  font-size: 16px;
+
 }

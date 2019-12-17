@@ -4,8 +4,12 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div></div>
+      <div className="splash-container">
+
+      </div>
     )
   }
  
 }
+
+export default Splash;

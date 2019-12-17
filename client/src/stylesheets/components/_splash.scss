@@ -1,7 +1,12 @@
 .splash-container { 
   width: 100vw;
-  height: calc(100vh - 60px);
-  background: url(../../images/poster-fridge.jpeg) no-repeat center center fixed; 
+  height: 100vh;
+  min-width: 850px;
+  min-height: 600px;
+  background: url(../../images/poster-fridge.jpeg);
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

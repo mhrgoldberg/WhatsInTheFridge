@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const User = mongoose.model("users");
 const keys = require("../../config/keys");
 
-const validateRegisterInput = require("../validation/register.js");
-const validateLoginInput = require("../validation/login.js");
+const validateRegisterInput = require("../validation/register.jsx");
+const validateLoginInput = require("../validation/login.jsx");
 
 const register = async data => {
   try {
@@ -15,7 +15,7 @@ const register = async data => {
       throw new Error(message);
     }
     const { username, password } = data;
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
       throw new Error("This user already exists");
     }

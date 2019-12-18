@@ -9,7 +9,7 @@ import Splash from "./Splash.jsx";
 import Register from "./Register.jsx";
 import AuthRoute from "../util/route_util.js";
 import "../stylesheets/main.scss";
-import IngredientSearch from "./ingredient_search";
+import IngredientSearch from "./fridge/ingredient_search";
 
 const App = () => {
   return (

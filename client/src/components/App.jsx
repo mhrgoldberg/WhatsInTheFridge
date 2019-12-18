@@ -9,10 +9,12 @@ import Splash from "./Splash.jsx";
 import Register from "./Register.jsx";
 import AuthRoute from "../util/route_util.js";
 import "../stylesheets/main.scss";
+import IngredientSearch from "./ingredient_search";
 
 const App = () => {
   return (
     <Switch>
+      <Route path="/ingredient" component={IngredientSearch} />
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
     </Switch>
   );

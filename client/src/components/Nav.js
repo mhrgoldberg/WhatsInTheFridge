@@ -67,7 +67,7 @@ class Nav extends Component {
                     </React.Fragment>
                     <React.Fragment>
                       {this.state.loggingIn && <Backdrop />}
-                      {this.state.loggingIn && <Modal title="Register" canCancel canConfirm onCancel={this.modalCancelHandler} onConfirm={this.modalLoginHandler} children={Login} submit="Log In">
+                      {this.state.loggingIn && <Modal title="Register" canCancel canConfirm onCancel={this.modalCancelHandler} onConfirm={this.modalLoginHandler} children={Register} submit="Register">
                         <Register />
                       </Modal>}
                       <div className="modal-control">

@@ -8,6 +8,8 @@ import Nav from "./Nav.js";
 import Register from "./Register.js";
 import AuthRoute from "../util/route_util.js";
 import '../stylesheets/main.scss';
+import Search from './Search.js';
+import SearchAdvanced from'./SearchAdvanced.js';
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           routeType="auth"
         />
         <AuthRoute exact path="/login" component={Login} routeType="auth" />
+        <Route exact path="/search" component={Search} /> 
+        <Route exact path="/advanced-search" component={SearchAdvanced} />
 
         {/* <Route exact path="/" component={} /> */}
       </Switch>

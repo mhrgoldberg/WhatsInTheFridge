@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-image: linear-gradient(rgb(37, 37, 37), transparent);
+}
+
+.nav-buttons {
+  display: flex;
+  margin-right: 2vw;
+}
+
+.logo {
+  background-image: url(../../images/logo-transparent.svg);
+  height: 40px;
+  width: 40px;
+}
+
+.title {
+  color: #f3ce08;
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+  margin-left: 5px;
+}
+.l-side-navbar {
+  display: flex;
+  width: fit-content;
+  margin-left: 2vw;
+}

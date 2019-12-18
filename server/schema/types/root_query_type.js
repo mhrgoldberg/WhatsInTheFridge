@@ -2,6 +2,7 @@ require("../../models");
 const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
+const axios = require("axios");
 
 const UserType = require("./user_type.js");
 const RecipeType = require("./recipe_type.js");
@@ -25,8 +26,23 @@ const RootQueryType = new GraphQLObjectType({
         return User.findById(args._id);
       }
     },
-    recipes: {
-      type: new GraphQLList(RecipeType)
+    savedRecipes: {
+      type: new GraphQLList(RecipeType),
+      args: { userId: { type: new GraphQLNonNull(GraphQLID)}},
+      resolve(_, args) {
+        return Recipe.find(args.userId);
+      }
+    },
+    // apiRecipes: {
+    //   type: new GraphQLList(APIRecipeType),
+    //   args:
+    // },
+    recipe: {
+      type: RecipeType,
+      args: { _id: { type: new GraphQLNonNull(GraphQLID)}},
+      resolve(_, args) {
+        return Recipe.findById(args._id);
+      }
     }
   })
 });

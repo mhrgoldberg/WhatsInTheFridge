@@ -5,7 +5,7 @@ import Queries from "../graphql/queries";
 import { ApolloConsumer } from "react-apollo";
 import { withRouter } from "react-router-dom";
 
-import Modal from "./Modal.js";
+import Modal from "./Modal.jsx";
 import Backdrop from "./Backdrop.jsx";
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";

@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const User = mongoose.model("users");
 const keys = require("../../config/keys");
 
-const validateRegisterInput = require("../validation/register.jsx");
-const validateLoginInput = require("../validation/login.jsx");
+const validateRegisterInput = require("../validation/register.js");
+const validateLoginInput = require("../validation/login.js");
 
 const register = async data => {
   try {

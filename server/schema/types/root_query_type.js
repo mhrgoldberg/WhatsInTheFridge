@@ -6,6 +6,7 @@ const axios = require("axios");
 
 const UserType = require("./user_type.js");
 const RecipeType = require("./recipe_type.js");
+const APIRecipeType = require("./api_recipe_type.js");
 
 const User = mongoose.model("users");
 const Recipe = mongoose.model("recipes");

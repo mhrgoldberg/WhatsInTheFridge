@@ -10,6 +10,7 @@ const {
 require("../models");
 const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
+const APIRecipeType = require("./types/api_recipe_type");
 const RecipeType = require("./types/recipe_type");
 const Recipe = mongoose.model("recipes");
 const AuthService = require("../services/auth.js");
@@ -56,10 +57,9 @@ const mutation = new GraphQLObjectType({
       }
     },
     saveRecipe: {
-      type: RecipeType,
+      type: APIRecipeType,
       args: {
         name: { type: GraphQLString },
-        userId: { type: GraphQLID },
         recipeURL: { type: GraphQLString },
         imageURL: { type: GraphQLString },
         calories: { type: GraphQLInt },

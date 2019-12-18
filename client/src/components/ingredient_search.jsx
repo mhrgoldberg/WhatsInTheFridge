@@ -4,37 +4,35 @@ class IngredientSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // The active selection's index
       selectionIndex: 0,
-      // The suggestions that match the user's input
       filteredSuggestions: [],
-      // Whether or not the suggestion list is shown
       showSuggestions: false,
-      // What the user has entered
       userInput: ""
     };
-    this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-
-  onChange = async e => {
+  onChange = e => {
     const userInput = e.currentTarget.value;
-    e.preventDefault();
+    e.preventDefault(e);
+
+    this.setState({
+      userInput
+    });
+    this.apiCall(userInput);
+  };
+
+  apiCall = async userInput => {
     const api_call = await fetch(
       `http://api.edamam.com/auto-complete?q=${userInput}&limit=10&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
     );
-    const filteredSuggestions =  await api_call.json();
+    const filteredSuggestions = await api_call.json();
 
     this.setState({
       selectionIndex: 0,
       filteredSuggestions,
-      showSuggestions: true,
-      userInput
+      showSuggestions: true
     });
   };
-
 
   // Event fired when the user clicks on a suggestion
   onClick = e => {
@@ -83,12 +81,7 @@ class IngredientSearch extends React.Component {
       onChange,
       onClick,
       onKeyDown,
-      state: {
-        selectionIndex,
-        filteredSuggestions,
-        showSuggestions,
-        userInput
-      }
+      state: { selectionIndex, filteredSuggestions, showSuggestions, userInput }
     } = this;
 
     let suggestionsListComponent;
@@ -115,7 +108,7 @@ class IngredientSearch extends React.Component {
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
+          <div className="no-suggestions">
             <em>No suggestions, you're on your own!</em>
           </div>
         );

@@ -1,1 +1,2 @@
 require("./User");
+require("./Recipe");

@@ -18,7 +18,8 @@ class Nav extends Component {
   }
 
   state = {
-    loggingIn: false
+    loggingIn: false, 
+    signingUp: false
   };
 
   startLoginHandler = () => {
@@ -29,8 +30,16 @@ class Nav extends Component {
     this.setState({ loggingIn: false });
   };
 
+  startSignupHandler = () => {
+    this.setState({ signingUp: true})
+  }
+
+  modalSignupHandler = () => {
+    this.setState({ signingUp: false})
+  }
+
   modalCancelHandler = () => {
-    this.setState({ loggingIn: false });
+    this.setState({ loggingIn: false, signingUp: false });
   };
 
   render() {
@@ -67,7 +76,7 @@ class Nav extends Component {
                     </div>
                     <div className="nav-buttons">
                       <React.Fragment>
-                        {this.state.loggingIn && <Backdrop />}
+                        {this.state.loggingIn && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
                         {this.state.loggingIn && (
                           <Modal
                             title="Log In"
@@ -91,14 +100,14 @@ class Nav extends Component {
                         </div>
                       </React.Fragment>
                       <React.Fragment>
-                        {this.state.loggingIn && <Backdrop />}
-                        {this.state.loggingIn && (
+                        {this.state.signingUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+                        {this.state.signingUp && (
                           <Modal
                             title="Register"
                             canCancel
                             canConfirm
                             onCancel={this.modalCancelHandler}
-                            onConfirm={this.modalLoginHandler}
+                            onConfirm={this.modalSignupHandler}
                             children={Login}
                             submit="Log In"
                           >
@@ -108,7 +117,7 @@ class Nav extends Component {
                         <div className="modal-control">
                           <button
                             className="btn"
-                            onClick={this.startLoginHandler}
+                            onClick={this.startSignupHandler}
                           >
                             Register
                           </button>

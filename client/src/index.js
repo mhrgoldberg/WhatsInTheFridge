@@ -8,7 +8,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
-// import { ApolloLink } from "apollo-link";
+import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
 // import { Mutation } from "react-apollo";
 import mutations from "./graphql/mutations";
@@ -26,17 +26,20 @@ const httpLink = createHttpLink({
   }
 });
 
-const errorLink = onError(({ graphQLErrors }) => {
+const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message));
+  if (networkError) console.log(networkError);
 });
 
+const link = ApolloLink.from([errorLink, httpLink]);
+
 const client = new ApolloClient({
-  link: httpLink,
-  cache,
-  onError: ({ networkError, graphQLErrors }) => {
-    console.log("graphQLErrors", graphQLErrors);
-    console.log("networkError", networkError);
-  }
+  link,
+  cache
+  // onError: ({ networkError, graphQLErrors }) => {
+  //   console.log("graphQLErrors", graphQLErrors);
+  //   console.log("networkError", networkError);
+  // }
 });
 
 const token = localStorage.getItem("auth-token");

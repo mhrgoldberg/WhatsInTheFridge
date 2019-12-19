@@ -15,7 +15,11 @@ const UserSchema = new Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  },
+  savedRecipes: [{
+    type: Schema.Types.ObjectId,
+    ref: "recipes"
+  }]
 });
 
 module.exports = mongoose.model("users", UserSchema);

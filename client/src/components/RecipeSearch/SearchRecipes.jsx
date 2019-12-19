@@ -3,6 +3,7 @@ import SearchRecipeItem from './SearchRecipeItem';
 
 const SearchRecipes = props => {
   console.log(props.recipes);
+  debugger;
   return <div>
     {props.recipes.map((recipe, i) => {
       console.log(recipe);
@@ -20,7 +21,7 @@ const SearchRecipes = props => {
       console.log(recipe.recipe.digest[2].total);
       console.log(recipe.recipe.digest[2].daily);
 
-      return <SearchRecipeItem key={i} recipe={recipe} />
+      return <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId}/>
     })}
     <div>
       {props.error}

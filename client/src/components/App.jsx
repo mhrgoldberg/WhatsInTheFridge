@@ -9,14 +9,14 @@ import Splash from "./Splash.jsx";
 import Register from "./Register.jsx";
 import AuthRoute from "../util/route_util.js";
 import "../stylesheets/main.scss";
-import IngredientSearch from "./fridge/ingredient_search";
+import NutritionPieChart from './nutrition_pie_chart';
 import Search from './Search.jsx';
 import SearchAdvanced from './SearchAdvanced.jsx';
 
 const App = () => {
   return (
     <Switch>
-      <Route path="/ingredient" component={IngredientSearch} />
+      <Route path="/ingredient" component={NutritionPieChart} />
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
       <Route exact path="/search" component={Search} />
       <Route exact path="/advanced-search" component={SearchAdvanced} />

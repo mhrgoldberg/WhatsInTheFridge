@@ -34,7 +34,6 @@ class IngredientSearch extends React.Component {
     });
   };
 
-  // Event fired when the user clicks on a suggestion
   onClick = e => {
     // Update the user input and reset the rest of the state
     this.setState({
@@ -109,7 +108,7 @@ class IngredientSearch extends React.Component {
       } else {
         suggestionsListComponent = (
           <div className="no-suggestions">
-            <em>No suggestions, you're on your own!</em>
+            <em>No suggestions yet!</em>
           </div>
         );
       }
@@ -117,15 +116,17 @@ class IngredientSearch extends React.Component {
 
     return (
       <React.Fragment>
-        <input
-          className="ingredient-input"
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-          name={userInput}
-        />
-        {suggestionsListComponent}
+        <div className="ingredinet-search-container">
+          <input
+            className="ingredient-input"
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
+            name={userInput}
+          />
+          {suggestionsListComponent}
+        </div>
       </React.Fragment>
     );
   }

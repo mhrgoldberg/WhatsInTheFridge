@@ -1,17 +1,28 @@
 .ingredient-input {
-  border: 1px solid #999;
+  border: none;
   padding: 0.5rem;
   width: 300px;
   margin: 0;
+  border-radius: 5px;
+
 }
+.ingredinet-search-container{
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+}
+
+
 
 .no-suggestions {
   color: #999;
   padding: 0.5rem;
+  border-top: 1px solid #999;
 }
 
 .suggestions {
-  border: 1px solid #999;
+  border: none;
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
@@ -28,7 +39,7 @@
 
 .suggestion-active,
 .suggestions li:hover {
-  background-color: #689D46;
+  background-color: #57A8A3;
   color: #F3CE08;
   cursor: pointer;
   font-weight: 700;
@@ -36,4 +47,8 @@
 
 .suggestions li:not(:last-of-type) {
   border-bottom: 1px solid #999;
+}
+
+.suggestions li:first-of-type {
+  border-top: 1px solid #999;
 }

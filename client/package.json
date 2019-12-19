@@ -10,6 +10,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
+    "chart.js": "^2.9.3",
     "graphql-tag": "^2.10.1",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",

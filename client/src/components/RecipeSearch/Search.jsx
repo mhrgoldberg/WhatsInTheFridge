@@ -24,7 +24,6 @@ class Search extends Component {
     this.setState({ recipes: data.hits })
     // console.log(data.hits[0].recipe.url);
     // console.log(this.state.recipes);
-    console.log(this.state.recipes)
   }
 
   render() {

@@ -57,7 +57,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     saveRecipe: {
-      type: APIRecipeType,
+      type: RecipeType,
       args: {
         name: { type: GraphQLString },
         recipeURL: { type: GraphQLString },
@@ -81,7 +81,6 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(_, args) {
-        debugger;
         return new Recipe(args).save();
       }
     },
@@ -91,7 +90,10 @@ const mutation = new GraphQLObjectType({
       resolve(_, { _id }) {
         return Recipe.remove({ _id });
       }
-    }
+    },
+    // recipeSearch: {
+    //   type: 
+    // }
   }
 });
 

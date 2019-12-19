@@ -2,10 +2,9 @@ const mongoose = require("mongoose");
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } = graphql;
 
-const RecipeType = new GraphQLObjectType({
-  name: "RecipeType",
+const APIRecipeType = new GraphQLObjectType({
+  name: "APIRecipeType",
   fields: () => ({
-    _id: { type: GraphQLID },
     name: { type: GraphQLString },
     recipeURL: { type: GraphQLString },
     imageURL: { type: GraphQLString },
@@ -29,4 +28,4 @@ const RecipeType = new GraphQLObjectType({
   })
 });
 
-module.exports = RecipeType;
+module.exports = APIRecipeType;

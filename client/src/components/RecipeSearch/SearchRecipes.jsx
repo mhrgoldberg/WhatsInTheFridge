@@ -3,7 +3,6 @@ import SearchRecipeItem from './SearchRecipeItem';
 
 const SearchRecipes = props => {
   console.log(props.recipes);
-  debugger;
   return <div>
     {props.recipes.map((recipe, i) => {
       console.log(recipe);

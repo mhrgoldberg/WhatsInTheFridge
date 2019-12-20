@@ -15,7 +15,21 @@ const UserSchema = new Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  },
+  savedRecipes: [{
+    type: Schema.Types.ObjectId,
+    ref: "recipes"
+  }]
 });
+
+UserSchema.statics.addRecipe = (userId, recipeId) => {
+  const User = mongoose.model('users');
+
+  User.findById(userId)
+    .then(user => {
+      user.savedRecipes.push(recipeId);
+      user.save();
+    })
+}
 
 module.exports = mongoose.model("users", UserSchema);

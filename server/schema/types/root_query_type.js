@@ -6,7 +6,6 @@ const axios = require("axios");
 
 const UserType = require("./user_type.js");
 const RecipeType = require("./recipe_type.js");
-const APIRecipeType = require("./api_recipe_type.js");
 
 const User = mongoose.model("users");
 const Recipe = mongoose.model("recipes");
@@ -34,21 +33,6 @@ const RootQueryType = new GraphQLObjectType({
         return Recipe.find(args.userId);
       }
     },
-    // apiRecipes: {
-    //   type: new GraphQLList(APIRecipeType),
-    //   args: {
-    //     apiString: { type: GraphQLString }
-    //   },
-    //   resolve(_, args) {
-    //     return axios.get(apiString)
-    //       .then(res => {
-    //         let recipeArr = res.data.hits;
-    //         recipeArr.forEach(recipe => {
-    //           //parse the recipe
-    //         });
-    //       })
-    //   }
-    // }
   })
 });
 

@@ -23,31 +23,23 @@ const RecipeSchema = new Schema({
   servings: {
     type: Number
   },
-  macros: {     // Numbers are pre-parsed to be per serving
-    carbs: {
-      total: {
-        type: Number
-      },
-      daily: {
-        type: Number
-      }
-    },
-    fats: {
-      total: {
-        type: Number
-      },
-      daily: {
-        type: Number
-      }
-    },
-    protein: {
-      total: {
-        type: Number
-      },
-      daily: {
-        type: Number
-      }
-    }
+  carbsTotal: {
+    type: Number
+  },
+  carbsDaily: {
+    type: Number
+  },
+  fatsTotal: {
+    type: Number
+  },
+  fatsDaily: {
+    type: Number
+  },
+  proteinTotal: {
+    type: Number
+  },
+  proteinDaily: {
+    type: Number
   },
   userId: {
     type: Schema.Types.ObjectId,

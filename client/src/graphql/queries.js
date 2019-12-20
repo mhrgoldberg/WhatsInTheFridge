@@ -6,6 +6,11 @@ const queries = {
     query IsUserLoggedIn {
       isLoggedIn @client
     }
+  `,
+  CURRENT_USER: gql`
+    query CurrentUser {
+      currentUser @client
+    }
   `
 };
 

@@ -1,0 +1,77 @@
+.search-result > .recipe-pic {
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  margin-right: 10px; 
+}
+
+.search-result {
+  display: flex; 
+  align-content: space-between;
+  border-bottom: 1px solid gray;
+}
+
+.search-result-title h4 {
+  text-align: center;
+  font-size: 18px;
+}
+
+.search-result-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-result-buttons div, a {
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.sr-save-recipe-btn {
+  border: 1px solid rgba(255, 240, 124, 1);
+  color: white;
+}
+
+.search-result-buttons div > 
+.search-result-info {
+  width: 50%;
+}
+
+.search-result > .recipe-pic > img {
+  width: 200px;
+  margin: auto;
+}
+
+.search-recipes-list {
+  height: 600px;
+  overflow: scroll;
+}
+
+.ingredient-modal {
+  list-style: circle;
+  margin-left: 10px;
+}
+
+.ingredient-modal > li {
+  padding-bottom: 5px;
+}
+
+.health-modal {
+  list-style: circle;
+  margin-left: 10px;
+}
+
+.health-modal > li {
+  padding-bottom: 5px;
+}
+
+
+.search-top {
+  display: flex;
+}
+
+.search-top form {
+  display: flex;
+  width: 50%;
+}

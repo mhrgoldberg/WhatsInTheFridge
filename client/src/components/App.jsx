@@ -11,7 +11,7 @@ import "../stylesheets/main.scss";
 import IngredientSearch from "./fridge/ingredient_search";
 import Search from './RecipeSearch/Search.jsx';
 import SearchAdvanced from './RecipeSearch/SearchAdvanced.jsx';
-import UnsavedRecipe from './RecipeSearch/UnsavedRecipe.jsx';
+import Main from './Main.jsx';
 
 const App = () => {
   return (
@@ -20,8 +20,7 @@ const App = () => {
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
       <Route exact path="/search" component={Search} />
       <Route exact path="/advanced-search" component={SearchAdvanced} />
-
-      <Route exact path="/unsaved-recipe/:recipe_url" component={UnsavedRecipe} />
+      <Route exact path="/main" component={Main} />
     </Switch>
   );
 };

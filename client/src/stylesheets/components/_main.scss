@@ -1,0 +1,32 @@
+.main-container {
+  background: url(../../images/cutting-board.jpeg);
+  width: 100%;
+  height: 100%;
+}
+
+.main-outer-container {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-inner-container1 {
+  width: 25%;
+  height: 80%;
+  margin: auto;
+  border: 1px solid red;
+}
+
+.main-inner-container2 {
+  width: 50%;
+  height: 80%;
+  margin: auto;
+  border: 1px solid red;
+}
+
+.main-inner-container3 {
+  width: 25%;
+  height: 80%;
+  margin: auto;
+  border: 1px solid red;
+}

@@ -11,6 +11,7 @@ import AuthRoute from "../util/route_util.js";
 import "../stylesheets/main.scss";
 import Search from './Search.jsx';
 import SearchAdvanced from './SearchAdvanced.jsx';
+import Main from './Main.jsx';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
       <Route exact path="/search" component={Search} />
       <Route exact path="/advanced-search" component={SearchAdvanced} />
+      <Route exact path="/main" component={Main} />
     </Switch>
   );
 };

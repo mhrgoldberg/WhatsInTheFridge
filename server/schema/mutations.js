@@ -12,6 +12,8 @@ require("../models");
 const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
 const RecipeType = require("./types/recipe_type");
+const IngredientType = require("./types/ingredient_type")
+const Ingredient = mongoose.model("ingredients")
 const Recipe = mongoose.model("recipes");
 const User = mongoose.model("users");
 const AuthService = require("../services/auth.js");
@@ -89,9 +91,34 @@ const mutation = new GraphQLObjectType({
         return Recipe.remove({ _id });
       }
     },
-    // recipeSearch: {
-    //   type: 
-    // }
+    saveIngredient: {
+      type: IngredientType,
+      args: {
+        name: { type: GraphQLString },
+        quantity: { type: GraphQLFloat },
+        measureLabel: { type: GraphQLString },
+        calories: { type: GraphQLFloat },
+        carbsTotal: { type: GraphQLFloat },
+        fatsTotal: { type: GraphQLFloat },  
+        proteinTotal: { type: GraphQLFloat },
+        recipeId: { type: GraphQLID },
+        userId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return new Ingredient(args).save()
+          .then(ingredient => {
+            User.addIngredient(ingredient.userId, ingredient._id);
+            return ingredient;
+          })
+        }
+    },
+    removeIngredient: {
+      type: IngredientType,
+      args: {_id: { type: GraphQLID }},
+      resolve(_, { _id }) {
+        return Ingredient.remove({ _id });
+      }
+    },
   }
 });
 

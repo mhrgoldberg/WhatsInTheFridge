@@ -25,7 +25,6 @@ class SearchRecipeItem extends Component {
   }
 
   render() {
-    debugger;
     return (
       <div key={this.props.key}>
         <p>{this.props.recipe.recipe.label}</p>

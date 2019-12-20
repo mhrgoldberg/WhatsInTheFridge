@@ -13,6 +13,7 @@ const mongoose = require("mongoose");
 const UserType = require("./types/user_type");
 const RecipeType = require("./types/recipe_type");
 const Recipe = mongoose.model("recipes");
+const User = mongoose.model("users");
 const AuthService = require("../services/auth.js");
 
 const mutation = new GraphQLObjectType({
@@ -74,8 +75,12 @@ const mutation = new GraphQLObjectType({
         userId: { type: GraphQLID }
       },
       resolve(_, args) {
-        return new Recipe(args).save();
-      }
+        return new Recipe(args).save()
+          .then(recipe => {
+            User.addRecipe(recipe.userId, recipe._id);
+            return recipe;
+          })
+        }
     },
     removeRecipe: {
       type: RecipeType,

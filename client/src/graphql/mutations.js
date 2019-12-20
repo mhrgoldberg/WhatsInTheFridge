@@ -6,6 +6,7 @@ const mutations = {
       login(username: $username, password: $password) {
         token
         loggedIn
+        _id
       }
     }
   `,
@@ -22,12 +23,13 @@ const mutations = {
       register(username: $username, password: $password) {
         token
         loggedIn
+        _id
       }
     }
   `,
   SAVE_RECIPE: gql`
-    mutation SaveRecipe($name: String!, $recipeURL: String!, $imageURL: String!, $servings: Int!, $calories: Float!, $ingredients: [String!]!, $carbsTotal: Float!, $carbsDaily: Float!, $fatsTotal: Float!, $fatsDaily: Float!, $proteinTotal: Float!, $proteinDaily: Float!) {
-      saveRecipe(name: $name, recipeURL: $recipeURL, imageURL: $imageURL, servings: $servings, calories: $calories, ingredients: $ingredients, carbsTotal: $carbsTotal, carbsDaily: $carbsDaily, fatsTotal: $fatsTotal, fatsDaily: $fatsDaily, proteinTotal: $proteinTotal, proteinDaily: $proteinDaily) {
+    mutation SaveRecipe($name: String!, $recipeURL: String!, $imageURL: String!, $servings: Int!, $calories: Float!, $ingredients: [String!]!, $carbsTotal: Float!, $carbsDaily: Float!, $fatsTotal: Float!, $fatsDaily: Float!, $proteinTotal: Float!, $proteinDaily: Float!, $userId: ID!) {
+      saveRecipe(name: $name, recipeURL: $recipeURL, imageURL: $imageURL, servings: $servings, calories: $calories, ingredients: $ingredients, carbsTotal: $carbsTotal, carbsDaily: $carbsDaily, fatsTotal: $fatsTotal, fatsDaily: $fatsDaily, proteinTotal: $proteinTotal, proteinDaily: $proteinDaily, userId: $userId) {
         _id
         name
         recipeURL
@@ -41,6 +43,7 @@ const mutations = {
         fatsDaily
         proteinTotal
         proteinDaily
+        userId
       }
     }
   `

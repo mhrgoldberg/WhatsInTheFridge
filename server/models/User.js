@@ -22,4 +22,14 @@ const UserSchema = new Schema({
   }]
 });
 
+UserSchema.statics.addRecipe = (userId, recipeId) => {
+  const User = mongoose.model('users');
+
+  User.findById(userId)
+    .then(user => {
+      user.savedRecipes.push(recipeId);
+      user.save();
+    })
+}
+
 module.exports = mongoose.model("users", UserSchema);

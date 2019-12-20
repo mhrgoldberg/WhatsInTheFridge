@@ -11,7 +11,7 @@ const queries = {
     query CurrentUser {
       currentUser @client
     }
-  `
+  `,
 };
 
 export default queries;

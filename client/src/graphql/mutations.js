@@ -46,6 +46,21 @@ const mutations = {
         userId
       }
     }
+  `,
+  SAVE_INGREDIENT: gql`
+    mutation SaveIngredient($name: String!, $quantity: Float!, $measureLabel: String!, $calories: Float!, $carbsTotal: Float!, $fatsTotal: Float!, $proteinTotal: Float!, $recipeId: ID!, $userId: ID!) {
+      saveIngredient(name: $name, quantity: $quantity, measureLabel: $measureLabel, calories: $calories, carbsTotal: $carbsTotal, fatsTotal: $fatsTotal, proteinTotal: $proteinTotal, recipeId: $recipeId, userId: $userId) {
+        _id
+        name
+        quantity
+        calories
+        carbsTotal
+        fatsTotal
+        proteinTotal
+        recipeId
+        userId
+      }
+    }
   `
 };
 

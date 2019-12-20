@@ -19,7 +19,12 @@ const UserSchema = new Schema({
   savedRecipes: [{
     type: Schema.Types.ObjectId,
     ref: "recipes"
+  }],
+  savedIngredients: [{
+    type: Schema.Types.ObjectId,
+    ref: "ingredients"
   }]
+
 });
 
 UserSchema.statics.addRecipe = (userId, recipeId) => {
@@ -28,6 +33,16 @@ UserSchema.statics.addRecipe = (userId, recipeId) => {
   User.findById(userId)
     .then(user => {
       user.savedRecipes.push(recipeId);
+      user.save();
+    })
+}
+
+UserSchema.statics.addIngredient = (userId, ingredinetId) => {
+  const User = mongoose.model('users');
+
+  User.findById(userId)
+    .then(user => {
+      user.savedIngredients.push(ingredinetId);
       user.save();
     })
 }

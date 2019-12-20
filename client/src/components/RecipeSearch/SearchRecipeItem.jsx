@@ -1,49 +1,130 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import mutations from '../../graphql/mutations';
+import Modal from "../Modal.jsx";
+import Backdrop from "../Backdrop.jsx";
 const { SAVE_RECIPE } = mutations;
+
 
 class SearchRecipeItem extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: this.props.recipe.recipe.label,
-      recipeURL: this.props.recipe.recipe.url,
-      imageURL: this.props.recipe.recipe.image,
-      ingredients: this.props.recipe.recipe.ingredientLines,
-      calories: this.props.recipe.recipe.calories,
-      servings: this.props.recipe.recipe.yield,
-      carbsTotal: this.props.recipe.recipe.digest[0].total,
-      carbsDaily: this.props.recipe.recipe.digest[0].daily,
-      fatsTotal: this.props.recipe.recipe.digest[1].total,
-      fatsDaily: this.props.recipe.recipe.digest[1].daily,
-      proteinTotal: this.props.recipe.recipe.digest[2].total,
-      proteinDaily: this.props.recipe.recipe.digest[2].daily,
-      userId: this.props.currentUserId
+      variables: {
+        name: this.props.recipe.recipe.label,
+        recipeURL: this.props.recipe.recipe.url,
+        imageURL: this.props.recipe.recipe.image,
+        ingredients: this.props.recipe.recipe.ingredientLines,
+        calories: this.props.recipe.recipe.calories,
+        servings: this.props.recipe.recipe.yield,
+        carbsTotal: this.props.recipe.recipe.digest[0].total,
+        carbsDaily: this.props.recipe.recipe.digest[0].daily,
+        fatsTotal: this.props.recipe.recipe.digest[1].total,
+        fatsDaily: this.props.recipe.recipe.digest[1].daily,
+        proteinTotal: this.props.recipe.recipe.digest[2].total,
+        proteinDaily: this.props.recipe.recipe.digest[2].daily,
+        userId: this.props.currentUserId
+      },
+      ingredientsPullUp: false
     }
   }
 
+  startModalHandler = () => {
+    this.setState({ ingredientsPullUp: true });
+  }
+
+  modalCancelHandler = () => {
+    this.setState({ ingredientsPullUp: false });
+  }
+
   render() {
-    debugger;
     return (
-      <div key={this.props.key}>
-        <p>{this.props.recipe.recipe.label}</p>
-        <img src={this.props.recipe.recipe.image} />
-        <ul>Ingredients
-                  {this.props.recipe.recipe.ingredients.map((ingredient, i) => {
-          return (<li key={i}>{ingredient.text}</li>)
-        })}
-        </ul>
-        <Mutation mutation={SAVE_RECIPE}>
-          {(saveRecipe, { data }) => (
-            <button onClick={() => {
-              saveRecipe({ variables: this.state })
-              .then(recipe => console.log(recipe))
-              .catch(err => console.log(err))
-            }}>Save Recipe</button>
-          )}
-        </Mutation>
+      <div className="search-result" key={this.props.key}>
+        <div className="search-result-info">
+          <div className="search-result-title">
+            <h4>{this.props.recipe.recipe.label}</h4>
+          </div>
+          <div className="search-result-buttons">
+            <div>
+            <Mutation mutation={SAVE_RECIPE}>
+              {(saveRecipe, { data }) => (
+                <button className="sr-save-recipe-btn" onClick={() => {
+                  saveRecipe({ variables: this.state.variables })
+                  .then(recipe => console.log(recipe))
+                  .catch(err => console.log(err))
+                }}>Save Recipe</button>
+              )}
+            </Mutation>
+            </div>
+            <Link to={this.props.recipe.recipe.url}><button>Link to Recipe</button></Link>
+            <React.Fragment>
+              {this.state.ingredientsPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+              {this.state.ingredientsPullUp && (
+                <Modal
+                  title="Ingredients"
+                  canCancel
+                  canConfirm
+                  onCancel={this.modalCancelHandler}
+                  onConfirm={this.startModalHandler}
+                  // children={}
+                  submit="Ingredients"
+                >
+                  <ul className="ingredient-modal">
+                      {this.props.recipe.recipe.ingredients.map((ingredient, i) => {
+                    return (<li key={i}>{ingredient.text}</li>)
+                  })}
+                  </ul>
+                </Modal>
+              )}
+              <div className="modal-control">
+                <button
+                  className="btn"
+                  onClick={this.startModalHandler}
+                >
+                  Ingredients
+                </button>
+              </div>
+            </React.Fragment>
+            <React.Fragment>
+              {this.state.ingredientsPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+              {this.state.ingredientsPullUp && (
+                <Modal
+                  title="Health Facts"
+                  canCancel
+                  canConfirm
+                  onCancel={this.modalCancelHandler}
+                  onConfirm={this.startModalHandler}
+                  // children={}
+                  submit="Health"
+                >
+                  <ul className="health-modal">
+                    <li>Calories: {this.props.recipe.recipe.calories}</li>
+                    <li>Servings: {this.props.recipe.recipe.yield}</li>
+                    <li>Total Carbs: {this.props.recipe.recipe.digest[0].total}</li>
+                    <li>Daily Carbs: {this.props.recipe.recipe.digest[0].daily}</li>
+                    <li>Total Fats: {this.props.recipe.recipe.digest[1].total}</li>
+                    <li>Daily Fats: {this.props.recipe.recipe.digest[1].daily}</li>
+                    <li>Total Protein: {this.props.recipe.recipe.digest[2].total}</li>
+                    <li>Daily Protein: {this.props.recipe.recipe.digest[2].daily}</li>   
+                  </ul>
+                </Modal>
+              )}
+              <div className="modal-control">
+                <button
+                  className="btn"
+                  onClick={this.startModalHandler}
+                >
+                  Health Facts 
+                </button>
+              </div>
+            </React.Fragment>
+          </div>
+        </div>
+        <div className="recipe-pic">
+          <img src={this.props.recipe.recipe.image} />
+        </div>
       </div>
     )
   }

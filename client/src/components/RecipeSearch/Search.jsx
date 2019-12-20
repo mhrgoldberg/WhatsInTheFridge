@@ -49,12 +49,15 @@ class Search extends Component {
           if (this.state.loading) return null;
           return (
             <div className="Search">
-            <header className="Search-header">
-              <h1 className="Search-title">Recipe Search</h1>
-            </header>
-            <SearchForm getRecipe={this.getRecipe} />
-            <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId}/>
-            
+              <div className="search-top">
+                <header className="Search-header">
+                  <h1 className="Search-title">Recipe Search</h1>
+                </header>
+                <SearchForm getRecipe={this.getRecipe} />
+             </div>
+              <div className="search-bottom">
+                <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId}/>
+              </div>
             </div>
           )
         }}

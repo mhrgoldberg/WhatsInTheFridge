@@ -81,11 +81,18 @@ const verifyUser = async data => {
     const decoded = jwt.verify(token, keys.secretOrKey);
     const { id } = decoded;
 
-    const loggedIn = await User.findById(id).then(user => {
-      return user ? true : false;
-    });
-
-    return { loggedIn };
+    const user = await User.findById(id)
+    
+    if (user) {
+      return {
+        loggedIn: true,
+        ...user._doc
+      }
+    } else {
+      return {
+        loggedIn: false
+      }
+    };
   } catch (err) {
     return { loggedIn: false };
   }

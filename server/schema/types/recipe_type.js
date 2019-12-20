@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const graphql = require("graphql");
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, GraphQLFloat } = graphql;
 
 const RecipeType = new GraphQLObjectType({
   name: "RecipeType",
@@ -9,23 +9,16 @@ const RecipeType = new GraphQLObjectType({
     name: { type: GraphQLString },
     recipeURL: { type: GraphQLString },
     imageURL: { type: GraphQLString },
-    calories: { type: GraphQLInt },
+    calories: { type: GraphQLFloat },
     servings: { type: GraphQLInt },
-    ingredients: { type: GraphQLList },
-    macros: {
-      carbs: {
-        total: { type: GraphQLInt },
-        daily: { type: GraphQLInt }
-      },
-      fats: {
-        total: { type: GraphQLInt },
-        daily: { type: GraphQLInt }
-      },
-      protein: {
-        total: { type: GraphQLInt },
-        daily: { type: GraphQLInt }
-      }
-    }
+    ingredients: { type: new GraphQLList(GraphQLString) },
+    carbsTotal: { type: GraphQLFloat },
+    carbsDaily: { type: GraphQLFloat },
+    fatsTotal: { type: GraphQLFloat },  
+    fatsDaily: { type: GraphQLFloat },
+    proteinTotal: { type: GraphQLFloat },
+    proteinDaily: { type: GraphQLFloat },
+    userId: { type: GraphQLID }
   })
 });
 

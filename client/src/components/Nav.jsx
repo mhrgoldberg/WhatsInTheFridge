@@ -50,22 +50,24 @@ class Nav extends Component {
             {({ data }) => {
               if (data.isLoggedIn) {
                 return (
-                  <nav>
-                    <div className="l-side-navbar">
-                      <div className="logo"></div>
-                      <h1 className="title">What's in the Fridge?</h1>
+                  <div className="navbar">
+                    <div className="l-side-navbar" >
+                      <div className="logo-in"></div>
+                      <h1 className="title-in">What's in the Fridge?</h1>
                     </div>
-                    <button
-                      onClick={e => {
-                        e.preventDefault();
-                        localStorage.removeItem("auth-token");
-                        client.writeData({ data: { isLoggedIn: false } });
-                        this.props.history.push("/");
-                      }}
-                    >
-                      Logout
-                    </button>
-                  </nav>
+                    <div className="nav-buttons">
+                      <button className="logout"
+                        onClick={e => {
+                          e.preventDefault();
+                          localStorage.removeItem("auth-token");
+                          client.writeData({ data: { isLoggedIn: false } });
+                          this.props.history.push("/");
+                        }}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  </div>
                 );
               } else {
                 return (

@@ -12,6 +12,7 @@ import IngredientSearch from "./fridge/ingredient_search";
 import Search from './RecipeSearch/Search.jsx';
 import SearchAdvanced from './RecipeSearch/SearchAdvanced.jsx';
 import Main from './Main.jsx';
+import Fridge from './fridge/fridge.jsx';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Route exact path="/search" component={Search} />
       <Route exact path="/advanced-search" component={SearchAdvanced} />
       <Route exact path="/main" component={Main} />
+      <Route exact path="/fridge" component={Fridge} />
     </Switch>
   );
 };

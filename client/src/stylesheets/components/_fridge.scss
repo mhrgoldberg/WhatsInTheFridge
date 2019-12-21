@@ -1,0 +1,34 @@
+.fridge-list > h4 {
+  color: white;
+  font-family: 'Josefin Slab', serif;
+}
+
+
+.fridge-list > li {
+  color: white;
+  font-family: 'Josefin Slab', serif;
+  list-style: circle;
+}
+.fridge-list li {
+  
+}
+
+.fridge-list-chalkboard {
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 200px;
+  width: 80%;
+  border: 5px solid rgba(0,74,3);
+  margin: auto;
+  margin-top: 25px;
+}
+
+.fridge-list-chalkboard h4 {
+  color: white;
+  font-family: 'Josefin Slab', serif;
+  text-align: center;
+}
+

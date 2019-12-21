@@ -9,8 +9,8 @@ class NutritionPieChart extends React.Component {
 
   componentDidMount() {
     const myChartRef = this.chartRef.current.getContext("2d");
-    const data = [25, 25, 50];
-    // const data = [this.props.fat, this.props.carb, this.props.protein];
+    // const data = [25, 25, 50];
+    const data = [this.props.fat, this.props.carb, this.props.protein];
     new Chart(myChartRef, {
       type: "pie",
       data: {
@@ -19,7 +19,7 @@ class NutritionPieChart extends React.Component {
           {
             label: "Macronutrients",
             data,
-            backgroundColor: ["#F3CE08", "#689D46", "#57A8A3"]
+            backgroundColor: ["rgba(255, 240, 124, 1)", "rgba(0, 74, 3, 0.7)", "#57A8A3"]
           }
         ]
       },

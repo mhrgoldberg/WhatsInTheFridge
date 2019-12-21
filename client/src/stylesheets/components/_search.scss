@@ -8,7 +8,10 @@
 .search-result {
   display: flex; 
   align-content: space-between;
-  border-bottom: 1px solid gray;
+  background: rgba(80, 211, 122, 0.42);
+  border-radius: 5px;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  margin-bottom: 20px;
 }
 
 .search-result-title h4 {
@@ -28,10 +31,24 @@
   padding: 2px;
 }
 
-.sr-save-recipe-btn {
-  border: 1px solid rgba(255, 240, 124, 1);
-  color: white;
+#sr-save-recipe-btn {
+  color: rgba(0,74,3);
+  background: white;
+  border: 1px solid rgba(0,74,3);
 }
+
+.search-result-buttons div button {
+  color: white;
+  background: rgba(0,74,3);
+  border: 1px solid rgba(0,74,3);
+}
+
+.search-result-buttons a button {
+  color: white;
+  background: rgba(0,74,3);
+  border: 1px solid rgba(0,74,3);
+}
+
 
 .search-result-buttons div > 
 .search-result-info {
@@ -41,6 +58,8 @@
 .search-result > .recipe-pic > img {
   width: 200px;
   margin: auto;
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
 .search-recipes-list {
@@ -69,9 +88,26 @@
 
 .search-top {
   display: flex;
+  flex-direction: column;
 }
 
 .search-top form {
   display: flex;
   width: 50%;
+  margin: auto;
+}
+
+.search-top .Search-header {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.search-top .Search-header h1 {
+
+}
+
+#search-btn {
+  background: rgba(0,74,3);
+  color: white;
 }

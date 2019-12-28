@@ -19,6 +19,12 @@
   width: 40px;
 }
 
+.logo-in {
+   background-image: url(../../images/logo-transparent_2.svg);
+  height: 40px;
+  width: 40px;
+}
+
 .title {
   color: #f3ce08;
   display: flex;
@@ -30,4 +36,17 @@
   display: flex;
   width: fit-content;
   margin-left: 2vw;
+}
+
+.logout {
+  color: white;
+  background-color: transparent;
+}
+
+.title-in {
+  color: #FFFFFF;
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+  margin-left: 5px;
 }

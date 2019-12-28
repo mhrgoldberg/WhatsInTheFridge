@@ -116,7 +116,7 @@ class IngredientSearch extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="ingredinet-search-container">
+        <div className="ingredient-search-container">
           <input
             className="ingredient-input"
             type="text"

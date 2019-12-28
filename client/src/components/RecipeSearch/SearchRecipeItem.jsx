@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import mutations from '../../graphql/mutations';
 import Modal from "../Modal.jsx";
 import Backdrop from "../Backdrop.jsx";
+import NutritionPieChart from "../nutrition_pie_chart";
+import NutritionBarChart from '../nutrition_bar_chart';
 const { SAVE_RECIPE } = mutations;
 
 
@@ -27,7 +29,8 @@ class SearchRecipeItem extends Component {
         proteinDaily: this.props.recipe.recipe.digest[2].daily,
         userId: this.props.currentUserId
       },
-      ingredientsPullUp: false
+      ingredientsPullUp: false,
+      healthPullUp: false 
     }
   }
 
@@ -36,10 +39,18 @@ class SearchRecipeItem extends Component {
   }
 
   modalCancelHandler = () => {
-    this.setState({ ingredientsPullUp: false });
+    this.setState({ ingredientsPullUp: false, healthPullUp: false });
+  }
+
+  startHealthHandler = () => {
+    this.setState({ healthPullUp: true })
   }
 
   render() {
+    let dailyCarbs = (this.props.recipe.recipe.digest[0].total * this.props.recipe.recipe.digest[0].daily);
+    let dailyFats = (this.props.recipe.recipe.digest[1].total * this.props.recipe.recipe.digest[1].daily);
+    let dailyProteins = (this.props.recipe.recipe.digest[2].total * this.props.recipe.recipe.digest[2].daily);
+
     return (
       <div className="search-result" key={this.props.key}>
         <div className="search-result-info">
@@ -50,7 +61,7 @@ class SearchRecipeItem extends Component {
             <div>
             <Mutation mutation={SAVE_RECIPE}>
               {(saveRecipe, { data }) => (
-                <button className="sr-save-recipe-btn" onClick={() => {
+                <button id="sr-save-recipe-btn" onClick={() => {
                   saveRecipe({ variables: this.state.variables })
                   .then(recipe => console.log(recipe))
                   .catch(err => console.log(err))
@@ -80,6 +91,7 @@ class SearchRecipeItem extends Component {
               )}
               <div className="modal-control">
                 <button
+                  id="sr-modal-button"
                   className="btn"
                   onClick={this.startModalHandler}
                 >
@@ -88,33 +100,36 @@ class SearchRecipeItem extends Component {
               </div>
             </React.Fragment>
             <React.Fragment>
-              {this.state.ingredientsPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
-              {this.state.ingredientsPullUp && (
+              {this.state.healthPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+              {this.state.healthPullUp && (
                 <Modal
                   title="Health Facts"
                   canCancel
                   canConfirm
                   onCancel={this.modalCancelHandler}
-                  onConfirm={this.startModalHandler}
+                  onConfirm={this.startHealthHandler}
                   // children={}
                   submit="Health"
                 >
                   <ul className="health-modal">
-                    <li>Calories: {this.props.recipe.recipe.calories}</li>
+                    <li>Calories: {this.props.recipe.recipe.calories.toFixed(0)}</li>
                     <li>Servings: {this.props.recipe.recipe.yield}</li>
-                    <li>Total Carbs: {this.props.recipe.recipe.digest[0].total}</li>
+                    {/* <li>Total Carbs: {this.props.recipe.recipe.digest[0].total}</li>
                     <li>Daily Carbs: {this.props.recipe.recipe.digest[0].daily}</li>
                     <li>Total Fats: {this.props.recipe.recipe.digest[1].total}</li>
                     <li>Daily Fats: {this.props.recipe.recipe.digest[1].daily}</li>
                     <li>Total Protein: {this.props.recipe.recipe.digest[2].total}</li>
-                    <li>Daily Protein: {this.props.recipe.recipe.digest[2].daily}</li>   
+                    <li>Daily Protein: {this.props.recipe.recipe.digest[2].daily}</li>    */}
                   </ul>
+                  {/* <NutritionBarChart carbs={this.props.recipe.recipe.digest[0].total} dailyCarbs={dailyCarbs} proteins={this.props.recipe.recipe.digest[1].total} dailyProteins={dailyProteins} fats={this.props.recipe.recipe.digest[2].total} dailyFats={dailyFats} /> */}
+                  <NutritionPieChart carb={this.props.recipe.recipe.digest[0].total.toFixed(2)} protein={this.props.recipe.recipe.digest[1].total.toFixed(2)} fat={this.props.recipe.recipe.digest[2].total.toFixed(2)} />
                 </Modal>
               )}
               <div className="modal-control">
                 <button
                   className="btn"
-                  onClick={this.startModalHandler}
+                  id="sr-modal-button"
+                  onClick={this.startHealthHandler}
                 >
                   Health Facts 
                 </button>

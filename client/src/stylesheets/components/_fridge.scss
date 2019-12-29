@@ -1,6 +1,8 @@
-.fridge-list > h4 {
+.fridge-list-chalkboard > h4 {
   color: white;
   font-family: 'Josefin Slab', serif;
+  font-size: 24px;
+  margin: 5%;
 }
 
 
@@ -8,9 +10,10 @@
   color: white;
   font-family: 'Josefin Slab', serif;
   list-style: circle;
-}
-.fridge-list li {
-  
+  font-size: 20px;
+  margin-left: 12%;
+  line-height: 24px;
+
 }
 
 .fridge-list-chalkboard {
@@ -19,11 +22,11 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 200px;
-  width: 80%;
+  min-height: 150px;
+  height: fit-content;
   border: 5px solid rgba(0,74,3);
-  margin: auto;
-  margin-top: 25px;
+  margin: 0 auto;
+  width: 250px; 
 }
 
 .fridge-list-chalkboard h4 {
@@ -32,3 +35,23 @@
   text-align: center;
 }
 
+.fridge-container {
+  padding: 0 5%;
+}
+
+.fridge-instructions {
+  width: 250px;
+  margin: 5px auto;
+  background: rgba(80, 211, 122, 0.42);
+  border-radius: 5px;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.fridge-instructions p{
+  font-size: 15px;
+  font-family: 'Josefin Slab', serif;
+  line-height: 18px;
+  font-weight: 700;
+}

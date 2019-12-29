@@ -1,11 +1,11 @@
 .modal {
-  width: 300px;
+  width: 500px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   position: fixed;
   top: 23vh;
   border-radius: 5px;
   margin: auto;
-  left: 32vh;
+  left: calc(50vw - 250px);
   background: white;
 }
 
@@ -45,12 +45,7 @@
   color: rgba(93, 115, 126, 1);
 }
 
-@media (min-width: 768px) {
-  .modal {
-    width: 300px; 
-    left: calc((100% - 35rem) / 2);
-  }
-}
+
 
 .modal__content form input {
     border-radius: 5px;

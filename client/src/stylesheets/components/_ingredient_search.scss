@@ -1,24 +1,58 @@
 .ingredient-input {
   border: none;
-  padding: 0.5rem;
-  width: 300px;
+  padding: 0.86rem;
+  width: -webkit-fill-available;
   margin: 0;
-  border-radius: 5px;
+  color: white;
+  font-family: 'Josefin Slab', serif;
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* border-radius: 5px; */
 
 }
+
+.ingredient-input-full {
+  border: none;
+  padding: 1rem;
+  width: -webkit-fill-available;
+  margin: 0;
+  color: red;
+  text-align: center;
+
+  font-family: 'Josefin Slab', serif;
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* border-radius: 5px; */
+
+}
+
 .ingredient-search-container{
-  border: 1px solid #999;
-  border-radius: 5px;
-  width: fit-content;
+  border: 5px solid rgba(0,74,3);
+  /* border-radius: 5px; */
+  width: 250px;
+  margin: 0 auto;
+  margin-top: 25px;
   height: fit-content;
 }
 
 
 
 .no-suggestions {
-  color: #999;
   padding: 0.5rem;
-  border-top: 1px solid #999;
+  border-top: 1px solid rgba(0,74,3);
+  color: white;
+  font-family: 'Josefin Slab', serif;
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .suggestions {
@@ -26,29 +60,36 @@
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
-  max-height: 250px;
+  max-height: 125px;
   overflow-y: auto;
   padding-left: 0;
-  width: calc(300px + 1rem);
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 250px;
 }
 
 .suggestions li {
   padding: 4px;
   height: 16px;
+  color: white;
+  font-family: 'Josefin Slab', serif;
 }
 
 .suggestion-active,
 .suggestions li:hover {
-  background-color: #57A8A3;
-  color: #F3CE08;
+  background-color: rgba(80, 211, 121, 0.5);
+  color: white;
   cursor: pointer;
   font-weight: 700;
 }
 
 .suggestions li:not(:last-of-type) {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid rgba(0,74,3);
 }
 
 .suggestions li:first-of-type {
-  border-top: 1px solid #999;
+  border-top: 1px solid rgba(0,74,3);
 }

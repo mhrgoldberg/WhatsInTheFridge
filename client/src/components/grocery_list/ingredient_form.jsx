@@ -1,20 +1,20 @@
-// import React from "react";
+import React from "react";
 
-// class IngredientForm {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       quantity: 0,
-//       measure: "",
-//       ingredient: ""
-//     };
-//   }
+class IngredientForm {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: 0,
+      measure: "",
+      ingredient: ""
+    };
+  }
 
-//   handleSubmit() {}
+  handleSubmit() {}
 
-//   render() {
-//     <form onSubmit=""></form>;
-//   }
-// }
+  render() {
+    <form onSubmit=""></form>;
+  }
+}
 
-// export default IngredientForm;
+export default IngredientForm;

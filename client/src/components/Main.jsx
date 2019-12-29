@@ -11,15 +11,12 @@ class Main extends Component {
         <Nav />
         <div className="main-outer-container">
           <div className="main-inner-container1">
-            Div 1
             <Fridge />
-            {/* <a href="https://www.freepik.com/free-photos-vectors/background">Background photo created by dashu83 - www.freepik.com</a> */}
           </div>
           <div className="main-inner-container2">
             <Search />
           </div>
           <div className="main-inner-container3">
-            Div 3
           </div>
         </div>
       </div>

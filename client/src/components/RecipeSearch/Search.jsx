@@ -50,9 +50,9 @@ class Search extends Component {
           return (
             <div className="Search">
               <div className="search-top">
-                <header className="Search-header">
+                {/* <header className="Search-header">
                   <h1 className="Search-title">Recipe Search</h1>
-                </header>
+                </header> */}
                 <SearchForm getRecipe={this.getRecipe} />
              </div>
               <div className="search-bottom">

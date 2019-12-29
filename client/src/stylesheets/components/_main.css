@@ -22,18 +22,18 @@
 
 .main-inner-container1 {
   width: 25%;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 
 .main-inner-container2 {
   width: 50%;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   padding: 0 1%;
 }
 
 .main-inner-container3 {
   width: 25%;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
 }
 
 #modal-button {

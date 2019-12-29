@@ -46,7 +46,7 @@ class Search extends Component {
                 this.setState({currentUserId: data.data.currentUser, loading: false})
               })
           }
-          if (this.state.loading) return null;
+          if (this.state.loading) return <h2>Loading...</h2>;
           return (
             <div className="Search">
               <div className="search-top">

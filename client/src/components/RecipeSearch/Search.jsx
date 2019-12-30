@@ -46,13 +46,13 @@ class Search extends Component {
                 this.setState({currentUserId: data.data.currentUser, loading: false})
               })
           }
-          if (this.state.loading) return null;
+          if (this.state.loading) return <h2>Loading...</h2>;
           return (
             <div className="Search">
               <div className="search-top">
-                <header className="Search-header">
+                {/* <header className="Search-header">
                   <h1 className="Search-title">Recipe Search</h1>
-                </header>
+                </header> */}
                 <SearchForm getRecipe={this.getRecipe} />
              </div>
               <div className="search-bottom">

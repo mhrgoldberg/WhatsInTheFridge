@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Nav from './Nav.jsx';
 import Search from './RecipeSearch/Search';
 import Fridge from './fridge/fridge';
+import SearchAdvanced from './RecipeSearch/SearchAdvanced';
 
 class Main extends Component {
  
@@ -15,6 +16,7 @@ class Main extends Component {
           </div>
           <div className="main-inner-container2">
             <Search />
+            {/* <SearchAdvanced /> */}
           </div>
           <div className="main-inner-container3">
           </div>

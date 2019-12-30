@@ -116,3 +116,123 @@
   background: rgba(0,74,3);
   color: white;
 }
+
+
+.as-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.as-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.as-dropdown:hover .as-dropdown-content {
+  display: block;
+}
+
+.keyboard-inputs {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  min-width: 500px;
+  border-bottom: 1px solid green;
+}
+
+.option-dropdowns {
+  display: flex;
+  width: 50%;
+  margin: auto;
+  min-width: 500px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid green;
+}
+
+.pop-up-dropdowns {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  align-content: space-between;
+  min-width: 500px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid green;
+}
+
+.minMaxSection {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  align-content: space-between;
+  min-width: 500px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid green;
+}
+
+.minMaxSection label {
+  margin-right: 20px;
+}
+
+.excludeSection {
+  width: 50%;
+  margin: auto;
+  min-width: 500px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.as-search-btn {
+  margin: auto;
+}
+
+.dietSection {
+  width: 50%;
+  margin: auto;
+}
+
+.mealSection {
+  width: 50%;
+  margin: auto;
+}
+
+.dietSection > label {
+  margin: auto;
+}
+
+.healthSection {
+  width: 33%;
+}
+
+.cuisineSection {
+  width: 33%;
+}
+
+.dishSection {
+  width: 33%;
+}
+
+.Search-title-as {
+  text-align: center;
+  color: rgba(0,74,3);
+}
+
+.as-form {
+  width: 50%;
+  margin: auto;
+}
+
+.as-search-btn {
+  color: white;
+  background: rgba(0,74,3);
+  border: 1px solid rgba(0,74,3);
+}

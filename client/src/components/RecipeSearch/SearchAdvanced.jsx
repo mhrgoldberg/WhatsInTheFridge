@@ -151,7 +151,7 @@ class SearchAdvanced extends Component {
     return (
       <div className="Search">
         <header className="Search-header">
-          <h1 className="Search-title">Recipe Search</h1>
+          <h1 className="Search-title-as">Advanced Search</h1>
         </header>
         <SearchAdvancedForm getRecipe={this.getRecipe} />
         <SearchRecipes recipes={this.state.recipes} error={this.state.error}/>

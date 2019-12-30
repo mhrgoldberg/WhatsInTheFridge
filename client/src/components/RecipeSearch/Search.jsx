@@ -24,14 +24,14 @@ class Search extends Component {
   }
 
   getRecipe = async (e) => {
-    const recipeName = e.target.elements.recipeName.value;
-
+    const recipeName = this.props.fridgeArr.join();
+    debugger
     e.preventDefault();
     const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}`);
     console.log(recipeName);
 
     const data = await api_call.json();
-    this.setState({ recipes: data.hits })
+    this.setState({ recipes: data.hits });
     // console.log(data.hits[0].recipe.url);
     // console.log(this.state.recipes);
   }

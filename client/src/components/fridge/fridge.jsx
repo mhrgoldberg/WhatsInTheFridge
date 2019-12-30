@@ -8,8 +8,7 @@ class Fridge extends React.Component {
       selectionIndex: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: "",
-      fridgeArr: []
+      userInput: ""
     };
   }
 
@@ -64,13 +63,7 @@ class Fridge extends React.Component {
           userInput: input
         },
         () => {
-          const fridgeArrCopy = [...this.state.fridgeArr];
-          if (this.state.userInput && this.state.fridgeArr.length < 4) {
-            fridgeArrCopy.push(this.state.userInput);
-            this.setState({
-              fridgeArr: fridgeArrCopy
-            });
-          }
+          this.props.addToFridge(this.state.userInput);
           this.setState({
             userInput: ""
           });
@@ -136,7 +129,7 @@ class Fridge extends React.Component {
 
     let ingredientInput;
 
-    if (this.state.fridgeArr.length < 4) {
+    if (this.props.fridgeArr.length < 4) {
       ingredientInput = (
         <input
           className="ingredient-input"
@@ -164,7 +157,7 @@ class Fridge extends React.Component {
             list.
           </p>
         </div>
-        <FridgeList fridgeListArr={this.state.fridgeArr} />
+        <FridgeList fridgeListArr={this.props.fridgeArr} />
         <div className="ingredient-search-container">
           {ingredientInput}
           {suggestionsListComponent}

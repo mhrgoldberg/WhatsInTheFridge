@@ -25,7 +25,6 @@ class Search extends Component {
 
   getRecipe = async (e) => {
     const recipeName = this.props.fridgeArr.join();
-    debugger
     e.preventDefault();
     const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}`);
     console.log(recipeName);
@@ -53,6 +52,7 @@ class Search extends Component {
                 {/* <header className="Search-header">
                   <h1 className="Search-title">Recipe Search</h1>
                 </header> */}
+                {/* <Link to="/advanced-search"></Link> */}
                 <SearchForm getRecipe={this.getRecipe} />
              </div>
               <div className="search-bottom">

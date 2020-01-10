@@ -1,5 +1,7 @@
 import React from "react";
 import FridgeList from "./fridge_list";
+const API_KEY = require("../../api_keys.js").INGREDIENT_API_KEY;
+const API_ID = require("../../api_keys.js").INGREDIENT_API_ID;
 
 class Fridge extends React.Component {
   constructor(props) {
@@ -24,7 +26,7 @@ class Fridge extends React.Component {
 
   apiCall = async userInput => {
     const api_call = await fetch(
-      `http://api.edamam.com/auto-complete?q=${userInput}&limit=5&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
+      `http://api.edamam.com/auto-complete?q=${userInput}&limit=5&app_id=${API_ID}&app_key=${API_KEY}`
     );
     const filteredSuggestions = await api_call.json();
 

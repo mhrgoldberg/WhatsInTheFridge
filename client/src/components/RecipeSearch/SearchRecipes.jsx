@@ -1,5 +1,5 @@
-import React from 'react';
-import SearchRecipeItem from './SearchRecipeItem';
+import React from "react";
+import SearchRecipeItem from "./SearchRecipeItem";
 
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -37,18 +37,14 @@ const SearchRecipes = props => {
           recipeNames[i] = recipe.name
         ))
 
-        // console.log(recipeNames);
         return <div>
           {props.recipes.map((recipe, i) => {
            
             if (recipeNames.includes(recipe.recipe.label)) {
-              // console.log(recipe.recipe.label);
               return <div>
               <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId} saved={true} />
-              {/* <h1>{recipe.recipe.label}</h1> */}
               </div>
             } else {
-              // console.log(recipe.recipe.label);
               return <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId} saved={false} />
             }
           })} 
@@ -59,6 +55,6 @@ const SearchRecipes = props => {
       }}
     </Query>
     </div>
-};
+}; 
 
 export default SearchRecipes;

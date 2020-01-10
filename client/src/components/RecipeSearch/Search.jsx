@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import { Mutation, ApolloConsumer } from 'react-apollo';
-import mutations from '../../graphql/mutations';
-import queries from '../../graphql/queries';
+import React, { Component } from "react";
+import { Mutation, ApolloConsumer } from "react-apollo";
+import mutations from "../../graphql/mutations";
+import queries from "../../graphql/queries";
 import SearchForm from "./SearchForm";
-import SearchRecipes from './SearchRecipes';
+import SearchRecipes from "./SearchRecipes";
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
-
-const API_KEY = "bc82ac6d721c875a3d0e602f1b537fef";
-
-const API_ID = "234908ad";
-
+const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
+const API_ID = require("../../api_keys.js").RECIPE_API_ID;
 
 class Search extends Component {
   constructor(props) {
@@ -23,27 +20,60 @@ class Search extends Component {
     this.getRecipe = this.getRecipe.bind(this);
   }
 
-  getRecipe = async (e) => {
-    const recipeName = this.props.fridgeArr.join();
+  getRecipe = async e => {
+    const recipeName = this.props.fridgeArr.join(", ");
     e.preventDefault();
-    const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}`);
-    console.log(recipeName);
+    const api_call = await fetch(
+      `https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=30`
+    );
 
     const data = await api_call.json();
-    this.setState({ recipes: data.hits });
-    // console.log(data.hits[0].recipe.url);
-    // console.log(this.state.recipes);
-  }
-  
+    const parsedData = this.checkRecipeArr(data.hits);
+    this.setState({ recipes: parsedData });
+  };
+
+  checkRecipeArr = recipesArr => {
+    let validRecipes = [];
+    recipesArr.forEach(recipe => {
+      if (this.checkFridge(recipe)) validRecipes.push(recipe);
+    });
+    return validRecipes;
+  };
+
+  checkFridge = recipe => {
+    for (let i = 0; i < this.props.fridgeArr.length; i++) {
+      const fridgeIngredient = this.props.fridgeArr[i];
+      let valid = false;
+      for (let j = 0; j < recipe.recipe.ingredientLines.length; j++) {
+        const ingredientString = recipe.recipe.ingredientLines[j];
+        if (ingredientString.includes(fridgeIngredient)) valid = true;
+      }
+      if (!valid) return false;
+    }
+    return true;
+  };
+
   render() {
+    let searchResult;
+
+    if (this.state.recipes.length > 0) {
+      searchResult = (
+        <SearchRecipes
+          recipes={this.state.recipes}
+          currentUserId={this.state.currentUserId}
+        />
+      );
+    }
     return (
       <ApolloConsumer>
-        {(client) => {
+        {client => {
           if (!this.state.currentUserId) {
-            client.query({query: CURRENT_USER})
-              .then(data => {
-                this.setState({currentUserId: data.data.currentUser, loading: false})
-              })
+            client.query({ query: CURRENT_USER }).then(data => {
+              this.setState({
+                currentUserId: data.data.currentUser,
+                loading: false
+              });
+            });
           }
           if (this.state.loading) return <h2>Loading...</h2>;
           return (
@@ -54,18 +84,16 @@ class Search extends Component {
                 </header> */}
                 {/* <Link to="/advanced-search"></Link> */}
                 <SearchForm getRecipe={this.getRecipe} />
-             </div>
+              </div>
               <div className="search-bottom">
-                <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId}/>
+                {searchResult}
               </div>
             </div>
-          )
+          );
         }}
       </ApolloConsumer>
-    )
+    );
   }
-};
+}
 
 export default Search;
-
-

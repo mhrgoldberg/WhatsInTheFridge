@@ -7,10 +7,8 @@ import mutations from '../../graphql/mutations';
 import queries from '../../graphql/queries';
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
-
-const API_KEY = "bc82ac6d721c875a3d0e602f1b537fef";
-
-const API_ID = "234908ad";
+const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
+const API_ID = require("../../api_keys.js").RECIPE_API_ID;
 
 
 class SearchAdvanced extends Component {
@@ -142,7 +140,7 @@ class SearchAdvanced extends Component {
     // console.log(excludeString);
     
     e.preventDefault();
-    console.log(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
+    // console.log(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
     try {
       // const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
       const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}`);
@@ -156,6 +154,13 @@ class SearchAdvanced extends Component {
   }
 
   render() {
+    let form = <SearchAdvancedForm getRecipe={this.getRecipe} />;
+    let searchResult;
+
+    if (this.state.recipes.length > 0) {
+      form = <div></div>
+      searchResult =  <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId} error={this.state.error} />;
+    }
     return (
     <ApolloConsumer>
       {(client) => {
@@ -169,11 +174,9 @@ class SearchAdvanced extends Component {
         return (
           <div className="Search">
             <header className="Search-header">
-              <h1 className="Search-title-as">Advanced Search</h1>
             </header>
-            <SearchAdvancedForm getRecipe={this.getRecipe} />
-            <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId} error={this.state.error} />
-
+            {form}
+            {searchResult}
           </div>
         )
       }}

@@ -57,3 +57,26 @@
   line-height: 18px;
   font-weight: 700;
 }
+
+.keyboard-inputs input, select {
+  background: rgba(80, 211, 122, 0.42);
+ 
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+.option-dropdowns select, option {
+   background: rgba(80, 211, 122, 0.42);
+ 
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+
+.as-form label {
+  color: green;
+}

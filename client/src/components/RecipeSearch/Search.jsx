@@ -24,7 +24,7 @@ class Search extends Component {
     const recipeName = this.props.fridgeArr.join(", ");
     e.preventDefault();
     const api_call = await fetch(
-      `https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=50`
+      `https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=30`
     );
 
     const data = await api_call.json();
@@ -32,7 +32,7 @@ class Search extends Component {
     this.setState({ recipes: parsedData });
   };
 
-  checkRecipeArr = (recipesArr) => {
+  checkRecipeArr = recipesArr => {
     let validRecipes = [];
     recipesArr.forEach(recipe => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
@@ -49,11 +49,21 @@ class Search extends Component {
         if (ingredientString.includes(fridgeIngredient)) valid = true;
       }
       if (!valid) return false;
-      }
+    }
     return true;
   };
 
   render() {
+    let searchResult;
+
+    if (this.state.recipes.length > 0) {
+      searchResult = (
+        <SearchRecipes
+          recipes={this.state.recipes}
+          currentUserId={this.state.currentUserId}
+        />
+      );
+    }
     return (
       <ApolloConsumer>
         {client => {
@@ -76,10 +86,7 @@ class Search extends Component {
                 <SearchForm getRecipe={this.getRecipe} />
               </div>
               <div className="search-bottom">
-                <SearchRecipes
-                  recipes={this.state.recipes}
-                  currentUserId={this.state.currentUserId}
-                />
+                {searchResult}
               </div>
             </div>
           );

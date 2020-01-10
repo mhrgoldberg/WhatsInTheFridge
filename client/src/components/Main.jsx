@@ -57,19 +57,7 @@ class Main extends Component {
           <h1 className="selected">Search</h1>
           <h1 onClick={this.handleASToggle}>Advanced Search</h1>
         </div>
-        <div className="main-inner-container2-content">
-          <h1>
-            Welcome to What's in the Fridge? A new way to find delicous recipes. 
-          </h1>
-          <div className="fridge-instructions-2">
-            <p>
-              Add up to 4 items to your Fridge List to the left, then we will find
-              tonight's dinner using ingredients you already have! If you don't
-              have an ingredient in the recipe we will add it to your grocery
-              list.
-            </p>
-          </div>
-        </div>
+    
         {/* <img src="/../src/images/logo-transparent_2.svg" alt="" /> */}
         <Search fridgeArr={this.state.fridgeArr} />
      

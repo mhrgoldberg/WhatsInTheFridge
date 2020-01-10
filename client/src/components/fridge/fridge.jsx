@@ -151,14 +151,6 @@ class Fridge extends React.Component {
 
     return (
       <div className="fridge-container">
-        <div className="fridge-instructions ">
-          <p>
-            Add up to 4 items to your Fridge List below, then we will find
-            tongiht's dinner using ingredients you already have! If you don't
-            have an ingredient in the recipe we will add it to your grocery
-            list.
-          </p>
-        </div>
         <FridgeList fridgeListArr={this.props.fridgeArr} />
         <div className="ingredient-search-container">
           {ingredientInput}

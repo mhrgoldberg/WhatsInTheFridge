@@ -3,18 +3,22 @@ import React from 'react';
 const SearchAdvancedForm = props => (
   <form className="as-form" onSubmit={props.getRecipe}>
     <div className="keyboard-inputs">
-      <label>Keyword
+      {/* <label>Keyword
         <input type="text" name="recipeName" />
-      </label>
+      </label> */}
       <br/>
-      <input type="hidden" name="from" defaultValue="0" />
-      <label>Num Results
-        <input type="number" name="to" defaultValue="5" />
-      </label>
+      <div className="keyboard-input-1">
+        <input type="hidden" name="from" defaultValue="0" />
+        <label>Num Results
+          <input type="number" name="to" defaultValue="5" />
+        </label>
+      </div>
       <br/>
-      <label>Max Num Ingredients
-        <input type="number" name="num_ingredients" defaultValue="10"/>
-      </label>
+      <div className="keyboard-input-1">
+        <label>Max Num Ingredients
+          <input type="number" name="num_ingredients" defaultValue="10"/>
+        </label>
+      </div>
     </div>
     <div className="option-dropdowns">
       <div className="dietSection">
@@ -48,7 +52,7 @@ const SearchAdvancedForm = props => (
     <div className="pop-up-dropdowns">
       <div className="healthSection">
         <div className="as-dropdown">
-          <label>Health Options
+          <label>Health Options <i class="arrow down"></i>
             <div className="as-dropdown-content">
               <label>Alchohol-free
                 <input type="checkbox" name="alcohol_free" value="alcohol-free"/>
@@ -176,7 +180,7 @@ const SearchAdvancedForm = props => (
       </div>
       <div className="cuisineSection">
         <div className="as-dropdown">
-        <label>CuisineType
+          <label>CuisineType <i class="arrow down"></i>
           <br />
           <div className="as-dropdown-content">
             <label>American
@@ -258,7 +262,7 @@ const SearchAdvancedForm = props => (
 
       <div className="dishSection">
         <div className="as-dropdown">
-          <label>Dish Type
+          <label>Dish Type <i class="arrow down"></i>
             <br />
             <div className="as-dropdown-content">
               <label>Bread
@@ -325,7 +329,7 @@ const SearchAdvancedForm = props => (
  
     <div className="minMaxSection">
       <div className="as-dropdown">
-        <label>Calories
+        <label>Calories <i class="arrow down"></i>
           <br/>
           <div className="as-dropdown-content">
             <label>Min
@@ -340,7 +344,7 @@ const SearchAdvancedForm = props => (
       </div>
    
       <div className="as-dropdown">
-        <label>Time
+        <label>Time <i class="arrow down"></i>
           <br />
           <div className="as-dropdown-content">
             <label>Min 
@@ -357,7 +361,7 @@ const SearchAdvancedForm = props => (
 
     <div className="excludeSection">
       <div className="as-dropdown">
-        <label>Exclude 
+        <label>Exclude <i class="arrow down"></i>
           <div className="as-dropdown-content">
             <br/>
             <label>Item 1

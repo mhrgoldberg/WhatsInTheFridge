@@ -51,6 +51,24 @@ class SearchRecipeItem extends Component {
     let dailyFats = (this.props.recipe.recipe.digest[1].total * this.props.recipe.recipe.digest[1].daily);
     let dailyProteins = (this.props.recipe.recipe.digest[2].total * this.props.recipe.recipe.digest[2].daily);
 
+    let savedButton; 
+
+    if (this.props.saved === true ) {
+      savedButton = <button id="sr-save-recipe-btn">
+        Recipe Saved
+      </button>
+    } else {
+      savedButton = <Mutation mutation={SAVE_RECIPE}>
+        {(saveRecipe, { data }) => (
+          <button id="sr-save-recipe-btn" onClick={() => {
+            saveRecipe({ variables: this.state.variables })
+              .then(recipe => console.log(recipe))
+              .catch(err => console.log(err))
+          }}>Save Recipe</button>
+        )}
+      </Mutation>
+    }
+
     return (
       <div className="search-result" key={this.props.key}>
         <div className="search-result-info">
@@ -59,15 +77,7 @@ class SearchRecipeItem extends Component {
           </div>
           <div className="search-result-buttons">
             <div>
-            <Mutation mutation={SAVE_RECIPE}>
-              {(saveRecipe, { data }) => (
-                <button id="sr-save-recipe-btn" onClick={() => {
-                  saveRecipe({ variables: this.state.variables })
-                  .then(recipe => console.log(recipe))
-                  .catch(err => console.log(err))
-                }}>Save Recipe</button>
-              )}
-            </Mutation>
+              {savedButton}
             </div>
             <Link to={this.props.recipe.recipe.url}><button>Link to Recipe</button></Link>
             <React.Fragment>

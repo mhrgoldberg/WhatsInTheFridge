@@ -24,6 +24,7 @@ async function setupClient() {
   });
 
   const httpLink = createHttpLink({
+    // comment out uri when pushing to heroku
     uri: "http://localhost:5000/graphql",
     headers: {
       authorization: localStorage.getItem("auth-token")

@@ -33,6 +33,7 @@ class Search extends Component {
   };
 
   checkRecipeArr = recipesArr => {
+    console.log("sort")
     let validRecipes = [];
     recipesArr.forEach(recipe => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
@@ -46,7 +47,10 @@ class Search extends Component {
       let valid = false;
       for (let j = 0; j < recipe.recipe.ingredientLines.length; j++) {
         const ingredientString = recipe.recipe.ingredientLines[j];
-        if (ingredientString.includes(fridgeIngredient)) valid = true;
+        if (ingredientString.includes(fridgeIngredient)) {
+          valid = true;
+          break;
+        };
       }
       if (!valid) return false;
     }

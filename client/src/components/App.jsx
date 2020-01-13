@@ -5,7 +5,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Splash from "./Splash.jsx";
 import AuthRoute from "../util/route_util.js";
-import "../stylesheets/main.scss";
+import "../stylesheets/main.css";
 // import NutritionPieChart from "./nutrition_pie_chart";
 // import IngredientForm from "./grocery_list/ingredient_form";
 // import IngredientSearch from "./fridge/ingredient_search";

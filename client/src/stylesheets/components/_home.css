@@ -12,6 +12,7 @@
 
 .main-outer-container {
   -webkit-background-size: cover;
+  background-size: cover;
   display: flex;
   flex-direction: row;
   margin-top: 20px;

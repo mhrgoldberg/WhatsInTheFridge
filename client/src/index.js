@@ -23,15 +23,15 @@ async function setupClient() {
     dataIdFromObject: object => object._id || null
   });
 
-  let uri = "http://localhost:5000/graphql";
+  // let uri = "http://localhost:5000/graphql";
 
-  if (process.env.NODE_ENV !== 'development') {
-    uri = "/graphql"
-  }
+  // if (process.env.NODE_ENV !== 'development') {
+  //   uri = "/graphql"
+  // }
 
   const httpLink = createHttpLink({
     // comment out uri when pushing to heroku
-    uri,
+    // uri,
     headers: {
       authorization: localStorage.getItem("auth-token")
     }

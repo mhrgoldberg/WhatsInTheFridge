@@ -21,13 +21,6 @@ mongoose
 
 app.use(cors());
 
-if (process.env.NODE_ENV === 'production') {
-  app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  })
-  app.use(express.static('client/build'));
-}
-
 app.use(
   "/graphql",
   expressGraphQL(req => {
@@ -41,7 +34,12 @@ app.use(
   })
 );
 
-
+if (process.env.NODE_ENV === 'production') {
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..','client', 'build', 'index.html'));
+  })
+  app.use(express.static('client/build'));
+}
 
 app.use(bodyParser.urlencoded({ extended: false })).use(bodyParser.json())
 

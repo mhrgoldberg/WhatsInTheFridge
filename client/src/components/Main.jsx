@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Nav from './Nav.jsx';
 import Search from './RecipeSearch/Search';
 import Fridge from './fridge/fridge';
+import Grocery from './grocery_list/grocery.jsx';
 import SearchAdvanced from './RecipeSearch/SearchAdvanced';
 
 
@@ -37,7 +38,10 @@ class Main extends Component {
             <Search fridgeArr={this.state.fridgeArr} />
 
           </div>
-          <div className="main-inner-container3"></div>
+          <div className="main-inner-container3">
+            <Grocery />
+          </div>
+
         </div>
       </div>
     );

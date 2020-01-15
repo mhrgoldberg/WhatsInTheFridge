@@ -6,7 +6,7 @@ const GroceryList = ({ GroceryListArr }) => (
     {GroceryListArr.map(ingredient => (
       <li>
         <div className="ingredient-quantity">
-          {ingredient.quntity} {ingredient.measure.label}
+          {ingredient.quantity} {ingredient.measure.label}
         </div>
         <div className="ingredient-string">{ingredient.label}</div>
         <div>

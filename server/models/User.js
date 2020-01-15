@@ -37,12 +37,32 @@ UserSchema.statics.addRecipe = (userId, recipeId) => {
     })
 }
 
-UserSchema.statics.addIngredient = (userId, ingredinetId) => {
+UserSchema.statics.removeRecipe = (userId, recipeId) => {
+  const User = mongoose.model('users');
+  
+  User.findById(userId)
+    .then(user => {
+      user.savedRecipes.pull(recipeId);
+      user.save();
+    })
+}
+
+UserSchema.statics.addIngredient = (userId, ingredientId) => {
   const User = mongoose.model('users');
 
   User.findById(userId)
     .then(user => {
-      user.savedIngredients.push(ingredinetId);
+      user.savedIngredients.push(ingredientId);
+      user.save();
+    })
+}
+
+UserSchema.statics.removeIngredient = (userId, ingredientId) => {
+  const User = mongoose.model('users');
+
+  User.findById(userId)
+    .then(user => {
+      user.savedIngredients.pull(ingredientId);
       user.save();
     })
 }

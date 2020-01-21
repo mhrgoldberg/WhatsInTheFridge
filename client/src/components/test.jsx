@@ -29,7 +29,7 @@ const Test = () => (
         if (error) return <div>Error</div>
 
         userId = data.currentUser;
-        // debugger;
+
 
         return (
           <div>

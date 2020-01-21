@@ -148,10 +148,12 @@ class Fridge extends React.Component {
         <div className="ingredient-input-full">Fridge List is full!</div>
       );
     }
-
     return (
       <div className="fridge-container">
-        <FridgeList fridgeListArr={this.props.fridgeArr} />
+        <FridgeList
+          deleteFridgeItem={this.props.deleteFridgeItem}
+          fridgeListArr={this.props.fridgeArr}
+        />
         <div className="ingredient-search-container">
           {ingredientInput}
           {suggestionsListComponent}

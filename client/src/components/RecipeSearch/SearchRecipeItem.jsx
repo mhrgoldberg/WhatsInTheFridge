@@ -79,7 +79,7 @@ class SearchRecipeItem extends Component {
             <div>
               {savedButton}
             </div>
-            <Link to={this.props.recipe.recipe.url}><button>Link to Recipe</button></Link>
+            <a href={this.props.recipe.recipe.url}><button>Link to Recipe</button></a>
             <React.Fragment>
               {this.state.ingredientsPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
               {this.state.ingredientsPullUp && (

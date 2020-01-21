@@ -3,8 +3,8 @@ import Nav from "./Nav.jsx";
 import Search from "./RecipeSearch/Search";
 import Fridge from "./fridge/fridge";
 import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
-import Modal from "./Modal.jsx";
-import Backdrop from "./Backdrop.jsx";
+// import Modal from "./Modal.jsx";
+// import Backdrop from "./Backdrop.jsx";
 
 class Main extends Component {
   constructor(props) {
@@ -65,11 +65,7 @@ class Main extends Component {
             <h1 className="selected">Search</h1>
             <h1 onClick={this.handleASToggle}>Advanced Search</h1>
           </div>
-
-          {/* <img src="/../src/images/logo-transparent_2.svg" alt="" /> */}
           <Search fridgeArr={this.state.fridgeArr} />
-
-          {/* <SearchAdvanced /> */}
         </div>
       );
     }
@@ -81,22 +77,7 @@ class Main extends Component {
             <h1 onClick={this.handleASToggle}>Search</h1>
             <h1 className="selected">Advanced Search</h1>
           </div>
-          {/* <Search fridgeArr={this.state.fridgeArr} /> */}
           <SearchAdvanced fridgeArr={this.state.fridgeArr} />
-          {/* <React.Fragment>
-          <Backdrop canCancel onCancel={this.handleASToggle} />
-          <Modal
-            title="Advanced Search"
-            canCancel
-            canConfirm
-            onCancel={this.handleSearchToggle}
-            onConfirm={this.handleSearchToggle}
-            children={SearchAdvanced}
-            submit="Search"
-          >
-            <SearchAdvanced />
-          </Modal>
-        </React.Fragment> */}
         </div>
       );
     }
@@ -112,15 +93,7 @@ class Main extends Component {
               addToFridge={this.addToFridge}
             />
           </div>
-          {/* <div className="main-inner-container2">
-            <div className="main-inner-container2-headings">
-              <h1>Search</h1>
-              <h1>Advanced Search</h1>
-            </div>
-            <Search fridgeArr={this.state.fridgeArr} />
-            <SearchAdvanced />
-            
-          </div> */}
+         
           {midDiv}
           <div className="main-inner-container3"></div>
         </div>

@@ -16,53 +16,56 @@ const UserSchema = new Schema({
     min: 8,
     max: 32
   },
-  savedRecipes: [{
-    type: Schema.Types.ObjectId,
-    ref: "recipes"
-  }],
-  savedIngredients: [{
-    type: Schema.Types.ObjectId,
-    ref: "ingredients"
-  }]
-
+  savedRecipes: {
+    type: Array,
+    default: []
+  },
+  savedIngredients: {
+    type: Array,
+    default: []
+  }
 });
 
-UserSchema.statics.addRecipe = (userId, recipeId) => {
+UserSchema.statics.addRecipe = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(userId)
+  User.findById(args[userId])
     .then(user => {
-      user.savedRecipes.push(recipeId);
+      delete args.userId;
+      user.savedRecipes[args.recipeURL] = args;
       user.save();
     })
 }
 
-UserSchema.statics.removeRecipe = (userId, recipeId) => {
+UserSchema.statics.removeRecipe = (args) => {
   const User = mongoose.model('users');
   
-  User.findById(userId)
+  User.findById(args[userId])
     .then(user => {
-      user.savedRecipes.pull(recipeId);
+      let recipeKey = args.recipeURL;
+      delete user.savedRecipes.recipeKey;
       user.save();
     })
 }
 
-UserSchema.statics.addIngredient = (userId, ingredientId) => {
+UserSchema.statics.addIngredient = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(userId)
+  User.findById(args[userId])
     .then(user => {
-      user.savedIngredients.push(ingredientId);
+      delete args.userId;
+      user.savedIngredients[args.name] = args;
       user.save();
     })
 }
 
-UserSchema.statics.removeIngredient = (userId, ingredientId) => {
+UserSchema.statics.removeIngredient = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(userId)
+  User.findById(args[userId])
     .then(user => {
-      user.savedIngredients.pull(ingredientId);
+      let ingredientKey = args.name;
+      delete user.savedRecipes.ingredientKey;
       user.save();
     })
 }

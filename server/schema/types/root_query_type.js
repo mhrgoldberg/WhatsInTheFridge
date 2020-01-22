@@ -26,20 +26,6 @@ const RootQueryType = new GraphQLObjectType({
       resolve(_, args) {
         return User.findById(args._id);
       }
-    },
-    savedRecipes: {
-      type: new GraphQLList(RecipeType),
-      args: { _id: { type: new GraphQLNonNull(GraphQLID) }},
-      resolve(_, args) {
-        return Recipe.find(args._id);
-      }
-    },
-    savedIngredients: {
-      type: new GraphQLList(IngredientsType),
-      args: { _id: { type: new GraphQLNonNull(GraphQLID) }},
-      resolve(_, args) {
-        return Ingredient.find(args._id);
-      }
     }
   })
 });

@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, Gr
 const RecipeType = new GraphQLObjectType({
   name: "RecipeType",
   fields: () => ({
-    _id: { type: GraphQLID },
     name: { type: GraphQLString },
     recipeURL: { type: GraphQLString },
     imageURL: { type: GraphQLString },
@@ -18,7 +17,6 @@ const RecipeType = new GraphQLObjectType({
     fatsDaily: { type: GraphQLFloat },
     proteinTotal: { type: GraphQLFloat },
     proteinDaily: { type: GraphQLFloat },
-    userId: { type: GraphQLID }
   })
 });
 

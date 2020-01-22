@@ -1,3 +1,4 @@
+import Grocery from './grocery_list/grocery.jsx';
 import React, { Component } from "react";
 import Nav from "./Nav.jsx";
 import Search from "./RecipeSearch/Search";
@@ -119,10 +120,10 @@ class Main extends Component {
             </div>
             <Search fridgeArr={this.state.fridgeArr} />
             <SearchAdvanced />
-            
-          </div> */}
-          {midDiv}
-          <div className="main-inner-container3"></div>
+          </div>
+          <div className="main-inner-container3">
+            <Grocery />
+          </div>
         </div>
       </div>
     );

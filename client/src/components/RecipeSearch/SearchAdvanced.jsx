@@ -2,20 +2,26 @@ import React, { Component } from 'react';
 
 import SearchAdvancedForm from "./SearchAdvancedForm";
 import SearchRecipes from './SearchRecipes';
-
-const API_KEY = "bc82ac6d721c875a3d0e602f1b537fef";
-
-const API_ID = "234908ad";
+import { Mutation, ApolloConsumer } from 'react-apollo';
+import mutations from '../../graphql/mutations';
+import queries from '../../graphql/queries';
+const { VERIFY_USER } = mutations;
+const { CURRENT_USER } = queries;
+const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
+const API_ID = require("../../api_keys.js").RECIPE_API_ID;
 
 
 class SearchAdvanced extends Component {
   state = {
     recipes: [], 
-    error: ""
+    error: "",
+    currentUserId: null,
+    loading: true
   };
 
   getRecipe = async (e) => {
-    const recipeName = e.target.elements.recipeName.value;
+    const recipeName2 = this.props.fridgeArr.join();
+    // const recipeName = e.target.elements.recipeName.value;
     const from = e.target.elements.from.value;
     const to = e.target.elements.to.value;
     const num_ingredients = e.target.elements.num_ingredients.value;
@@ -134,10 +140,10 @@ class SearchAdvanced extends Component {
     // console.log(excludeString);
     
     e.preventDefault();
-    console.log(`https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
+    // console.log(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
     try {
-      const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
-
+      // const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
+      const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}`);
       const data = await api_call.json();
     
       this.setState({ recipes: data.hits })
@@ -148,15 +154,33 @@ class SearchAdvanced extends Component {
   }
 
   render() {
-    return (
-      <div className="Search">
-        <header className="Search-header">
-          <h1 className="Search-title-as">Advanced Search</h1>
-        </header>
-        <SearchAdvancedForm getRecipe={this.getRecipe} />
-        <SearchRecipes recipes={this.state.recipes} error={this.state.error}/>
+    let form = <SearchAdvancedForm getRecipe={this.getRecipe} />;
+    let searchResult;
 
-      </div>
+    if (this.state.recipes.length > 0) {
+      form = <div></div>
+      searchResult =  <SearchRecipes recipes={this.state.recipes} currentUserId={this.state.currentUserId} error={this.state.error} />;
+    }
+    return (
+    <ApolloConsumer>
+      {(client) => {
+        if (!this.state.currentUserId) {
+          client.query({ query: CURRENT_USER })
+            .then(data => {
+              this.setState({ currentUserId: data.data.currentUser, loading: false })
+            })
+        }
+        if (this.state.loading) return <h2>Loading...</h2>;
+        return (
+          <div className="Search">
+            <header className="Search-header">
+            </header>
+            {form}
+            {searchResult}
+          </div>
+        )
+      }}
+    </ApolloConsumer>
     )
   }
 };

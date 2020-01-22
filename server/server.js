@@ -7,17 +7,17 @@ const schema = require("./schema/schema.js");
 const app = express();
 const expressGraphQL = require("express-graphql");
 const cors = require("cors");
+const path = require('path');
 
 if (!db) {
   throw new Error("You must provide a string to connect to MongoDB Atlas");
 }
 
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
-
-app.use(bodyParser.json());
 
 app.use(cors());
 
@@ -33,5 +33,15 @@ app.use(
     };
   })
 );
+
+if (process.env.NODE_ENV === 'production') {
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..','client', 'build', 'index.html'));
+  })
+  app.use(express.static('client/build'));
+}
+
+app.use(bodyParser.urlencoded({ extended: false })).use(bodyParser.json())
+
 
 module.exports = app;

@@ -1,0 +1,80 @@
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  min-width: 1165px;
+  min-height: 764px;
+  background: url(../../images/cutting-board.jpeg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.main-outer-container {
+  -webkit-background-size: cover;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  height: calc( 100% - 80px);
+  min-height: 600px;
+  min-width: 1165px;
+}
+
+.main-inner-container1 {
+  width: 25%;
+  /* border: 1px solid gray; */
+}
+
+.main-inner-container2 {
+  width: 50%;
+  /* border: 1px solid gray; */
+  padding: 0 1%;
+}
+
+.main-inner-container3 {
+  width: 25%;
+  /* border: 1px solid gray; */
+}
+
+#modal-button {
+  border: none;
+}
+
+
+.main-inner-container2-headings {
+  display: flex;
+  padding: 20px;
+}
+
+.main-inner-container2-headings h1 {
+  color: white;
+  margin: auto;
+}
+
+.main-inner-container2-headings .selected {
+  border-bottom: 5px solid white;
+}
+
+.main-inner-container2-content > h1 {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  color: rgba(0,74,3);
+}
+
+.fridge-instructions-2 {
+    width: 400px;
+    margin: 5px auto;
+    background: rgba(80, 211, 122, 0.42);
+    border-radius: 5px;
+    box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+    margin-bottom: 20px;
+    padding: 5px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.fridge-instructions-2 > p {
+  font-family: 'Josefin Slab', serif;
+}

@@ -1,10 +1,13 @@
 # What's in the Fridge?
 
-What’s in the Fridge? helps users find recipes for that user’s unique tastes and preferences based upon ingredients the user currently has at home. What’s in the Fridge? We drew inspiration from many recipe sites but ulitmately decided to create our own unique take on how to search for dinner tonight!
+What’s in the Fridge? helps users find recipes based upon ingredients they already have in their fridge! We drew inspiration from many recipe sites but ulitmately decided to create our own unique take on how to search for dinner tonight.
 
-Development of the features in this extension will be guided by Edamam API. https://developer.edamam.com/
+<img width="922" alt="Screenshot 2020-01-21 20 09 24" src="https://user-images.githubusercontent.com/34895686/72864872-7be54d80-3c8a-11ea-9220-93d416e28963.png">
 
-## Functionality & MVP
+## Functionality
+
+There are three main components to the site, the fridge, recipe search, and grocery list. The fridge is where you can track ingredients you actually have in your refrigirator at home! Once you have added a few food items to your fridge you can search for recipes that include the ingredients in your fridge list. For the ingredients you don't already have at home when you save a recipe it will auto-generate a grocery list for you!(grocery list feature currently in development!) The recipe and ingredient search features are powered by the EDAMAM API.
+
 ### Technologies & Technical Challenges
 * Node JS
 * Express
@@ -20,38 +23,15 @@ Development of the features in this extension will be guided by Edamam API. http
 * Bodyparser middleware
 * GraphQL
 * Apollo
-* [graphic interface (recharts, chart.js, plotly)]
+* Chart.js
 
+### External API
+* Edamam Recipe and Ingredient API
  
 ## The primary technical challenges will be:
-* Implementing and synching the external APIs with our backend and frontend schemas.
-* Synching external API data with graphic interfaces.
-* Creating a search feature utilizing different API endpoints.
- 
-## Group Members & Work Breakdown
-Our group consists of three members: Willie Louth, Chang Ho Lee, and Mitchell Reiss.
-### Willie's primary responsibilities will be:
- 
-### Chang's primary responsibilities will be:
- 
-### Mitchell's primary responsibilities will be:
- 
-## Implementation Timeline
-### Day 1: 
-* Project Planning: all
-* Project Setup: Mitchell
-* `User Auth` backend: Chang
-* `Splash` component: Mitchell
-* `login/signup` component: Willie
-### Day 2: 
-The 
-### Day 3: 
-Implement 
-### Day 4: 
-Fully 
-### Day 5: 
-Set 
+* API Limitations - There are a lot of recipe search APIs out there, EDAMAM is one of the most complete and consistent libraries of recipes especially at the free teir. Given it was our best option for the project we had to creatively utelize the keywoard search feature to search for recipes and then parse the ingredient list of each recipe to validate that it utelizes all fridge ingredients.
 
-## Future plans for app
+* Storing relational data in a a non-relational database - MongoDB works well for this project but storing relational data has to be organized different than we are used to when using a SQL database. To store saved recipes and a grocery list instead of creating joins tables we were able to store all the data necessary right in the Users collection. 
+
 
 

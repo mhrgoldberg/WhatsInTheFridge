@@ -23,7 +23,6 @@ const CURRENT_USER_RECIPES = gql`
 
 const SearchRecipes = props => {
   const recipeNames = [];
-  
   return <div className="search-recipes-list">
     <Query query={CURRENT_USER_RECIPES} variables={{ id: props.currentUserId }}>
       {({ loading, error, data }) => {
@@ -36,16 +35,15 @@ const SearchRecipes = props => {
         recipes.map((recipe, i) => (
           recipeNames[i] = recipe.name
         ))
-
         return <div>
           {props.recipes.map((recipe, i) => {
            
             if (recipeNames.includes(recipe.recipe.label)) {
               return <div>
-              <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId} saved={true} />
+              <SearchRecipeItem key={i} fridgeArr={props.fridgeArr} recipe={recipe} currentUserId={props.currentUserId} saved={true} />
               </div>
             } else {
-              return <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId} saved={false} />
+              return <SearchRecipeItem key={i} fridgeArr={props.fridgeArr} recipe={recipe} currentUserId={props.currentUserId} saved={false} />
             }
           })} 
           <div>

@@ -10,11 +10,6 @@ const IngredientType = new GraphQLObjectType({
     quantity: { type: GraphQLFloat },
     measureLabel: { type: GraphQLString },
     calories: { type: GraphQLFloat },
-    carbsTotal: { type: GraphQLFloat },
-    fatsTotal: { type: GraphQLFloat },  
-    proteinTotal: { type: GraphQLFloat },
-    recipeId: { type: GraphQLID },
-    userId: { type: GraphQLID }
   })
 });
 

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Mutation } from 'react-apollo';
-import { Link } from 'react-router-dom';
-import mutations from '../../graphql/mutations';
+import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import { Link } from "react-router-dom";
+import mutations from "../../graphql/mutations";
 import Modal from "../Modal.jsx";
 import Backdrop from "../Backdrop.jsx";
 import NutritionPieChart from "../nutrition_pie_chart";
-import NutritionBarChart from '../nutrition_bar_chart';
-const { SAVE_RECIPE } = mutations;
-
+import NutritionBarChart from "../nutrition_bar_chart";
+import Fridge from "../fridge/fridge";
+const { SAVE_RECIPE, SAVE_INGREDIENT } = mutations;
 
 class SearchRecipeItem extends Component {
   constructor(props) {
@@ -29,44 +29,94 @@ class SearchRecipeItem extends Component {
         proteinDaily: this.props.recipe.recipe.digest[2].daily,
         userId: this.props.currentUserId
       },
+      saved: this.props.saved,
       ingredientsPullUp: false,
-      healthPullUp: false 
-    }
+      healthPullUp: false
+    };
+    this.parseMultipleIngredients = this.parseMultipleIngredients.bind(this);
   }
 
   startModalHandler = () => {
     this.setState({ ingredientsPullUp: true });
-  }
+  };
 
   modalCancelHandler = () => {
     this.setState({ ingredientsPullUp: false, healthPullUp: false });
-  }
+  };
 
   startHealthHandler = () => {
-    this.setState({ healthPullUp: true })
-  }
+    this.setState({ healthPullUp: true });
+  };
+
+  parseMultipleIngredients = async ingredientLines => {
+  
+    const res = []; 
+    ingredientLines.forEach( async ingredient => {
+      const ing = await this.parseIngredient(ingredient);
+      console.log(ing);
+      const ingredientArr = ingredient.split(" ");
+      if (
+        !this.props.fridgeArr.some(fridgeIngredient =>
+          ingredientArr.includes(fridgeIngredient)
+        )
+      ) {
+        debugger;
+         res.push(ing);
+      }
+    });
+
+    return res;
+  };
+
+  parseIngredient = async ingredient => {
+    const ingredientText = ingredient.split(" ").join("%20");
+    const apiCall = await fetch(
+      `https://api.edamam.com/api/food-database/parser?ingr=${ingredientText}&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
+    );
+    const data = await apiCall.json();
+    const dataParsed = {
+      name: data.parsed[0].food.label || "",
+      quantity: data.parsed[0].quantity || 0,
+      measureLabel: data.parsed[0].measure.label || "",
+      calories: data.parsed[0].food.nutrients.ENERC_KCAL || 0
+    };
+    return dataParsed;
+  };
+
 
   render() {
-    let dailyCarbs = (this.props.recipe.recipe.digest[0].total * this.props.recipe.recipe.digest[0].daily);
-    let dailyFats = (this.props.recipe.recipe.digest[1].total * this.props.recipe.recipe.digest[1].daily);
-    let dailyProteins = (this.props.recipe.recipe.digest[2].total * this.props.recipe.recipe.digest[2].daily);
+    let savedButton;
 
-    let savedButton; 
-
-    if (this.props.saved === true ) {
-      savedButton = <button id="sr-save-recipe-btn">
-        Recipe Saved
-      </button>
+    if (this.state.saved === true) {
+      savedButton = <button id="sr-save-recipe-btn">Recipe Saved</button>;
     } else {
-      savedButton = <Mutation mutation={SAVE_RECIPE}>
-        {(saveRecipe, { data }) => (
-          <button id="sr-save-recipe-btn" onClick={() => {
-            saveRecipe({ variables: this.state.variables })
-              .then(recipe => console.log(recipe))
-              .catch(err => console.log(err))
-          }}>Save Recipe</button>
-        )}
-      </Mutation>
+      savedButton = (
+        <Mutation mutation={SAVE_RECIPE}>
+          {(saveRecipe, { data }) => (
+            <Mutation mutation={SAVE_INGREDIENT}>
+              {(saveIngredient, { data} ) => (
+                <button
+                  id="sr-save-recipe-btn"
+                  onClick={() => {
+                    saveRecipe({ variables: this.state.variables })
+                      .then(recipe => {return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)})
+                      .then(ingredients => {
+                        debugger;
+                        ingredients.forEach(ingredient =>(
+                        saveIngredient(ingredient)
+                      ))})  
+                      .then(() => this.setState({ saved: true }))
+                      .catch(err => console.log(err));
+                  }}
+                >
+                  Save Recipe
+                </button>
+              )
+              }
+            </Mutation>
+          )}
+        </Mutation>
+      );
     }
 
     return (
@@ -76,12 +126,14 @@ class SearchRecipeItem extends Component {
             <h4>{this.props.recipe.recipe.label}</h4>
           </div>
           <div className="search-result-buttons">
-            <div>
-              {savedButton}
-            </div>
-            <a href={this.props.recipe.recipe.url}><button>Link to Recipe</button></a>
+            <div>{savedButton}</div>
+            <a href={this.props.recipe.recipe.url} target="_blank">
+              <button>Link to Recipe</button>
+            </a>
             <React.Fragment>
-              {this.state.ingredientsPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+              {this.state.ingredientsPullUp && (
+                <Backdrop canCancel onCancel={this.modalCancelHandler} />
+              )}
               {this.state.ingredientsPullUp && (
                 <Modal
                   title="Ingredients"
@@ -89,13 +141,14 @@ class SearchRecipeItem extends Component {
                   canConfirm
                   onCancel={this.modalCancelHandler}
                   onConfirm={this.startModalHandler}
-                  // children={}
                   submit="Ingredients"
                 >
                   <ul className="ingredient-modal">
-                      {this.props.recipe.recipe.ingredients.map((ingredient, i) => {
-                    return (<li key={i}>{ingredient.text}</li>)
-                  })}
+                    {this.props.recipe.recipe.ingredients.map(
+                      (ingredient, i) => {
+                        return <li key={i}>{ingredient.text}</li>;
+                      }
+                    )}
                   </ul>
                 </Modal>
               )}
@@ -110,7 +163,9 @@ class SearchRecipeItem extends Component {
               </div>
             </React.Fragment>
             <React.Fragment>
-              {this.state.healthPullUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+              {this.state.healthPullUp && (
+                <Backdrop canCancel onCancel={this.modalCancelHandler} />
+              )}
               {this.state.healthPullUp && (
                 <Modal
                   title="Health Facts"
@@ -118,21 +173,21 @@ class SearchRecipeItem extends Component {
                   canConfirm
                   onCancel={this.modalCancelHandler}
                   onConfirm={this.startHealthHandler}
-                  // children={}
                   submit="Health"
                 >
                   <ul className="health-modal">
-                    <li>Calories: {this.props.recipe.recipe.calories.toFixed(0)}</li>
+                    <li>
+                      Calories: {this.props.recipe.recipe.calories.toFixed(0)}
+                    </li>
                     <li>Servings: {this.props.recipe.recipe.yield}</li>
-                    {/* <li>Total Carbs: {this.props.recipe.recipe.digest[0].total}</li>
-                    <li>Daily Carbs: {this.props.recipe.recipe.digest[0].daily}</li>
-                    <li>Total Fats: {this.props.recipe.recipe.digest[1].total}</li>
-                    <li>Daily Fats: {this.props.recipe.recipe.digest[1].daily}</li>
-                    <li>Total Protein: {this.props.recipe.recipe.digest[2].total}</li>
-                    <li>Daily Protein: {this.props.recipe.recipe.digest[2].daily}</li>    */}
                   </ul>
-                  {/* <NutritionBarChart carbs={this.props.recipe.recipe.digest[0].total} dailyCarbs={dailyCarbs} proteins={this.props.recipe.recipe.digest[1].total} dailyProteins={dailyProteins} fats={this.props.recipe.recipe.digest[2].total} dailyFats={dailyFats} /> */}
-                  <NutritionPieChart carb={this.props.recipe.recipe.digest[0].total.toFixed(2)} protein={this.props.recipe.recipe.digest[1].total.toFixed(2)} fat={this.props.recipe.recipe.digest[2].total.toFixed(2)} />
+                  <NutritionPieChart
+                    carb={this.props.recipe.recipe.digest[0].total.toFixed(2)}
+                    protein={this.props.recipe.recipe.digest[1].total.toFixed(
+                      2
+                    )}
+                    fat={this.props.recipe.recipe.digest[2].total.toFixed(2)}
+                  />
                 </Modal>
               )}
               <div className="modal-control">
@@ -141,7 +196,7 @@ class SearchRecipeItem extends Component {
                   id="sr-modal-button"
                   onClick={this.startHealthHandler}
                 >
-                  Health Facts 
+                  Health Facts
                 </button>
               </div>
             </React.Fragment>
@@ -151,8 +206,8 @@ class SearchRecipeItem extends Component {
           <img src={this.props.recipe.recipe.image} />
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 export default SearchRecipeItem;

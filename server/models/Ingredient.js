@@ -14,23 +14,6 @@ const IngredeintSchema = new Schema({
   },
   calories: {
     type: Number
-  },
-  carbsTotal: {
-    type: Number
-  },
-  fatsTotal: {
-    type: Number
-  },
-  proteinTotal: {
-    type: Number
-  },
-  recipeId: {
-    type: Schema.Types.ObjectId,
-    ref: 'recipes'
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
   }
 });
 

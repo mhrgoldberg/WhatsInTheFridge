@@ -22,7 +22,6 @@ const UserSchema = new Schema({
   }],
   savedIngredients: [{
     type: Schema.Types.ObjectId,
-    ref: "ingredients"
   }]
 
 });

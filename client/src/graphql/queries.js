@@ -12,15 +12,38 @@ const queries = {
       currentUser @client
     }
   `,
-  CURRENT_USER_RECIPES: gql`
-    query CurrentUser {
-      currentUser @client {
-        savedRecipes {
-          id
+  GET_CURRENT_USER_INGREDIENTS: gql`
+    query User($id: ID!) {
+      user(_id: $id) {
+        savedIngredients {
+          name
+          quantity
+          measureLabel
+          calories
+          carbsTotal
+          fatsTotal  
+          proteinTotal
         }
       }
     }
   `,
+  GET_CURRENT_USER_RECIPES: gql`
+    query User($id: ID!) {
+      user(_id: $id) {
+        savedRecipes {
+          name
+          recipeURL
+          imageURL
+          calories
+          servings
+          ingredients
+          carbsTotal
+          fatsTotal  
+          proteinTotal
+        }
+      }
+    }
+  `
 };
 
 export default queries;

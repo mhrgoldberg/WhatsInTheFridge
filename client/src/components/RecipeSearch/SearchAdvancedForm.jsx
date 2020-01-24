@@ -3,18 +3,25 @@ import React from 'react';
 const SearchAdvancedForm = props => (
   <form className="as-form" onSubmit={props.getRecipe}>
     <div className="keyboard-inputs">
-      <label>Keyword
+      <div>
+      <label>
+        <p>Keyword</p>
         <input type="text" name="recipeName" />
       </label>
-      <br/>
       <input type="hidden" name="from" defaultValue="0" />
-      <label>Num Results
+      </div>
+      <div>
+      <label>
+        <p>Num Results</p>
         <input type="number" name="to" defaultValue="5" />
       </label>
-      <br/>
-      <label>Max Num Ingredients
+      </div>
+      <div>
+      <label>
+        <p>Max Num Ingredients</p>
         <input type="number" name="num_ingredients" defaultValue="10"/>
       </label>
+      </div>
     </div>
     <div className="option-dropdowns">
       <div className="dietSection">
@@ -24,10 +31,10 @@ const SearchAdvancedForm = props => (
             <option value=""></option>
             <option value="balanced">Balanced</option>
             <option value="high-protein">High Protein</option>
-            <option value="high-fiber">High Fiber</option>
+            {/* <option value="high-fiber">High Fiber</option> */}
             <option value="low-fat">Low Fat</option>
             <option value="low-carb">Low Carb</option>
-            <option value="low-sodium">Low Sodium</option>
+            {/* <option value="low-sodium">Low Sodium</option> */}
           </select>
         </label>
       </div>
@@ -35,11 +42,16 @@ const SearchAdvancedForm = props => (
         <label>Meal Type
           <br />
           <select name="meal_type" defaultValue="">
-            <option value=""></option>
-            <option value="lunch">Lunch</option>
+            {/* <option value=""></option>
+            <option value="lunch">Lunch</option> 
             <option value="dinner">Dinner</option>
             <option value="breakfast">Breakfast</option>
-            <option value="snack">Snack</option>
+            <option value="snack">Snack</option> */}
+            <option value=""></option>
+            <option value="">Lunch</option> */}
+            <option value="">Dinner</option>
+            <option value="">Breakfast</option>
+            <option value="">Snack</option>
           </select>
         </label>
       </div>
@@ -49,132 +61,137 @@ const SearchAdvancedForm = props => (
       <div className="healthSection">
         <div className="as-dropdown">
           <label>Health Options
-            <div className="as-dropdown-content">
-              <label>Alchohol-free
+            <div className="as-health-dropdown-content">
+              <div>
+              <label>
+                <p>Alchohol-free</p>
                 <input type="checkbox" name="alcohol_free" value="alcohol-free"/>
               </label>
               <br/>
-              <label>Celery-free
+              {/* <label>Celery-free
                 <input type="checkbox" name="celery_free" value="celery-free" />
-              </label>
-              <br/>
+              </label> */}
+              {/* <br/>
               <label>Crustacean-free
                 <input type="checkbox" name="crustacean_free" value="crustacean-free" />
               </label>
-              <br/>
-              <label>Dairy
+              <br/> */}
+              {/* <label>Dairy
                 <input type="checkbox" name="dairy_free" value="dairy-free" />
               </label>
-              <br/>
-              <label>Eggs
+              <br/> */}
+              {/* <label>Eggs
                 <input type="checkbox" name="egg_free" value="egg-free" />
               </label>
-              <br/>
-              <label>Fish
+              <br/> */}
+              {/* <label>Fish
                 <input type="checkbox" name="fish_free" value="fish-free" />
               </label>
-              <br/>
-              <label>FODMAP free
+              <br/> */}
+              {/* <label>FODMAP free
                 <input type="checkbox" name="fodmap_free" value="fodmap-free" />
               </label>
-              <br />
-              <label>Gluten
+              <br /> */}
+              {/* <label>Gluten
                 <input type="checkbox" name="gluten_free" value="gluten-free" />
               </label>
-              <br />
-              <label>Keto
+              <br /> */}
+              {/* <label>Keto
                 <input type="checkbox" name="keto_friendly" value="keto_friendly" />
               </label>
-              <br />
-              <label>Kidney friendly 
+              <br /> */}
+              {/* <label>Kidney friendly 
                 <input type="checkbox" name="kidney_friendly" value="kidney-friendly" />
               </label>
-              <br />
-              <label>Kosher
+              <br /> */}
+              {/* <label>Kosher
                 <input type="checkbox" name="kosher" value="kosher" />
               </label>
-              <br />
-              <label>Low potassium
+              <br /> */}
+              {/* <label>Low potassium
                 <input type="checkbox" name="low_potassium" value="low-potassium" />
               </label>
-              <br />
-              <label>Lupine-free
+              <br /> */}
+              {/* <label>Lupine-free
                 <input type="checkbox" name="lupine_free" value="lupine-free" />
               </label>
-              <br />
-              <label>Mustard-free
+              <br /> */}
+              {/* <label>Mustard-free
                 <input type="checkbox" name="mustard_free" value="mustard-free" />
               </label>
-              <br />
-              <label>n/a
+              <br /> */}
+              {/* <label>n/a
                 <input type="checkbox" name="low_fat_abs" value="low-fat-abs" />
               </label>
-              <br />
-              <label>No oil needed
+              <br /> */}
+              {/* <label>No oil needed
                 <input type="checkbox" name="no_oil_needed" value="no-oil-needed" />
               </label>
-              <br />
-              <label>No-sugar
+              <br /> */}
+              <label>
+                <p>No-sugar</p>
                 <input type="checkbox" name="low_sugar" value="low-sugar" />
               </label>
               <br />
-              <label>Paleo
+              {/* <label>Paleo
                 <input type="checkbox" name="paleo" value="paleo" />
               </label>
-              <br />
-              <label>Peanuts
+              <br /> */}
+              <label>
+                <p>Peanuts</p>
                 <input type="checkbox" name="peanut_free" value="peanut-free" />
               </label>
               <br />
-              <label>Pescatarian
+              {/* <label>Pescatarian
                 <input type="checkbox" name="pescatarian" value="pescatarian" />
               </label>
-              <br />
-              <label>Pork-free
-                <input type="checkbox" name="pork_free" value="pork-free" />
+              <br /> */}
+              {/* <label>Pork-free
+                 <input type="checkbox" name="pork_free" value="pork-free" />
               </label>
               <br />
               <label>Red meat-free
                 <input type="checkbox" name="red_meat_free" value="red-meat-free" />
               </label>
-              <br />
-              <label>Sesame-free
+              <br /> */}
+              {/* <label>Sesame-free
                 <input type="checkbox" name="sesame_free" value="sesame-free" />
               </label>
-              <br />
-              <label>Shellfish
+              <br /> */}
+              {/* <label>Shellfish
                 <input type="checkbox" name="shellfish_free" value="shellfish-free" />
               </label>
-              <br />
-              <label>Soy
+              <br /> */}
+              {/* <label>Soy
                 <input type="checkbox" name="soy_free" value="soy-free" />
               </label>
-              <br />
-              <label>Sugar-conscious
+              <br /> */}
+              {/* <label>Sugar-conscious
                 <input type="checkbox" name="sugar_conscious" value="sugar-conscious" />
               </label>
-              <br />
-              <label>Tree Nuts
+              <br /> */}
+              <label>
+                <p>Tree Nuts</p>
                 <input type="checkbox" name="tree_nut_free" value="tree-nut-free" />
               </label>
-              <br />
-              <label>Vegan
+              </div>
+              {/* <label>Vegan
                 <input type="checkbox" name="vegan" value="vegan" />
               </label>
-              <br />
-              <label>Vegetarian
+              <br /> */}
+              {/* <label>Vegetarian
                 <input type="checkbox" name="vegetarian" value="vegetarian" />
               </label>
-              <br />
-              <label>Wheat-free
+              <br /> */}
+              {/* <label>Wheat-free
                 <input type="checkbox" name="wheat_free" value="wheat-free" />
-              </label>
+              </label> */}
             </div>
             <br />
           </label>
         </div>
       </div>
-      <div className="cuisineSection">
+      {/* <div className="cuisineSection">
         <div className="as-dropdown">
         <label>CuisineType
           <br />
@@ -253,10 +270,10 @@ const SearchAdvancedForm = props => (
           </div>
         </label>
         </div>
-      </div>
+      </div> */}
     
 
-      <div className="dishSection">
+      {/* <div className="dishSection">
         <div className="as-dropdown">
           <label>Dish Type
             <br />
@@ -320,10 +337,43 @@ const SearchAdvancedForm = props => (
             </div>
           </label>
         </div>
+      </div> */}
+      <div className="cuisineSection">
+
+      <div className="as-dropdown">
+        <label>Calories
+          <br />
+          <div className="as-dropdown-content">
+            <label>Min
+              <input type="number" name="caloriesMin" defaultValue="" step="100" />
+            </label>
+            <br />
+            <label>Max
+              <input type="number" name="caloriesMax" defaultValue="" step="100" />
+            </label>
+          </div>
+        </label>
+      </div>
+      </div>
+      <div className="dishSection">
+      <div className="as-dropdown">
+        <label>Time
+          <br />
+          <div className="as-dropdown-content">
+            <label>Min
+              <input type="number" name="timeMin" defaultValue="" step="1" />
+            </label>
+            <br />
+            <label>Max
+              <input type="number" name="timeMax" defaultValue="" step="1" />
+            </label>
+          </div>
+        </label>
+      </div>
       </div>
     </div>
  
-    <div className="minMaxSection">
+    {/* <div className="minMaxSection">
       <div className="as-dropdown">
         <label>Calories
           <br/>
@@ -353,7 +403,7 @@ const SearchAdvancedForm = props => (
           </div>
         </label>
       </div>
-    </div>
+    </div> */}
 
     <div className="excludeSection">
       <div className="as-dropdown">

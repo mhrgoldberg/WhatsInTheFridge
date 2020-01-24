@@ -5,7 +5,6 @@ const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList, Gr
 const IngredientType = new GraphQLObjectType({
   name: "IngredientType",
   fields: () => ({
-    _id: { type: GraphQLID },
     name: { type: GraphQLString },
     quantity: { type: GraphQLFloat },
     measureLabel: { type: GraphQLString },

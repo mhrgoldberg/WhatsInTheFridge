@@ -60,7 +60,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     saveRecipe: {
-      type: RecipeType,
+      type: UserType,
       args: {
         name: { type: GraphQLString },
         recipeURL: { type: GraphQLString },
@@ -77,22 +77,21 @@ const mutation = new GraphQLObjectType({
         userId: { type: GraphQLID }
       },
       resolve(_, args) {
-        return new Recipe(args).save()
-          .then(recipe => {
-            User.addRecipe(recipe.userId, recipe._id);
-            return recipe;
-          })
+        return User.addRecipe(args)
         }
     },
     removeRecipe: {
-      type: RecipeType,
-      args: {_id: { type: GraphQLID }},
-      resolve(_, { _id }) {
-        return Recipe.remove({ _id });
+      type: UserType,
+      args: {
+        recipeURL: { type: GraphQLString },
+        userId: { type: GraphQLID }
+      },
+      resolve(_, args) {
+        return User.removeRecipe(args)
       }
     },
     saveIngredient: {
-      type: IngredientType,
+      type: UserType,
       args: {
         name: { type: GraphQLString },
         quantity: { type: GraphQLFloat },
@@ -105,18 +104,17 @@ const mutation = new GraphQLObjectType({
         userId: { type: GraphQLID }
       },
       resolve(_, args) {
-        return new Ingredient(args).save()
-          .then(ingredient => {
-            User.addIngredient(ingredient.userId, ingredient._id);
-            return ingredient;
-          })
+        return User.addIngredient(args)
         }
     },
     removeIngredient: {
-      type: IngredientType,
-      args: {_id: { type: GraphQLID }},
-      resolve(_, { _id }) {
-        return Ingredient.remove({ _id });
+      type: UserType,
+      args: {
+        userId: { type: GraphQLID },
+        name: { type: GraphQLString },
+      },
+      resolve(_, args) {
+        return User.removeIngredient(args);
       }
     },
   }

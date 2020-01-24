@@ -28,9 +28,8 @@ const mutations = {
     }
   `,
   SAVE_RECIPE: gql`
-    mutation SaveRecipe($name: String!, $recipeURL: String!, $imageURL: String!, $servings: Int!, $calories: Float!, $ingredients: [String!]!, $carbsTotal: Float!, $carbsDaily: Float!, $fatsTotal: Float!, $fatsDaily: Float!, $proteinTotal: Float!, $proteinDaily: Float!, $userId: ID!) {
-      saveRecipe(name: $name, recipeURL: $recipeURL, imageURL: $imageURL, servings: $servings, calories: $calories, ingredients: $ingredients, carbsTotal: $carbsTotal, carbsDaily: $carbsDaily, fatsTotal: $fatsTotal, fatsDaily: $fatsDaily, proteinTotal: $proteinTotal, proteinDaily: $proteinDaily, userId: $userId) {
-        _id
+    mutation SaveRecipe($name: String!, $recipeURL: String!, $imageURL: String!, $servings: Int!, $calories: Float!, $ingredients: [String!]!, $carbsTotal: Float!, $fatsTotal: Float!, $proteinTotal: Float!, $userId: ID!) {
+      saveRecipe(name: $name, recipeURL: $recipeURL, imageURL: $imageURL, servings: $servings, calories: $calories, ingredients: $ingredients, carbsTotal: $carbsTotal, fatsTotal: $fatsTotal, proteinTotal: $proteinTotal, userId: $userId) {
         name
         recipeURL
         imageURL
@@ -38,11 +37,8 @@ const mutations = {
         calories
         ingredients
         carbsTotal
-        carbsDaily
         fatsTotal
-        fatsDaily
         proteinTotal
-        proteinDaily
         userId
       }
     }

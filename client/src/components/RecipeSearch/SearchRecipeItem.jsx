@@ -53,14 +53,12 @@ class SearchRecipeItem extends Component {
     const res = []; 
     ingredientLines.forEach( async ingredient => {
       const ing = await this.parseIngredient(ingredient);
-      console.log(ing);
       const ingredientArr = ingredient.split(" ");
       if (
         !this.props.fridgeArr.some(fridgeIngredient =>
           ingredientArr.includes(fridgeIngredient)
         )
       ) {
-        debugger;
          res.push(ing);
       }
     });

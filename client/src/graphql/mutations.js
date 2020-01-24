@@ -30,29 +30,25 @@ const mutations = {
   SAVE_RECIPE: gql`
     mutation SaveRecipe($name: String!, $recipeURL: String!, $imageURL: String!, $servings: Int!, $calories: Float!, $ingredients: [String!]!, $carbsTotal: Float!, $fatsTotal: Float!, $proteinTotal: Float!, $userId: ID!) {
       saveRecipe(name: $name, recipeURL: $recipeURL, imageURL: $imageURL, servings: $servings, calories: $calories, ingredients: $ingredients, carbsTotal: $carbsTotal, fatsTotal: $fatsTotal, proteinTotal: $proteinTotal, userId: $userId) {
-        name
-        recipeURL
-        imageURL
-        servings
-        calories
-        ingredients
-        carbsTotal
-        fatsTotal
-        proteinTotal
-        userId
+          name
+          recipeURL
+          imageURL
+          servings
+          calories
+          ingredients
+          carbsTotal
+          fatsTotal
+          proteinTotal
       }
     }
   `,
   SAVE_INGREDIENT: gql`
-    mutation SaveIngredient($name: String!, $quantity: Float!, $measureLabel: String!, $calories: Float!, $carbsTotal: Float!, $fatsTotal: Float!, $proteinTotal: Float!, $userId: ID!) {
-      saveIngredient(name: $name, quantity: $quantity, measureLabel: $measureLabel, calories: $calories, carbsTotal: $carbsTotal, fatsTotal: $fatsTotal, proteinTotal: $proteinTotal, userId: $userId) {
+    mutation SaveIngredient($name: String!, $quantity: Float!, $measureLabel: String!, $calories: Float!, $userId: ID!) {
+      saveIngredient(name: $name, quantity: $quantity, measureLabel: $measureLabel, calories: $calories, userId: $userId) {
         name
         quantity
+        measureLabel
         calories
-        carbsTotal
-        fatsTotal
-        proteinTotal
-        userId
       }
     }
   `

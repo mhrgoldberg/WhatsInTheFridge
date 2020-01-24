@@ -12,11 +12,9 @@ const RecipeType = new GraphQLObjectType({
     servings: { type: GraphQLInt },
     ingredients: { type: new GraphQLList(GraphQLString) },
     carbsTotal: { type: GraphQLFloat },
-    carbsDaily: { type: GraphQLFloat },
     fatsTotal: { type: GraphQLFloat },  
-    fatsDaily: { type: GraphQLFloat },
     proteinTotal: { type: GraphQLFloat },
-    proteinDaily: { type: GraphQLFloat },
+    userId: { type: GraphQLID }
   })
 });
 

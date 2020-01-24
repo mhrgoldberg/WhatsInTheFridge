@@ -29,44 +29,46 @@ const UserSchema = new Schema({
 UserSchema.statics.addRecipe = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(args[userId])
+  return User.findById(args["userId"])
     .then(user => {
       delete args.userId;
-      user.savedRecipes[args.recipeURL] = args;
+      user.savedRecipes.push(args);
       user.save();
+      return args;
     })
 }
 
 UserSchema.statics.removeRecipe = (args) => {
   const User = mongoose.model('users');
   
-  User.findById(args[userId])
+  return User.findById(args["userId"])
     .then(user => {
       let recipeKey = args.recipeURL;
       delete user.savedRecipes.recipeKey;
-      user.save();
+      return user.save();
     })
 }
 
 UserSchema.statics.addIngredient = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(args[userId])
+  return User.findById(args["userId"])
     .then(user => {
       delete args.userId;
-      user.savedIngredients[args.name] = args;
+      user.savedIngredients.push(args);
       user.save();
+      return args;
     })
 }
 
 UserSchema.statics.removeIngredient = (args) => {
   const User = mongoose.model('users');
 
-  User.findById(args[userId])
+  return User.findById(args["userId"])
     .then(user => {
       let ingredientKey = args.name;
       delete user.savedRecipes.ingredientKey;
-      user.save();
+      return user.save();
     })
 }
 

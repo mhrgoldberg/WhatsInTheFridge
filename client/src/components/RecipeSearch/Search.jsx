@@ -63,6 +63,7 @@ class Search extends Component {
     if (this.state.recipes.length > 0) {
       searchResult = (
         <SearchRecipes
+          fridgeArr={this.props.fridgeArr}
           recipes={this.state.recipes}
           currentUserId={this.state.currentUserId}
         />
@@ -83,10 +84,6 @@ class Search extends Component {
           return (
             <div className="Search">
               <div className="search-top">
-                {/* <header className="Search-header">
-                  <h1 className="Search-title">Recipe Search</h1>
-                </header> */}
-                {/* <Link to="/advanced-search"></Link> */}
                 <SearchForm getRecipe={this.getRecipe} />
               </div>
               <div className="search-bottom">

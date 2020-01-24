@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import SearchAdvancedForm from "./SearchAdvancedForm";
 import SearchRecipes from './SearchRecipes';
-import { Mutation, ApolloConsumer } from 'react-apollo';
+import {  ApolloConsumer } from 'react-apollo';
 import mutations from '../../graphql/mutations';
 import queries from '../../graphql/queries';
 const { VERIFY_USER } = mutations;

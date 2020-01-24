@@ -20,6 +20,7 @@ class SearchAdvanced extends Component {
   };
 
   getRecipe = async (e) => {
+    console.log(e.target.elements);
     const recipeName2 = this.props.fridgeArr.join();
     // const recipeName = e.target.elements.recipeName.value;
     const from = e.target.elements.from.value;
@@ -88,27 +89,29 @@ class SearchAdvanced extends Component {
       dietString = dietChoice
     }
 
-    let mealChoice = e.target.elements.meal_type.value; 
-    if (mealChoice !== "") {
-      mealString = "&mealType=" + mealChoice
-    } else {
-      mealString = mealChoice
-    }
+    // let mealChoice = e.target.elements.meal_type.value; 
+    // if (mealChoice !== "") {
+    //   mealString = "&mealType=" + mealChoice
+    // } else {
+    //   mealString = mealChoice
+    // }
+
+    console.log(e.target.elements);
 
     let healthChoices = [];
-    let cuisineChoices = [];
+    // let cuisineChoices = [];
     let dishChoices = []; 
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 5; i++) {
       healthChoices[i] = e.target.elements[i+5]
     }
-    for (let i = 0; i < 18; i++) {
-      cuisineChoices[i] = e.target.elements[i+35]
-    }
+    // for (let i = 0; i < 18; i++) {
+    //   cuisineChoices[i] = e.target.elements[i+35]
+    // }
 
-    for (let i = 0; i < 14; i++) {
-      dishChoices[i] = e.target.elements[i+54]
-    }
+    // for (let i = 0; i < 14; i++) {
+    //   dishChoices[i] = e.target.elements[i+10]
+    // }
 
     healthChoices.map((choice, i) => {
       if (choice.checked) {
@@ -118,21 +121,27 @@ class SearchAdvanced extends Component {
       }
     })
 
-    cuisineChoices.map((choice, i) => {
-      if (choice.checked) {
-        cuisineString += "&cuisineType=" + choice.value
-      } else {
-        cuisineString += ""
-      }
-    })
+    // cuisineChoices.map((choice, i) => {
+    //   if (choice.checked) {
+    //     cuisineString += "&cuisineType=" + choice.value
+    //   } else {
+    //     cuisineString += ""
+    //   }
+    // })
 
-    dishChoices.map((choice, i) => {
-      if (choice.checked) {
-        dishString += "&dishType=" + choice.value
-      } else {
-        dishString += ""
-      }
-    })
+    // dishChoices.map((choice, i) => {
+    //   if (choice.checked) {
+    //     dishString += "&dishType=" + choice.value
+    //   } else {
+    //     dishString += ""
+    //   }
+    // })
+
+    // console.log(healthString);
+    // console.log(dishString);
+    // console.log(calString);
+    // console.log(timeString);
+    console.log(excludeString);
 
   
     
@@ -142,8 +151,8 @@ class SearchAdvanced extends Component {
     e.preventDefault();
     // console.log(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
     try {
-      // const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
-      const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}`);
+      const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${from}&to=${to}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`);
+      // const api_call = await fetch(`https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}`);
       const data = await api_call.json();
     
       this.setState({ recipes: data.hits })

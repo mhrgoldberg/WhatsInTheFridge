@@ -135,18 +135,70 @@
   z-index: 1;
 }
 
+.as-health-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+
 .as-dropdown:hover .as-dropdown-content {
   display: block;
+}
+
+.as-dropdown:hover .as-health-dropdown-content {
+  display: block;
+}
+
+.as-dropdown:active .as-health-dropdown-content {
+  display: block;
+}
+
+.as-dropdown .as-health-dropdown-content label {
+  display: flex;
+  height: 20px;
+}
+
+.as-dropdown:hover .as-health-dropdown-content label > p {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  color: green;
+}
+
+.as-dropdown:hover .as-health-dropdown-content label > input {
+  width: 10%;
+  margin: auto;
+  height: 100%;
 }
 
 .keyboard-inputs {
   width: 50%;
   margin: auto;
   display: flex;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 20px;
+  /* margin-bottom: 10px; */
   min-width: 500px;
   border-bottom: 1px solid green;
+}
+
+.keyboard-inputs > div {
+  width: 33%;
+  text-align: center;
+}
+
+.keyboard-inputs p {
+  color: green;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+.keyboard-inputs input {
+  margin: auto;
 }
 
 .option-dropdowns {
@@ -154,8 +206,8 @@
   width: 50%;
   margin: auto;
   min-width: 500px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
+  /* margin-bottom: 10px; */
   border-bottom: 1px solid green;
 }
 
@@ -165,8 +217,8 @@
   display: flex;
   align-content: space-between;
   min-width: 500px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding: 20px;
+  /* margin-bottom: 10px; */
   border-bottom: 1px solid green;
 }
 
@@ -189,7 +241,7 @@
   width: 50%;
   margin: auto;
   min-width: 500px;
-  padding-bottom: 10px;
+  padding: 20px;
   margin-bottom: 10px;
 }
 
@@ -200,11 +252,13 @@
 .dietSection {
   width: 50%;
   margin: auto;
+  text-align: center;
 }
 
 .mealSection {
   width: 50%;
   margin: auto;
+  text-align: center;
 }
 
 .dietSection > label {
@@ -233,6 +287,7 @@
   height: auto;
   margin: auto;
   margin-bottom: 20px;
+  /* font-size: 20px; */
 }
 
 .as-search-btn {
@@ -260,6 +315,7 @@
   border: 1px solid white;
   border-radius: 5px;
   color: white;
+  padding-top: 5px;
 }
 
 .as-form label {

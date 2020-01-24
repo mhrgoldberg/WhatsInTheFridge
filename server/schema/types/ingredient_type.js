@@ -9,6 +9,7 @@ const IngredientType = new GraphQLObjectType({
     quantity: { type: GraphQLFloat },
     measureLabel: { type: GraphQLString },
     calories: { type: GraphQLFloat },
+    userId: { type: GraphQLID }
   })
 });
 

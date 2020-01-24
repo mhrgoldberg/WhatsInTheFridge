@@ -22,11 +22,8 @@ class SearchRecipeItem extends Component {
         calories: this.props.recipe.recipe.calories,
         servings: this.props.recipe.recipe.yield,
         carbsTotal: this.props.recipe.recipe.digest[0].total,
-        carbsDaily: this.props.recipe.recipe.digest[0].daily,
         fatsTotal: this.props.recipe.recipe.digest[1].total,
-        fatsDaily: this.props.recipe.recipe.digest[1].daily,
         proteinTotal: this.props.recipe.recipe.digest[2].total,
-        proteinDaily: this.props.recipe.recipe.digest[2].daily,
         userId: this.props.currentUserId
       },
       saved: this.props.saved,
@@ -51,7 +48,8 @@ class SearchRecipeItem extends Component {
   parseMultipleIngredients = async ingredientLines => {
   
     const res = []; 
-    ingredientLines.forEach( async ingredient => {
+    for (let i = 0; i < ingredientLines.length; i++) {
+      const ingredient = ingredientLines[i];
       const ing = await this.parseIngredient(ingredient);
       const ingredientArr = ingredient.split(" ");
       if (
@@ -61,8 +59,7 @@ class SearchRecipeItem extends Component {
       ) {
          res.push(ing);
       }
-    });
-
+    }
     return res;
   };
 
@@ -76,7 +73,8 @@ class SearchRecipeItem extends Component {
       name: data.parsed[0].food.label || "",
       quantity: data.parsed[0].quantity || 0,
       measureLabel: data.parsed[0].measure.label || "",
-      calories: data.parsed[0].food.nutrients.ENERC_KCAL || 0
+      calories: data.parsed[0].food.nutrients.ENERC_KCAL || 0,
+      userId: this.props.currentUserId
     };
     return dataParsed;
   };
@@ -97,11 +95,10 @@ class SearchRecipeItem extends Component {
                   id="sr-save-recipe-btn"
                   onClick={() => {
                     saveRecipe({ variables: this.state.variables })
-                      .then(recipe => {return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)})
+                      .then(recipe => { return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)})
                       .then(ingredients => {
-                        debugger;
                         ingredients.forEach(ingredient =>(
-                        saveIngredient(ingredient)
+                        saveIngredient({variables: ingredient})
                       ))})  
                       .then(() => this.setState({ saved: true }))
                       .catch(err => console.log(err));

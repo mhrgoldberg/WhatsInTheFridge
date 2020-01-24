@@ -10,7 +10,7 @@ const { GET_CURRENT_USER_RECIPES } = Queries;
 
 
 const SearchRecipes = props => {
-  const recipeNames = [];
+  const recipeURLS = [];
   return <div className="search-recipes-list">
     <Query query={GET_CURRENT_USER_RECIPES} variables={{ id: props.currentUserId }}>
       {({ loading, error, data }) => {
@@ -21,12 +21,13 @@ const SearchRecipes = props => {
         const recipes = data.user.savedRecipes;
         console.log(recipes)
         recipes.map((recipe, i) => (
-          recipeNames[i] = recipe.name
+          recipeURLS[i] = recipe.recipeURL
         ))
+        console.log(props.recipes);
         return <div>
           {props.recipes.map((recipe, i) => {
            
-            if (recipeNames.includes(recipe.recipe.label)) {
+            if (recipeURLS.includes(recipe.recipe.url)) {
               return <div>
               <SearchRecipeItem key={i} fridgeArr={props.fridgeArr} recipe={recipe} currentUserId={props.currentUserId} saved={true} />
               </div>

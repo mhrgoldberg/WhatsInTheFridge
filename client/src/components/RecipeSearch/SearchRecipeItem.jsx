@@ -85,6 +85,8 @@ class SearchRecipeItem extends Component {
 
     if (this.state.saved === true) {
       savedButton = <button id="sr-save-recipe-btn">Recipe Saved</button>;
+      // savedButton = <Mutation mutation={REMOVE_RECIPE}>
+      // </Mutation>
     } else {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>

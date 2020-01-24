@@ -12,8 +12,8 @@ class Main extends Component {
     super(props);
     this.state = {
       fridgeArr: [],
-      search: false,
-      advancedSearch: true
+      search: true,
+      advancedSearch: false
     };
     this.addToFridge = this.addToFridge.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);

@@ -6,10 +6,6 @@ What’s in the Fridge? helps users find recipes based upon ingredients they alr
 
 <img width="922" alt="Screenshot 2020-01-21 20 09 24" src="https://user-images.githubusercontent.com/34895686/72864872-7be54d80-3c8a-11ea-9220-93d416e28963.png">
 
-## Functionality
-
-There are three main components to the site, the fridge, recipe search, and grocery list. The fridge is where you can track ingredients you actually have in your refrigirator at home! Once you have added a few food items to your fridge you can search for recipes that include the ingredients in your fridge list. For the ingredients you don't already have at home when you save a recipe it will auto-generate a grocery list for you!(grocery list feature currently in development!) The recipe and ingredient search features are powered by the EDAMAM API.
-
 ### Technologies & Technical Challenges
 * Node JS
 * Express
@@ -29,7 +25,13 @@ There are three main components to the site, the fridge, recipe search, and groc
 
 ### External API
 * Edamam Recipe and Ingredient API
- 
+
+## Functionality
+
+There are three main components to the site, the fridge, recipe search, and grocery list. The fridge is where you can track ingredients you actually have in your refrigirator at home! Once you have added a few food items to your fridge you can search for recipes that include the ingredients in your fridge list. For the ingredients you don't already have at home when you save a recipe it will auto-generate a grocery list for you!(grocery list feature currently in development!) The recipe and ingredient search features are powered by the EDAMAM API.
+
+### Fridge
+
 ## The primary technical challenges will be:
 * API Limitations - There are a lot of recipe search APIs out there, EDAMAM is one of the most complete and consistent libraries of recipes especially at the free teir. Given it was our best option for the project we had to creatively utelize the keywoard search feature to search for recipes and then parse the ingredient list of each recipe to validate that it utelizes all fridge ingredients.
 

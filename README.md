@@ -32,9 +32,13 @@ There are three main components to the site, the fridge, recipe search, and groc
 
 ### Fridge
 
+The fridge is a list of food items that the user inputs based upon the food items the user has. This list populates the main search inputs. 
+
 ![](https://user-images.githubusercontent.com/29221213/73306539-0b868100-41e2-11ea-8628-ddb2e0254810.png)
 
 ### Search 
+
+Once a user has populated the fridge list, the user hits search. After hitting search, the search function makes a call to the Edamam API which returns results. 
 
 ![](https://user-images.githubusercontent.com/29221213/73306878-b4cd7700-41e2-11ea-8bba-592f73829556.png)
 

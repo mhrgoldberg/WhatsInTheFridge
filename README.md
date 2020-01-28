@@ -38,7 +38,7 @@ There are three main components to the site, the fridge, recipe search, and groc
 ![](https://user-images.githubusercontent.com/29221213/73306878-b4cd7700-41e2-11ea-8bba-592f73829556.png)
 
 ### Search Results
-
+![](https://user-images.githubusercontent.com/29221213/73307250-75ebf100-41e3-11ea-80f0-bcfb08f4ce3a.png)
 
 ## The primary technical challenges will be:
 * API Limitations - There are a lot of recipe search APIs out there, EDAMAM is one of the most complete and consistent libraries of recipes especially at the free teir. Given it was our best option for the project we had to creatively utelize the keywoard search feature to search for recipes and then parse the ingredient list of each recipe to validate that it utelizes all fridge ingredients.

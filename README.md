@@ -56,10 +56,7 @@ The search results show a picture of the recipe and provides 4 action options fo
 
 ![](https://user-images.githubusercontent.com/29221213/73307250-75ebf100-41e3-11ea-80f0-bcfb08f4ce3a.png)
 
-## The primary technical challenges will be:
-* API Limitations - There are a lot of recipe search APIs out there, EDAMAM is one of the most complete and consistent libraries of recipes especially at the free teir. Given it was our best option for the project we had to creatively utelize the keywoard search feature to search for recipes and then parse the ingredient list of each recipe to validate that it utelizes all fridge ingredients.
 
-* Storing relational data in a a non-relational database - MongoDB works well for this project but storing relational data has to be organized different than we are used to when using a SQL database. To store saved recipes and a grocery list instead of creating joins tables we were able to store all the data necessary right in the Users collection. 
 
 
 

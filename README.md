@@ -35,13 +35,18 @@ There are three main components to the site, the fridge, recipe search, and groc
 ![](https://user-images.githubusercontent.com/29221213/73306539-0b868100-41e2-11ea-8628-ddb2e0254810.png)
 
 ### Search 
+
 ![](https://user-images.githubusercontent.com/29221213/73306878-b4cd7700-41e2-11ea-8bba-592f73829556.png)
 
 ### Advanced Search
+Below is a snapshot of the main functionality of the advanced search. The advanced search interpolates a string based upon user inputs and sends that string interpolation to the API. A more complete advanced search feature could be implemented with a paid version of the API, but our free version limits the scope of coverage for inputs. 
+
 ![](https://user-images.githubusercontent.com/29221213/73307923-c57eec80-41e4-11ea-88f4-07fe905e15a8.png)
 
+![](https://user-images.githubusercontent.com/29221213/73307935-cadc3700-41e4-11ea-8b40-41996c15580d.png)
 
 ### Search Results
+
 ![](https://user-images.githubusercontent.com/29221213/73307250-75ebf100-41e3-11ea-80f0-bcfb08f4ce3a.png)
 
 ## The primary technical challenges will be:

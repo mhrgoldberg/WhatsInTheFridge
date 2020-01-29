@@ -40,6 +40,7 @@ const queries = {
           carbsTotal
           fatsTotal  
           proteinTotal
+          userId
         }
       }
     }

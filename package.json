@@ -2,13 +2,19 @@
   "name": "whats-in-the-fridge",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.9.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
-    "server": "nodemon index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon --inspect index.js",
+    "start": "node index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -33,7 +39,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.1",
     "nodemon": "^2.0.2",
-    "validator": "^12.1.0",
-    "webpack": "^4.41.2"
+    "validator": "^12.1.0"
   }
 }

@@ -1,32 +1,46 @@
-import React from 'react';
-import SearchRecipeItem from './SearchRecipeItem';
+import React from "react";
+import SearchRecipeItem from "./SearchRecipeItem";
+
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import Queries from "../../graphql/queries";
+
+const { GET_CURRENT_USER_RECIPES } = Queries;
+
+
 
 const SearchRecipes = props => {
-  console.log(props.recipes);
+  const recipeNames = [];
   return <div className="search-recipes-list">
-    {props.recipes.map((recipe, i) => {
-      // console.log(recipe);
-      // console.log(recipe.recipe.label);
-      // console.log(recipe.recipe.url);
-      // console.log(recipe.recipe.uri);
-      // console.log(recipe.recipe.image);
-      // console.log(recipe.recipe.ingredientLines);
-      // console.log(recipe.recipe.calories);
-      // console.log(recipe.recipe.yield);
-      // console.log(recipe.recipe.digest[0].total);
-      // console.log(recipe.recipe.digest[0].daily);
-      // console.log(recipe.recipe.digest[1].total);
-      // console.log(recipe.recipe.digest[1].daily);
-      // console.log(recipe.recipe.digest[2].total);
-      // console.log(recipe.recipe.digest[2].daily);
+    <Query query={GET_CURRENT_USER_RECIPES} variables={{ id: props.currentUserId }}>
+      {({ loading, error, data }) => {
 
-      return <SearchRecipeItem key={i} recipe={recipe} currentUserId={props.currentUserId}/>
-    })}
-    <div>
-      {props.error}
+        if (loading) return <div>Fetching</div>
+        if (error) return <div>Error</div>
+
+        const recipes = data.user.savedRecipes;
+        console.log(recipes)
+        recipes.map((recipe, i) => (
+          recipeNames[i] = recipe.name
+        ))
+        return <div>
+          {props.recipes.map((recipe, i) => {
+           
+            if (recipeNames.includes(recipe.recipe.label)) {
+              return <div>
+              <SearchRecipeItem key={i} fridgeArr={props.fridgeArr} recipe={recipe} currentUserId={props.currentUserId} saved={true} />
+              </div>
+            } else {
+              return <SearchRecipeItem key={i} fridgeArr={props.fridgeArr} recipe={recipe} currentUserId={props.currentUserId} saved={false} />
+            }
+          })} 
+          <div>
+            {props.error}
+          </div>
+        </div>
+      }}
+    </Query>
     </div>
-  </div>
- 
-};
+}; 
 
 export default SearchRecipes;

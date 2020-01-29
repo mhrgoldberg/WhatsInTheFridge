@@ -1,0 +1,6 @@
+module.exports = {
+  RECIPE_API_KEY: "bc82ac6d721c875a3d0e602f1b537fef",
+  RECIPE_API_ID: "234908ad",
+  INGREDIENT_API_KEY: "abcacee6",
+  INGREDIENT_API_ID: "7f1529c466e340c215eea57a940d63c6"
+};

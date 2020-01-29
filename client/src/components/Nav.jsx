@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import Queries from "../graphql/queries";
 import { ApolloConsumer } from "react-apollo";
@@ -15,13 +15,15 @@ const { IS_LOGGED_IN } = Queries;
 class Nav extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loggingIn: false, 
+      signingUp: false
+    };
+  
   }
 
-  state = {
-    loggingIn: false, 
-    signingUp: false
-  };
-
+  
   startLoginHandler = () => {
     this.setState({ loggingIn: true });
   };

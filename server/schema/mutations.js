@@ -60,7 +60,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     saveRecipe: {
-      type: UserType,
+      type: RecipeType,
       args: {
         name: { type: GraphQLString },
         recipeURL: { type: GraphQLString },
@@ -91,7 +91,7 @@ const mutation = new GraphQLObjectType({
       }
     },
     saveIngredient: {
-      type: UserType,
+      type: IngredientType,
       args: {
         name: { type: GraphQLString },
         quantity: { type: GraphQLFloat },

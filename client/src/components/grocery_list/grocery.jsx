@@ -29,7 +29,6 @@ class Grocery extends Component{
         return (
           <div className="grocery-container">
             <GroceryList currentUserId={this.state.currentUserId}/>
-            <SavedRecipesList currentUserId={this.state.currentUserId}/>
           </div>
         )
       }

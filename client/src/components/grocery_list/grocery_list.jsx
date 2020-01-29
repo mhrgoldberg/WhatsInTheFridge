@@ -8,14 +8,12 @@ const GroceryList = ({ currentUserId }) => (
   <ul className="GroceryList">
      <Query query={GET_CURRENT_USER_INGREDIENTS} variables={{ id: currentUserId }}>
       {({ loading, error, data }) => {
-        debugger;
         if (loading) return <li>Loading...</li>
         if (error) return <li>Error</li>
         console.log(data.user.savedIngredients);
         let ingredientArr = data.user.savedIngredients;
         if (ingredientArr.length === 0) return <li>Empty!</li>
         ingredientArr.forEach(ingredient => {
-          debugger;
           return (
             <li>
               <div className="ingredient-quantity">

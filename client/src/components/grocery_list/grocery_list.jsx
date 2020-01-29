@@ -16,12 +16,15 @@ const GroceryList = ({ currentUserId }) => (
         ingredientArr.forEach(ingredient => {
           return (
             <li>
-              <div className="ingredient-quantity">
-                {ingredient.quantity} {ingredient.measureLabel}
-              </div>
-              <div className="ingredient-string">{ingredient.name}</div>
-              <div>
-                <NutritionPieChart carbs={ingredient.carbsTotal} proteins={ingredient.proteinTotal} fats={ingredient.fatsTotal} />
+              <div className="ingredient-item">
+                <div className="ingredient-quantity">
+                  {ingredient.quantity} {ingredient.measureLabel}
+                </div>
+                <div className="ingredient-string">{ingredient.name}</div>
+                <div className="ingredient-chart">
+                  <button id="ingredient-nutrition-button">Health Facts</button>
+                  {/* <NutritionPieChart carbs={ingredient.carbsTotal} proteins={ingredient.proteinTotal} fats={ingredient.fatsTotal} /> */}
+                </div>
               </div>
             </li>
           )

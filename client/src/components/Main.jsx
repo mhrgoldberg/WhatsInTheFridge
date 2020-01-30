@@ -12,8 +12,8 @@ class Main extends Component {
     super(props);
     this.state = {
       fridgeArr: [],
-      search: false,
-      advancedSearch: true
+      search: true,
+      advancedSearch: false
     };
     this.addToFridge = this.addToFridge.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);
@@ -64,9 +64,9 @@ class Main extends Component {
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
             <h1 className="selected">Search</h1>
-            <h1 onClick={this.handleASToggle}>Advanced Search</h1>
+            <h1 onClick={this.handleASToggle}>Saved Recipes</h1>
           </div>
-          <Search fridgeArr={this.state.fridgeArr} />
+          <SearchAdvanced fridgeArr={this.state.fridgeArr} />
         </div>
       );
     }
@@ -76,9 +76,9 @@ class Main extends Component {
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
             <h1 onClick={this.handleASToggle}>Search</h1>
-            <h1 className="selected">Advanced Search</h1>
+            <h1 className="selected">Saved Recipes</h1>
           </div>
-          <SearchAdvanced fridgeArr={this.state.fridgeArr} />
+          
         </div>
       );
     }

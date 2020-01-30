@@ -180,8 +180,9 @@
   /* margin: 20px; */
   display: flex;
   padding: 20px;
+  margin: 0 auto;
+  width: 402px;
   margin-bottom: 20px;
-  min-width: 500px;
   border-bottom: 1px solid green;
   justify-content: space-around;
 }
@@ -233,7 +234,8 @@
 .pop-up-dropdowns {
   display: flex;
   justify-content: space-around;
-  min-width: 500px;
+  width: 402px;
+  margin: 0 auto;
   padding: 20px;
   /* margin-bottom: 10px; */
   border-bottom: 1px solid green;

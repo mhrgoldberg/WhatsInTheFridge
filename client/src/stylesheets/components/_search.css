@@ -288,9 +288,7 @@
 }
 
 
-.cuisineSection {
-  /* width: 33%; */
-}
+
 
 .dishSection {
   width: 33%;
@@ -387,11 +385,7 @@ i {
   margin: auto;
 }
 
-.healthSection {
-  /* margin-left: 1%;
-  margin-right: 1%;
-  text-align: center; */
-}
+
 
 .cuisineSection {
   margin-left: 1%;
@@ -414,13 +408,5 @@ i {
   margin-left: 10%;
   margin-right: 10%;
   text-align: center;
-}
-
-.exclude-section {
-  /* width: 33%;
-  margin-left: 1%;
-  margin-right: 1%;
-  text-align: center; */
-
 }
 

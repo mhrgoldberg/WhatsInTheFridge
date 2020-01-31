@@ -78,7 +78,7 @@ class Main extends Component {
             <h1 onClick={this.handleASToggle}>Search</h1>
             <h1 className="selected">Saved Recipes</h1>
           </div>
-          
+          {/* component here */}
         </div>
       );
     }

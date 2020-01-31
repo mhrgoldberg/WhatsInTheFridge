@@ -21,10 +21,10 @@ const App = () => {
       {/* <Route path="/ingredient" component={IngredientSearch} /> */}
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
       <Route exact path="/test" component={Test} />
-      <Route exact path="/search" component={Search} />
-      <Route exact path="/advanced-search" component={SearchAdvanced} />
+      {/* <Route exact path="/search" component={Search} />
+      <Route exact path="/advanced-search" component={SearchAdvanced} /> */}
       <Route exact path="/main" component={Main} />
-      <Route exact path="/fridge" component={Fridge} />
+      {/* <Route exact path="/fridge" component={Fridge} /> */}
     </Switch>
   );
 };

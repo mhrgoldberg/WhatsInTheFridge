@@ -20,9 +20,6 @@ const queries = {
           quantity
           measureLabel
           calories
-          carbsTotal
-          fatsTotal  
-          proteinTotal
         }
       }
     }

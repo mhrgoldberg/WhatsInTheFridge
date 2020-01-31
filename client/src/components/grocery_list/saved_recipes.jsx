@@ -14,8 +14,8 @@ const SavedRecipesList = ({ currentUserId }) => (
         console.log(data.user.savedIngredients);
         let recipeArr = data.user.savedRecipes;
         if (recipeArr.length === 0) return <li>No saved recipes!</li>
-        recipeArr.forEach(recipe => {
-          debugger;
+        recipeArr.map(recipe => {
+          // debugger;
           return (
             <li>
               <div className="recipe-url-button">

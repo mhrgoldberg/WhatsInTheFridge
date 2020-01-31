@@ -24,7 +24,7 @@ class Search extends Component {
     const recipeName = this.props.fridgeArr.join(", ");
     e.preventDefault();
     const api_call = await fetch(
-      `https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=30`
+      `https://api.edamam.com/search?q=${recipeName}&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=50`
     );
 
     const data = await api_call.json();

@@ -177,13 +177,28 @@
 }
 
 .keyboard-inputs {
-  width: 50%;
-  margin: auto;
+  /* margin: 20px; */
   display: flex;
-  padding-bottom: 20px;
-  /* margin-bottom: 10px; */
-  min-width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+  width: 402px;
+  margin-bottom: 20px;
   border-bottom: 1px solid green;
+  justify-content: space-around;
+}
+
+
+.keyboard-inputs input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.keyboard-inputs input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+.keyboard-inputs input::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
 }
 
 .keyboard-inputs > div {
@@ -198,7 +213,12 @@
 }
 
 .keyboard-inputs input {
-  margin: auto;
+  margin: 5px;
+}
+
+.time-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .option-dropdowns {
@@ -206,20 +226,22 @@
   width: 50%;
   margin: auto;
   min-width: 500px;
-  padding: 20px;
+  padding: 10px;
   /* margin-bottom: 10px; */
   border-bottom: 1px solid green;
 }
 
 .pop-up-dropdowns {
-  width: 50%;
-  margin: auto;
   display: flex;
-  align-content: space-between;
-  min-width: 500px;
+  justify-content: space-around;
+  width: 402px;
+  margin: 0 auto;
   padding: 20px;
   /* margin-bottom: 10px; */
   border-bottom: 1px solid green;
+}
+.pop-up-dropdowns label{
+  color: green;
 }
 
 .minMaxSection {
@@ -249,11 +271,11 @@
   margin: auto;
 }
 
-.dietSection {
-  width: 50%;
-  margin: auto;
-  text-align: center;
+.diet-select {
+  height: 38px;
+  margin: 5px;
 }
+
 
 .mealSection {
   width: 50%;
@@ -265,13 +287,8 @@
   margin: auto;
 }
 
-.healthSection {
-  width: 33%;
-}
 
-.cuisineSection {
-  width: 33%;
-}
+
 
 .dishSection {
   width: 33%;
@@ -306,6 +323,13 @@
   width: 50px;
   padding-left: 10px;
   text-align: center;
+}
+
+.keyboard-inputs label{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .option-dropdowns select{
@@ -361,11 +385,7 @@ i {
   margin: auto;
 }
 
-.healthSection {
-  margin-left: 1%;
-  margin-right: 1%;
-  text-align: center;
-}
+
 
 .cuisineSection {
   margin-left: 1%;
@@ -390,7 +410,3 @@ i {
   text-align: center;
 }
 
-.excludeSection {
-  padding-left: 45%;
-  padding-right: auto;
-}

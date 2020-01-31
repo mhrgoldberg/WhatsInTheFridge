@@ -12,8 +12,8 @@ class Main extends Component {
     super(props);
     this.state = {
       fridgeArr: [],
-      search: false,
-      advancedSearch: true
+      search: true,
+      savedReicpes: false
     };
     this.addToFridge = this.addToFridge.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);
@@ -41,19 +41,19 @@ class Main extends Component {
 
   handleSearchToggle() {
     if (this.state.search) {
-      this.setState({ search: false, advancedSearch: true });
+      this.setState({ search: false, savedReicpes: true });
     }
     if (this.state.search === false) {
-      this.setState({ search: true, advancedSearch: false });
+      this.setState({ search: true, savedReicpes: false });
     }
   }
 
   handleASToggle() {
-    if (this.state.advancedSearch) {
-      this.setState({ advancedSearch: false, search: true });
+    if (this.state.savedReicpes) {
+      this.setState({ savedReicpes: false, search: true });
     }
-    if (this.state.advancedSearch === false) {
-      this.setState({ advancedSearch: true, search: false });
+    if (this.state.savedReicpes === false) {
+      this.setState({ savedReicpes: true, search: false });
     }
   }
 
@@ -64,21 +64,21 @@ class Main extends Component {
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
             <h1 className="selected">Search</h1>
-            <h1 onClick={this.handleASToggle}>Advanced Search</h1>
+            <h1 onClick={this.handleASToggle}>Saved Recipes</h1>
           </div>
-          <Search fridgeArr={this.state.fridgeArr} />
+          <SearchAdvanced fridgeArr={this.state.fridgeArr} />
         </div>
       );
     }
 
-    if (this.state.advancedSearch) {
+    if (this.state.savedReicpes) {
       midDiv = (
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
             <h1 onClick={this.handleASToggle}>Search</h1>
-            <h1 className="selected">Advanced Search</h1>
+            <h1 className="selected">Saved Recipes</h1>
           </div>
-          <SearchAdvanced fridgeArr={this.state.fridgeArr} />
+          {/* component here */}
         </div>
       );
     }

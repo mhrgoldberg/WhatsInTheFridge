@@ -29,7 +29,17 @@
 .main-inner-container2 {
   width: 50%;
   /* border: 1px solid gray; */
-  padding: 0 1%;
+  height: fit-content;
+  padding: 1% 1%;
+  background-color: rgba(255, 255, 255, .15);  
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+  /* padding: 25px; */
+  margin: 0 30px;
+  margin-bottom: 20px;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+ 
+
 }
 
 .main-inner-container3 {
@@ -56,6 +66,11 @@
   border-bottom: 5px solid white;
 }
 
+
+
+.fridge-instructions-2 p {
+  padding: 20px;
+}
 .main-inner-container2-content > h1 {
   width: 80%;
   margin: auto;
@@ -64,7 +79,7 @@
 }
 
 .fridge-instructions-2 {
-    width: 400px;
+    width: 435px;
     margin: 5px auto;
     background: rgba(80, 211, 122, 0.42);
     border-radius: 5px;

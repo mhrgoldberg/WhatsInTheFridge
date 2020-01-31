@@ -1,7 +1,8 @@
 .ingredient-input {
   border: none;
   padding: 0.86rem;
-  width: -webkit-fill-available;
+  width: 222.5px;
+
   margin: 0;
   color: white;
   font-family: 'Josefin Slab', serif;
@@ -17,6 +18,7 @@
 .ingredient-input-full {
   border: none;
   padding: 1rem;
+  width: -moz-available;
   width: -webkit-fill-available;
   margin: 0;
   color: red;

@@ -7,7 +7,7 @@ const { GET_CURRENT_USER_INGREDIENTS } = queries;
 class GroceryList extends React.Component {
   render() {
     return (
-      <ul className="GroceryList">
+     
         <Query
           query={GET_CURRENT_USER_INGREDIENTS}
           variables={{ id: this.props.currentUserId }}
@@ -18,7 +18,8 @@ class GroceryList extends React.Component {
             console.log(data.user.savedIngredients);
             let ingredientArr = data.user.savedIngredients;
             if (ingredientArr.length === 0) return <li>Empty!</li>;
-            {ingredientArr.map(ingredient => {
+            return  <ul className="GroceryList">
+            {ingredientArr.map((ingredient, i) => {
               return (
                 <li>
                   <div className="ingredient-item">
@@ -33,10 +34,11 @@ class GroceryList extends React.Component {
                   </div>
                 </li>
               );
-            });}
+            })}
+            </ul>
           }}
         </Query>
-      </ul>
+
     );
   }
 }

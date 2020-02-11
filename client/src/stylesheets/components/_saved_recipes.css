@@ -1,0 +1,46 @@
+.saved-recipe-li {
+  display: flex;
+  height: 90%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.saved-recipe-li .left-side {
+  width: 50%;
+  text-align: center;
+}
+
+.saved-recipe-li .strong-side {
+  width: 50%;
+}
+
+.strong-side .recipe-image {
+  width: 200px;
+  height: auto;
+  margin: auto;
+  padding: 10px;
+}
+
+.left-side .recipe-url-button {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+.left-side .recipe-name {
+  font-size: 24px;
+  color: rgba(0,74,3);
+  font-weight: 900;
+  padding: 15px;
+}
+
+.left-side .recipe-info {
+  /* color: white; */
+}
+
+.SavedRecipesList {
+  height: calc(100vh - 214px);
+  min-height: 400px;
+  overflow: scroll;
+  align-items: center;
+}

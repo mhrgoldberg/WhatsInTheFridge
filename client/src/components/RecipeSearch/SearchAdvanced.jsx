@@ -50,7 +50,6 @@ class SearchAdvanced extends Component {
   getRecipe = async payload => {
     const recipeName2 = this.props.fridgeArr.join(", ");
     const num_ingredients = payload.maxIngredients;
-=======
   state = {
     recipes: [],
     error: "",
@@ -258,6 +257,7 @@ class SearchAdvanced extends Component {
           fridgeArr={this.props.fridgeArr}
         />
       );
+      
 
     }
     return (

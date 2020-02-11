@@ -132,7 +132,6 @@ class SearchAdvanced extends Component {
       }
     });
 
-    debugger;
     try {
       const api_call = await fetch(
         `https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
@@ -216,9 +215,29 @@ class SearchAdvanced extends Component {
         />
       );
     }
+    let advancedSearchToggle = <h2
+    onClick={() =>
+      this.setState({
+        advancedOptions: !this.state.advancedOptions
+
+      })
+    }
+  >
+    <i class="fas fa-caret-right"></i> Advanced Search Options
+  </h2>
 
     if (this.state.advancedOptions === true) {
       searchResult = null;
+      advancedSearchToggle = <h2
+      onClick={() =>
+        this.setState({
+          advancedOptions: !this.state.advancedOptions
+
+        })
+      }
+    >
+      <i class="fas fa-caret-down"></i> Advanced Search Options
+    </h2>
     }
     return (
       <ApolloConsumer>
@@ -237,16 +256,7 @@ class SearchAdvanced extends Component {
               <header className="Search-header"></header>
               {instructions}
               <div className="search-bar">
-                <h2
-                  onClick={() =>
-                    this.setState({
-                      advancedOptions: !this.state.advancedOptions
-
-                    })
-                  }
-                >
-                  <i class="fas fa-caret-down"></i> Advanced Search Options
-                </h2>
+               { advancedSearchToggle}
                 <button
                   className="as-search-btn"
                   onClick={() => {

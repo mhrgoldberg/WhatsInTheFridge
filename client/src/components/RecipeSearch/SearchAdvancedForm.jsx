@@ -18,6 +18,8 @@ class SearchAdvancedForm extends React.Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
+
+    debugger;
  
     this.props.updateSearchAdvancedState(value, name);
   }
@@ -190,8 +192,9 @@ class SearchAdvancedForm extends React.Component {
               <br />
               <select
                 className="diet-select"
-                name="diet"
+                name="dietChoice"
                 onChange={this.handleInputChange}
+                defaultValue={this.props.searchOptions.dietChoice}
               >
                 <option value=""></option>
                 <option value="balanced">Balanced</option>

@@ -9,18 +9,18 @@ import "../stylesheets/main.css";
 // import NutritionPieChart from "./nutrition_pie_chart";
 // import IngredientForm from "./grocery_list/ingredient_form";
 // import IngredientSearch from "./fridge/ingredient_search";
-import Search from './RecipeSearch/Search.jsx';
-import SearchAdvanced from './RecipeSearch/SearchAdvanced.jsx';
+// import Search from './RecipeSearch/Search.jsx';
+// import SearchAdvanced from './RecipeSearch/SearchAdvanced.jsx';
 import Main from './Main.jsx';
-import Fridge from './fridge/fridge.jsx';
-import Test from './test';
+// import Fridge from './fridge/fridge.jsx';
+// import Test from './test';
 
 const App = () => {
   return (
     <Switch>
       {/* <Route path="/ingredient" component={IngredientSearch} /> */}
       <AuthRoute exact path="/" component={Splash} routeType="auth" />
-      <Route exact path="/test" component={Test} />
+      {/* <Route exact path="/test" component={Test} /> */}
       {/* <Route exact path="/search" component={Search} />
       <Route exact path="/advanced-search" component={SearchAdvanced} /> */}
       <Route exact path="/main" component={Main} />

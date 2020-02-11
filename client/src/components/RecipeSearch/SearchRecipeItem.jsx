@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import Modal from "../Modal.jsx";
 import Backdrop from "../Backdrop.jsx";
 import NutritionPieChart from "../nutrition_pie_chart";
-import NutritionBarChart from "../nutrition_bar_chart";
-import Fridge from "../fridge/fridge";
+// import NutritionBarChart from "../nutrition_bar_chart";
+// import Fridge from "../fridge/fridge";
 const { SAVE_RECIPE, SAVE_INGREDIENT } = mutations;
 
 class SearchRecipeItem extends Component {

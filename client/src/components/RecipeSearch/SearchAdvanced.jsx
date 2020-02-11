@@ -11,34 +11,61 @@ const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
 const API_ID = require("../../api_keys.js").RECIPE_API_ID;
 
 class SearchAdvanced extends Component {
-  state = {
-    recipes: [],
-    error: "",
-    currentUserId: null,
-    loading: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: [],
+      error: "",
+      currentUserId: null,
+      loading: true,
+      advancedOptions: false,
+      searchOptions: {
+        calMin: "",
+        calMax: "",
+        timeMin: "",
+        timeMax: "",
+        exclude1: "",
+        exclude2: "",
+        exclude3: "",
+        exclude4: "",
+        dietString: "",
+        dietChoice: "",
+        maxIngredients: 10,
+        alcoholFree: false,
+        peanutFree: false,
+        sugarConscious: false,
+        treeNutFree: false
+      }
+    };
+    this.updateSearchAdvancedState = this.updateSearchAdvancedState.bind(this);
+  }
 
-  getRecipe = async e => {
-    // console.log(e.target.elements);
+  updateSearchAdvancedState(value, name) {
+    const searchOptions = { ...this.state.searchOptions };
+    searchOptions[name] = value;
+    this.setState({ searchOptions });
+  }
+
+  getRecipe = async payload => {
     const recipeName2 = this.props.fridgeArr.join(", ");
-    const num_ingredients = e.target.elements.num_ingredients.value;
+    const num_ingredients = payload.maxIngredients;
     let dietString = "";
     let healthString = "";
     let cuisineString = "";
     let mealString = "";
     let dishString = "";
-    let calMin = e.target.elements.caloriesMin.value;
-    let calMax = e.target.elements.caloriesMax.value;
+    let calMin = payload.calMin;
+    let calMax = payload.calMax;
     let calString = "";
-    let timeMin = e.target.elements.timeMin.value;
-    let timeMax = e.target.elements.timeMax.value;
+    let timeMin = payload.timeMin;
+    let timeMax = payload.timeMax;
     let timeString = "";
     let excludeString = "";
 
-    let excludeVal1 = e.target.elements.exclude1.value;
-    let excludeVal2 = e.target.elements.exclude2.value;
-    let excludeVal3 = e.target.elements.exclude3.value;
-    let excludeVal4 = e.target.elements.exclude4.value;
+    let excludeVal1 = payload.exclude1;
+    let excludeVal2 = payload.exclude2;
+    let excludeVal3 = payload.exclude3;
+    let excludeVal4 = payload.exclude4;
 
     if (excludeVal1 !== "") {
       excludeString += "&excluded=" + excludeVal1;
@@ -77,7 +104,7 @@ class SearchAdvanced extends Component {
       timeString = "";
     }
 
-    let dietChoice = e.target.elements.diet.value;
+    let dietChoice = payload.dietChoice;
 
     if (dietChoice !== "") {
       dietString = "&diet=" + dietChoice;
@@ -85,23 +112,28 @@ class SearchAdvanced extends Component {
       dietString = dietChoice;
     }
 
-    let healthChoices = [];
+    let healthChoices = [
+      payload.alcoholFree,
+      payload.peanutFree,
+      payload.sugarConscious,
+      payload.treeNutFree
+    ];
 
-    for (let i = 0; i < 5; i++) {
-      healthChoices[i] = e.target.elements[i + 5];
-    }
+    let healthValues = [
+      "alcohol-free",
+      "peanut-free",
+      "sugar-conscious",
+      "tree-nut-free"
+    ];
 
     healthChoices.map((choice, i) => {
-      if (choice.checked) {
-        healthString += "&health=" + choice.value;
+      if (choice) {
+        healthString += "&health=" + `${healthValues[i]}`;
       } else {
         healthString += "";
       }
     });
 
-
-
-    e.preventDefault();
     try {
       const api_call = await fetch(
         `https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${cuisineString}${mealString}${dishString}${calString}${timeString}${excludeString}`
@@ -114,9 +146,7 @@ class SearchAdvanced extends Component {
     }
   };
 
-
   checkRecipeArr = recipesArr => {
-    console.log("sort")
     let validRecipes = [];
     recipesArr.forEach(recipe => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
@@ -133,37 +163,63 @@ class SearchAdvanced extends Component {
         if (ingredientString.includes(fridgeIngredient)) {
           valid = true;
           break;
-        };
+        }
       }
       if (!valid) return false;
     }
     return true;
   };
 
-
   render() {
-    let form = <React.Fragment>
-      <div className="fridge-instructions-2">
-        <p>
-        Add up to 4 items to your Fridge List to the left, then we will find
-        tonight's dinner using ingredients you already have! If you don't have
-        an ingredient in the recipe we will add it to your grocery list.
-      </p>
-    </div>
-      <SearchAdvancedForm getRecipe={this.getRecipe} />
-    </React.Fragment>;
+    let instructions = (
+      <React.Fragment>
+        <div className="instructions-form">
+          <div className="fridge-instructions-2">
+            <ul id="instructions-list">
+              <li> HOW TO GET STARTED </li>
+              <li>1. Add food items to Fridge List</li>
+              <li>2. Select any advanced search options below(optional)</li>
+              <li>3. Search for tonights dinner with one click of a button</li>
+              <li>
+                4. Save a recipe, items you need to get for the recipe will be
+                added to your grocery list
+              </li>
+            </ul>
+          </div>
+          <div className="counter-image" />
+        </div>
+      </React.Fragment>
+    );
+
+    let form = (
+      <React.Fragment>
+        <SearchAdvancedForm
+          updateSearchAdvancedState={this.updateSearchAdvancedState}
+          searchOptions={this.state.searchOptions}
+          getRecipe={this.getRecipe}
+        />
+      </React.Fragment>
+    );
+
+    if (!this.state.advancedOptions) {
+      form = null;
+    }
     let searchResult;
 
     if (this.state.recipes.length > 0) {
-      form = <div></div>;
+      // this.setState({ advancedOptions: false });
+      instructions = null;
       searchResult = (
         <SearchRecipes
           recipes={this.state.recipes}
           currentUserId={this.state.currentUserId}
           error={this.state.error}
-          fridgeArr={this.props.fridgeArr}
         />
       );
+    }
+
+    if (this.state.advancedOptions === true) {
+      searchResult = null;
     }
     return (
       <ApolloConsumer>
@@ -180,6 +236,28 @@ class SearchAdvanced extends Component {
           return (
             <div className="Search">
               <header className="Search-header"></header>
+              {instructions}
+              <div className="search-bar">
+                <h2
+                  onClick={() =>
+                    this.setState({
+                      advancedOptions: !this.state.advancedOptions
+
+                    })
+                  }
+                >
+                  <i class="fas fa-caret-down"></i> Advanced Search Options
+                </h2>
+                <button
+                  className="as-search-btn"
+                  onClick={() => {
+                    this.setState({ advancedOptions: false });
+                    this.getRecipe(this.state.searchOptions);
+                  }}
+                >
+                  Search
+                </button>
+              </div>
               {form}
               {searchResult}
             </div>

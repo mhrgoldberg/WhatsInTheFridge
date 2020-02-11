@@ -97,7 +97,7 @@ class Main extends Component {
          
           {midDiv}
           <div className="main-inner-container3">
-            <Grocery/>
+            {/* <Grocery/> */}
           </div>
         </div>
       </div>

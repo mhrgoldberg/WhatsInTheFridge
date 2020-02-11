@@ -8,7 +8,7 @@ const SavedRecipesList = ({ currentUserId }) => (
   <ul className="SavedRecipesList">
      <Query query={GET_CURRENT_USER_RECIPES} variables={{ id: currentUserId }}>
       {({ loading, error, data }) => {
-        debugger;
+
         if (loading) return <li>Loading...</li>
         if (error) return <li>Error</li>
         console.log(data.user.savedIngredients);

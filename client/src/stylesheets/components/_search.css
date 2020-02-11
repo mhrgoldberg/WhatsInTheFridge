@@ -65,7 +65,7 @@
 
 .search-recipes-list {
   height: calc(100vh - 214px);
-  min-height: 550px;
+  min-height: 400px;
   overflow: scroll;
   align-items: center;
   display: flex;
@@ -208,8 +208,6 @@
 
 .keyboard-inputs p {
   color: green;
-  margin: auto;
-  padding-bottom: 5px;
 }
 
 .keyboard-inputs input {
@@ -410,3 +408,52 @@ i {
   text-align: center;
 }
 
+.fas {
+  border: none;
+  color: #008000;
+}
+
+.instructions-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
+}
+
+.counter-image{
+  height: 350px;
+  width: 50%;
+  background-image: url(../../images/counter_ipad.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 0 10px 10px 0;
+}
+
+
+.search-bar h2{
+  color: #008000;
+  margin: 20px 0;
+}
+
+@media only screen and (max-width: 1300px) {
+  .counter-image{
+    height: 250px;
+  }
+  .fridge-instructions-2{
+    height: 240px;
+  }
+
+  #instructions-list li {
+    font-size: 0.78em;
+  }
+}
+
+.search-bar{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}

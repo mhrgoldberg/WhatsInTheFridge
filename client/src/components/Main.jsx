@@ -6,6 +6,11 @@ import Fridge from "./fridge/fridge";
 import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
 // import Modal from "./Modal.jsx";
 // import Backdrop from "./Backdrop.jsx";
+import { Query, ApolloConsumer } from "react-apollo";
+import queries from './../graphql/queries';
+import SavedRecipesList from './grocery_list/saved_recipes';
+const { CURRENT_USER } = queries;
+
 
 class Main extends Component {
   constructor(props) {
@@ -13,7 +18,8 @@ class Main extends Component {
     this.state = {
       fridgeArr: [],
       search: true,
-      savedReicpes: false
+      savedReicpes: false,
+      currentUserId: null
     };
     this.addToFridge = this.addToFridge.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);
@@ -79,6 +85,24 @@ class Main extends Component {
             <h1 className="selected">Saved Recipes</h1>
           </div>
           {/* component here */}
+          <ApolloConsumer>
+            {client => {
+              if (!this.state.currentUserId) {
+                client.query({ query: CURRENT_USER }).then(data => {
+                  this.setState({
+                    currentUserId: data.data.currentUser,
+                    loading: false
+                  });
+                });
+              }
+              if (this.state.loading) return <h2>Loading...</h2>;
+              return (
+                <ul className="SavedRecipesList">
+                  <SavedRecipesList currentUserId={this.state.currentUserId}/>
+                </ul>
+              );
+            }}
+          </ApolloConsumer>
         </div>
       );
     }

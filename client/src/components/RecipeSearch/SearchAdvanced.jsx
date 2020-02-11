@@ -11,6 +11,7 @@ const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
 const API_ID = require("../../api_keys.js").RECIPE_API_ID;
 
 class SearchAdvanced extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -49,12 +50,19 @@ class SearchAdvanced extends Component {
   getRecipe = async payload => {
     const recipeName2 = this.props.fridgeArr.join(", ");
     const num_ingredients = payload.maxIngredients;
-    let dietString = "";
-    let healthString = "";
-    let dishString = "";
-    let calMin = payload.calMin;
-    let calMax = payload.calMax;
-    let calString = "";
+=======
+  state = {
+    recipes: [],
+    error: "",
+    currentUserId: null,
+    loading: true
+  };
+
+  getRecipe = async e => {
+    // console.log(e.target.elements);
+    const recipeName2 = this.props.fridgeArr.join(", ");
+    const num_ingredients = e.target.elements.num_ingredients.value;
+
     let timeMin = payload.timeMin;
     let timeMax = payload.timeMax;
     let timeString = "";
@@ -64,6 +72,7 @@ class SearchAdvanced extends Component {
     let excludeVal2 = payload.exclude2;
     let excludeVal3 = payload.exclude3;
     let excludeVal4 = payload.exclude4;
+
 
     if (excludeVal1 !== "") {
       excludeString += "&excluded=" + excludeVal1;
@@ -110,6 +119,7 @@ class SearchAdvanced extends Component {
       dietString = dietChoice;
     }
 
+
     let healthChoices = [
       payload.alcoholFree,
       payload.peanutFree,
@@ -127,14 +137,17 @@ class SearchAdvanced extends Component {
     healthChoices.map((choice, i) => {
       if (choice) {
         healthString += "&health=" + `${healthValues[i]}`;
+
       } else {
         healthString += "";
       }
     });
 
+
     try {
       const api_call = await fetch(
         `https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
+
       );
       const data = await api_call.json();
       const parsedData = this.checkRecipeArr(data.hits);
@@ -144,7 +157,9 @@ class SearchAdvanced extends Component {
     }
   };
 
+
   checkRecipeArr = recipesArr => {
+
     let validRecipes = [];
     recipesArr.forEach(recipe => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
@@ -161,6 +176,7 @@ class SearchAdvanced extends Component {
         if (ingredientString.includes(fridgeIngredient)) {
           valid = true;
           break;
+
         }
       }
       if (!valid) return false;
@@ -212,6 +228,7 @@ class SearchAdvanced extends Component {
           recipes={this.state.recipes}
           currentUserId={this.state.currentUserId}
           error={this.state.error}
+
         />
       );
     }
@@ -238,6 +255,10 @@ class SearchAdvanced extends Component {
     >
       <i class="fas fa-caret-down"></i> Advanced Search Options
     </h2>
+          fridgeArr={this.props.fridgeArr}
+        />
+      );
+
     }
     return (
       <ApolloConsumer>
@@ -254,6 +275,7 @@ class SearchAdvanced extends Component {
           return (
             <div className="Search">
               <header className="Search-header"></header>
+
               {instructions}
               <div className="search-bar">
                { advancedSearchToggle}
@@ -267,6 +289,7 @@ class SearchAdvanced extends Component {
                   Search
                 </button>
               </div>
+
               {form}
               {searchResult}
             </div>

@@ -8,14 +8,14 @@ const SavedRecipesList = ({ currentUserId }) => (
   <ul className="SavedRecipesList">
      <Query query={GET_CURRENT_USER_RECIPES} variables={{ id: currentUserId }}>
       {({ loading, error, data }) => {
-        debugger;
+
         if (loading) return <li>Loading...</li>
         if (error) return <li>Error</li>
         console.log(data.user.savedIngredients);
         let recipeArr = data.user.savedRecipes;
         if (recipeArr.length === 0) return <li>No saved recipes!</li>
-        recipeArr.forEach(recipe => {
-          debugger;
+        recipeArr.map(recipe => {
+          // debugger;
           return (
             <li>
               <div className="recipe-url-button">

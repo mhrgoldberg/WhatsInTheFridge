@@ -64,7 +64,7 @@
 }
 
 .search-recipes-list {
-  height: calc(100vh - 214px);
+  height: calc(100vh - 325px);
   min-height: 400px;
   overflow: scroll;
   align-items: center;
@@ -266,7 +266,7 @@
 }
 
 .as-search-btn {
-  margin: auto;
+  margin: auto 0;
 }
 
 .diet-select {
@@ -424,7 +424,7 @@ i {
 }
 
 .counter-image{
-  height: 350px;
+  height: 250px;
   width: 50%;
   background-image: url(../../images/counter_ipad.jpg);
   -webkit-background-size: cover;
@@ -437,25 +437,25 @@ i {
 
 .search-bar h2{
   color: #008000;
-  margin: 20px 0;
+  margin: auto 0;
+}
+
+#instructions-list li {
+  font-size: 0.78em;
 }
 
 @media only screen and (max-width: 1300px) {
   .counter-image{
     height: 250px;
   }
-  .fridge-instructions-2{
-    height: 240px;
-  }
 
-  #instructions-list li {
-    font-size: 0.78em;
-  }
 }
 
 .search-bar{
   display: flex;
   flex-direction: row;
   padding: 20px;
+  width: calc(100% - 40px);
+  justify-content: space-between;
 }
 

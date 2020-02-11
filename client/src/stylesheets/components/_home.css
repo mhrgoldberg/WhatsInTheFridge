@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   min-width: 1165px;
-  min-height: 800px;
+  min-height: 750px;
   background: url(../../images/cutting-board.jpeg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -23,13 +23,13 @@
 
 .main-inner-container1 {
   width: 25%;
-  /* border: 1px solid gray; */
 }
 
 .main-inner-container2 {
   width: 50%;
-  /* border: 1px solid gray; */
   height: fit-content;
+  max-width: 639px;
+  margin: 0 auto;
 
   padding: 2% 2%;
 
@@ -82,7 +82,7 @@
 }
 
 .fridge-instructions-2 {
-
+    height: 240px;
     width: 50%;
     background: rgba(0,74,3, 0.7);
     border-radius: 10px 0 0 10px;

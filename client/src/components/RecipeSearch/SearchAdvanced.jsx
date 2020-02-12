@@ -5,6 +5,7 @@ import SearchRecipes from "./SearchRecipes";
 import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
+import { SyncLoader } from 'react-spinners';
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -18,6 +19,7 @@ class SearchAdvanced extends Component {
       error: "",
       currentUserId: null,
       loading: true,
+      spinner: false,
       advancedOptions: false,
       searchOptions: {
         calMin: "",
@@ -138,7 +140,7 @@ class SearchAdvanced extends Component {
       );
       const data = await api_call.json();
       const parsedData = this.checkRecipeArr(data.hits);
-      this.setState({ recipes: parsedData });
+      this.setState({ recipes: parsedData, spinner: false });
     } catch (err) {
       this.setState({ error: "No results found" });
     }
@@ -215,29 +217,57 @@ class SearchAdvanced extends Component {
         />
       );
     }
-    let advancedSearchToggle = <h2
-    onClick={() =>
-      this.setState({
-        advancedOptions: !this.state.advancedOptions
 
-      })
+    let button = (
+      <button
+        className="as-search-btn"
+        onClick={() => {
+          this.setState({ advancedOptions: false, spinner: true });
+          this.getRecipe(this.state.searchOptions);
+        }}
+      >
+        Search
+      </button>
+    );
+
+    if (this.state.spinner) {
+      button = (
+        <button
+          className="as-search-btn"
+        >
+        <SyncLoader
+          color={'white'}
+          size={'12'} 
+        />
+        </button>
+      );
     }
-  >
-    <i class="fas fa-caret-right"></i> Advanced Search Options
-  </h2>
+
+    let advancedSearchToggle = (
+      <h2
+        onClick={() =>
+          this.setState({
+            advancedOptions: !this.state.advancedOptions
+          })
+        }
+      >
+        <i class="fas fa-caret-right"></i> Advanced Search Options
+      </h2>
+    );
 
     if (this.state.advancedOptions === true) {
       searchResult = null;
-      advancedSearchToggle = <h2
-      onClick={() =>
-        this.setState({
-          advancedOptions: !this.state.advancedOptions
-
-        })
-      }
-    >
-      <i class="fas fa-caret-down"></i> Advanced Search Options
-    </h2>
+      advancedSearchToggle = (
+        <h2
+          onClick={() =>
+            this.setState({
+              advancedOptions: !this.state.advancedOptions
+            })
+          }
+        >
+          <i class="fas fa-caret-down"></i> Advanced Search Options
+        </h2>
+      );
     }
     return (
       <ApolloConsumer>
@@ -256,16 +286,8 @@ class SearchAdvanced extends Component {
               <header className="Search-header"></header>
               {instructions}
               <div className="search-bar">
-               { advancedSearchToggle}
-                <button
-                  className="as-search-btn"
-                  onClick={() => {
-                    this.setState({ advancedOptions: false });
-                    this.getRecipe(this.state.searchOptions);
-                  }}
-                >
-                  Search
-                </button>
+                {advancedSearchToggle}
+                {button}
               </div>
               {form}
               {searchResult}

@@ -56,7 +56,7 @@ UserSchema.statics.removeRecipe = (args) => {
       console.log(user.savedRecipes);
       user.save();
       console.log(user);
-      return args.userId;
+      return args;
     })
 }
 

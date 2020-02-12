@@ -87,8 +87,7 @@ const mutation = new GraphQLObjectType({
         userId: { type: GraphQLID }
       },
       resolve(_, args) {
-        User.removeRecipe(args)
-        return args.userId;
+        return User.removeRecipe(args)
       }
     },
     saveIngredient: {

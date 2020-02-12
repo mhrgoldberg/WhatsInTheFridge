@@ -62,6 +62,7 @@
 .main-inner-container2-headings h1 {
   color: white;
   margin: auto;
+  cursor: pointer;
 }
 
 .main-inner-container2-headings .selected {
@@ -98,4 +99,13 @@
   font-family: 'Josefin Slab', serif;
   line-height: 1.25;
   padding: 2px;
+}
+
+.loading-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 200px;
+  width: 200px;
 }

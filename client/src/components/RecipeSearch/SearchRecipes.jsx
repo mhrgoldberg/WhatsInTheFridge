@@ -4,6 +4,7 @@ import SearchRecipeItem from "./SearchRecipeItem";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Queries from "../../graphql/queries";
+import Loading from "../loading";
 
 const { GET_CURRENT_USER_RECIPES } = Queries;
 
@@ -16,11 +17,10 @@ const SearchRecipes = props => {
         variables={{ id: props.currentUserId }}
       >
         {({ loading, error, data }) => {
-          if (loading) return <div>Fetching</div>;
+          if (loading) return <Loading />;
           if (error) return <div>Error</div>;
 
           const recipes = data.user.savedRecipes;
-          console.log(recipes);
           recipes.map((recipe, i) => (recipeNames[i] = recipe.name));
           return (
             <div>

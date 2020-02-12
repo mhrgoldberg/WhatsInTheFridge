@@ -5,7 +5,7 @@ import SearchRecipes from "./SearchRecipes";
 import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
-import { SyncLoader } from 'react-spinners';
+import { SyncLoader } from "react-spinners";
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -232,13 +232,8 @@ class SearchAdvanced extends Component {
 
     if (this.state.spinner) {
       button = (
-        <div
-          className="as-search-btn-loading"
-        >
-        <SyncLoader
-          color={'white'}
-          size={10} 
-        />
+        <div className="as-search-btn-loading">
+          <SyncLoader color={"white"} size={10} />
         </div>
       );
     }

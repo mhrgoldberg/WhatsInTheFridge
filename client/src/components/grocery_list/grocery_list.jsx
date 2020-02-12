@@ -2,6 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 // import NutritionPieChart from "../nutrition_pie_chart";
 import queries from "../../graphql/queries";
+import Loading from "../loading";
 const { GET_CURRENT_USER_INGREDIENTS } = queries;
 
 class GroceryList extends React.Component {
@@ -13,7 +14,7 @@ class GroceryList extends React.Component {
           variables={{ id: this.props.currentUserId }}
         >
           {({ loading, error, data }) => {
-            if (loading) return <li>Loading...</li>;
+            if (loading) return <Loading />;
             if (error) return <li>Error</li>;
             console.log(data.user.savedIngredients);
             let ingredientArr = data.user.savedIngredients;

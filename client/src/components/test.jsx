@@ -2,6 +2,7 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import React, { Component } from "react";
 import Queries from "../graphql/queries";
+import Loading from './loading';
 
 const { CURRENT_USER } = Queries;
 
@@ -25,7 +26,7 @@ const Test = () => (
   <div>
     <Query query={CURRENT_USER}>
       {({ loading, error, data }) => {
-        if (loading) return <div>Fetching</div>
+        if (loading) return <Loading />;
         if (error) return <div>Error</div>
 
         userId = data.currentUser;

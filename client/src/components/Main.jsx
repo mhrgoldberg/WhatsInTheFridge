@@ -9,6 +9,7 @@ import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
 import { Query, ApolloConsumer } from "react-apollo";
 import queries from './../graphql/queries';
 import SavedRecipesList from './grocery_list/saved_recipes';
+import Loading from './loading.jsx';
 const { CURRENT_USER } = queries;
 
 
@@ -95,7 +96,7 @@ class Main extends Component {
                   });
                 });
               }
-              if (this.state.loading) return <h2>Loading...</h2>;
+              if (this.state.loading) return Loading;
               return (
                 <ul className="SavedRecipesList">
                   <SavedRecipesList currentUserId={this.state.currentUserId}/>

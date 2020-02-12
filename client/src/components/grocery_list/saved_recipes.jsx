@@ -3,13 +3,14 @@ import { Query } from "react-apollo";
 import NutritionPieChart from "../nutrition_pie_chart";
 import queries from '../../graphql/queries';
 import SavedRecipe from './saved_recipe';
+import Loading from "../loading";
 const { GET_CURRENT_USER_RECIPES } = queries;
 
 const SavedRecipesList = ({ currentUserId }) => (
      <Query query={GET_CURRENT_USER_RECIPES} variables={{ id: currentUserId }}>
       {({ loading, error, data }) => {
 
-        if (loading) return <li>Loading...</li>
+        if (loading) return <Loading />;
         if (error) return <li>Error</li>
         // console.log(data.user.savedIngredients);
         let recipeArr = data.user.savedRecipes;

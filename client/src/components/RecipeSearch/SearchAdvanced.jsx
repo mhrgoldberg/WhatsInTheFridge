@@ -211,6 +211,7 @@ class SearchAdvanced extends Component {
       instructions = null;
       searchResult = (
         <SearchRecipes
+          fridgeArr={this.props.fridgeArr}
           recipes={this.state.recipes}
           currentUserId={this.state.currentUserId}
           error={this.state.error}

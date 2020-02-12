@@ -55,11 +55,9 @@ const mutations = {
   REMOVE_RECIPE: gql`
     mutation RemoveRecipe($recipeURL: String!, $userId: ID!) {
       removeRecipe(recipeURL: $recipeURL, userId: $userId) {
-        recipeURL
-        userId
+        username
       }
     }
-
   `,
 };
 

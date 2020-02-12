@@ -26,12 +26,15 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
 
             <button
               onClick={() => {
+                debugger;
                 removeRecipe({
                   variables: {
                     recipeURL: recipe.recipeURL,
                     userId: currentUserId
                   }
-                })
+                }).catch((err => {
+                  console.log(err);
+                }))
               }}
             >
               Remove

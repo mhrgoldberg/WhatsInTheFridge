@@ -81,7 +81,7 @@ const mutation = new GraphQLObjectType({
         }
     },
     removeRecipe: {
-      type: RecipeType,
+      type: UserType,
       args: {
         recipeURL: { type: GraphQLString },
         userId: { type: GraphQLID }

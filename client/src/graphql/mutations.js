@@ -51,7 +51,16 @@ const mutations = {
         calories
       }
     }
-  `
+  `,
+  REMOVE_RECIPE: gql`
+    mutation RemoveRecipe($recipeURL: String!, $userId: ID!) {
+      removeRecipe(recipeURL: $recipeURL, userId: $userId) {
+        recipeURL
+        userId
+      }
+    }
+
+  `,
 };
 
 export default mutations;

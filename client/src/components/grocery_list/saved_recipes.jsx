@@ -23,7 +23,7 @@ const SavedRecipesList = ({ currentUserId }) => (
           {recipeArr.map(recipe => {
             // debugger;
             return (
-              <SavedRecipe recipe={recipe} />
+              <SavedRecipe recipe={recipe} currentUserId={currentUserId} />
             )
           })}
         </div>

@@ -1,8 +1,8 @@
 .saved-recipe-li {
   display: flex;
   height: 90%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  padding: 5%;
+  border-bottom: 1px solid rgba(0,74,3);
 }
 
 .saved-recipe-li .left-side {
@@ -19,6 +19,8 @@
   height: auto;
   margin: auto;
   padding: 10px;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .left-side .recipe-url-button {
@@ -35,6 +37,10 @@
 }
 
 .left-side .recipe-info {
+  color: rgba(0,74,3);
+}
+
+.left-side .recipe-info {
   /* color: white; */
 }
 
@@ -43,4 +49,8 @@
   min-height: 400px;
   overflow: scroll;
   align-items: center;
+}
+
+.recipe-image img {
+  border: 2px solid rgba(0,74,3);
 }

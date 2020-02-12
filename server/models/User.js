@@ -44,8 +44,19 @@ UserSchema.statics.removeRecipe = (args) => {
   return User.findById(args["userId"])
     .then(user => {
       let recipeKey = args.recipeURL;
-      delete user.savedRecipes.recipeKey;
-      return user.save();
+      let recipeIdx;
+      user.savedRecipes.forEach((recipe,i) => {
+        if (recipeKey === recipe.recipeURL) {
+          recipeIdx = i; 
+        }
+      })
+      // delete user.savedRecipes[recipeIdx];
+      console.log(user.savedRecipes);
+      user.savedRecipes.splice(recipeIdx, 1);
+      console.log(user.savedRecipes);
+      user.save();
+      console.log(user);
+      return args;
     })
 }
 

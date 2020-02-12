@@ -24,9 +24,9 @@ class GroceryList extends React.Component {
               return (
                 <li>
                   <div className="ingredient-item">
-                    <div className="ingredient-quantity">
+                    {/* <div className="ingredient-quantity">
                       {ingredient.quantity} {ingredient.measureLabel}
-                    </div>
+                    </div> */}
                     <div className="ingredient-string">{ingredient.name}</div>
                     {/* <div className="ingredient-chart"> */}
                       {/* <button id="ingredient-nutrition-button">Health Facts</button> */}

@@ -265,9 +265,7 @@
   margin-bottom: 10px;
 }
 
-.as-search-btn {
-  margin: auto 0;
-}
+
 
 .diet-select {
   height: 38px;
@@ -309,7 +307,26 @@
   color: white;
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
+  margin: auto 0;
 }
+
+.as-search-btn-loading{
+  color: white;
+  background: rgba(0,74,3);
+  border: 1px solid rgba(0,74,3);
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: default;
+}
+
 
 .keyboard-inputs input {
   background: rgba(80, 211, 122, 0.42);

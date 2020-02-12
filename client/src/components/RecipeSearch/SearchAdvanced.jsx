@@ -232,14 +232,14 @@ class SearchAdvanced extends Component {
 
     if (this.state.spinner) {
       button = (
-        <button
-          className="as-search-btn"
+        <div
+          className="as-search-btn-loading"
         >
         <SyncLoader
           color={'white'}
-          size={'12'} 
+          size={10} 
         />
-        </button>
+        </div>
       );
     }
 

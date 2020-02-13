@@ -24,14 +24,17 @@ class GroceryList extends React.Component {
               return (
                 <li>
                   <div className="ingredient-item">
+                    <div>
                     <div className="ingredient-quantity">
                       {ingredient.quantity} {ingredient.measureLabel}
                     </div>
                     <div className="ingredient-string">{ingredient.name}</div>
+                    </div>
                     {/* <div className="ingredient-chart"> */}
                       {/* <button id="ingredient-nutrition-button">Health Facts</button> */}
                       {/* <NutritionPieChart carbs={ingredient.carbsTotal} proteins={ingredient.proteinTotal} fats={ingredient.fatsTotal} /> */}
                     {/* </div> */}
+                    <div className="delete-ingredient">x</div>
                   </div>
                 </li>
               );

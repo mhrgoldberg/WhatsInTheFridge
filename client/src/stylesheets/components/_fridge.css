@@ -46,7 +46,7 @@
   height: fit-content;
   border: 5px solid rgba(0,74,3);
   margin: 0 auto;
-  width: 250px; 
+  width: 215px; 
   border-radius: 5px;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .fridge-instructions {
-  width: 250px;
+  width: 225px;
   margin: 5px auto;
   background: rgba(80, 211, 122, 0.42);
   border-radius: 5px;

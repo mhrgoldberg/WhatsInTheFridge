@@ -40,13 +40,11 @@
   color: rgba(0,74,3);
 }
 
-.left-side .recipe-info {
-  /* color: white; */
-}
+
 
 .SavedRecipesList {
   height: calc(100vh - 254px);
-  min-height: 400px;
+  min-height: 466px;
   overflow: scroll;
   align-items: center;
 }

@@ -11,14 +11,15 @@
 }
 
 .main-outer-container {
-  -webkit-background-size: cover;
-  background-size: cover;
   display: flex;
   flex-direction: row;
   margin-top: 20px;
   height: calc( 100% - 80px);
   min-height: 600px;
   min-width: 1165px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .main-inner-container1 {

@@ -45,7 +45,7 @@
 }
 
 .SavedRecipesList {
-  height: calc(100vh - 214px);
+  height: calc(100vh - 254px);
   min-height: 400px;
   overflow: scroll;
   align-items: center;

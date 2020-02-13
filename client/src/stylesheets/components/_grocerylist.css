@@ -44,8 +44,7 @@
 
 #grocery-list{
   height: calc(100vh - 200px);
-  min-height: 400px;
-
+  min-height: 512px;
   overflow: scroll;
   align-items: center;
   display: flex;
@@ -63,6 +62,20 @@
 .main-inner-container3-heading h1{
   color: white;
   border-bottom: 5px solid white;
+
+}
+
+.main-inner-container1-heading{
+  margin-top: 23px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.main-inner-container1-heading h1{
+  color: green;
+  border-bottom: 5px solid green;
 
 }
 

@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   min-width: 1165px;
-  min-height: 750px;
+  min-height: 725px;
   background: url(../../images/cutting-board.jpeg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -57,6 +57,7 @@
 .main-inner-container2-headings {
   display: flex;
   padding: 20px;
+  padding-top: 0px;
 }
 
 .main-inner-container2-headings h1 {
@@ -106,6 +107,6 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: 200px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
 }

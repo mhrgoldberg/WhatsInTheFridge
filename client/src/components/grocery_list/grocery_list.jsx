@@ -19,14 +19,14 @@ class GroceryList extends React.Component {
             console.log(data.user.savedIngredients);
             let ingredientArr = data.user.savedIngredients;
             if (ingredientArr.length === 0) return <li>Empty!</li>;
-            return  <ul className="GroceryList">
+            return  <ul id="grocery-list">
             {ingredientArr.map((ingredient, i) => {
               return (
                 <li>
                   <div className="ingredient-item">
-                    {/* <div className="ingredient-quantity">
+                    <div className="ingredient-quantity">
                       {ingredient.quantity} {ingredient.measureLabel}
-                    </div> */}
+                    </div>
                     <div className="ingredient-string">{ingredient.name}</div>
                     {/* <div className="ingredient-chart"> */}
                       {/* <button id="ingredient-nutrition-button">Health Facts</button> */}

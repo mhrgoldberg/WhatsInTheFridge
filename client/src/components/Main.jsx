@@ -113,6 +113,9 @@ class Main extends Component {
         <Nav />
         <div className="main-outer-container">
           <div className="main-inner-container1">
+          <div className="main-inner-container3-heading">
+              <h1>Fridge List</h1>
+            </div>
             <Fridge
               fridgeArr={this.state.fridgeArr}
               deleteFridgeItem={this.deleteFridgeItem}

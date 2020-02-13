@@ -36,7 +36,7 @@
 
 .ingredient-search-container{
   border: 5px solid rgba(0,74,3);
-  /* border-radius: 5px; */
+  border-radius: 5px;
   width: 250px;
   margin: 0 auto;
   margin-top: 25px;

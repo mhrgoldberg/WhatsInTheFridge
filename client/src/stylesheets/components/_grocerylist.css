@@ -66,16 +66,15 @@
 }
 
 .main-inner-container1-heading{
-  margin-top: 23px;
-  margin-bottom: 20px;
+  margin-top: 5px;
   display: flex;
   justify-content: center;
 
 }
 
 .main-inner-container1-heading h1{
-  color: green;
-  border-bottom: 5px solid green;
+  color: white;
+  border-bottom: 5px solid white;
 
 }
 

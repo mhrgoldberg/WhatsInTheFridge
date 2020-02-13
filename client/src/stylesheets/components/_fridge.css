@@ -42,7 +42,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  min-height: 197px;
+  min-height: 250px;
   height: fit-content;
   border: 5px solid rgba(0,74,3);
   margin: 0 auto;
@@ -58,7 +58,7 @@
 
 
 .fridge-container {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 0 5%;
 }
 

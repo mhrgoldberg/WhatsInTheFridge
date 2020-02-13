@@ -1,7 +1,7 @@
 .ingredient-input {
   border: none;
-  padding: 0.86rem 0.5rem;
-  width: 209.5px;
+  padding: 0.86rem 0.2rem;
+  width: 209px;
 
   margin: 0;
   color: white;
@@ -37,7 +37,7 @@
 .ingredient-search-container{
   border: 5px solid rgba(0,74,3);
   border-radius: 5px;
-  width: 225px;
+  width: 215px;
   margin: 0 auto;
   margin-top: 25px;
   height: fit-content;
@@ -70,7 +70,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  width: 225px;
+  width: 215px;
 }
 
 .suggestions li {

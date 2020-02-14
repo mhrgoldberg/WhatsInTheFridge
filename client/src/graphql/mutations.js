@@ -59,6 +59,13 @@ const mutations = {
       }
     }
   `,
+  REMOVE_INGREDIENT: gql`
+    mutation RemoveIngredient($userId: ID!, $name: String!) {
+      removeIngredient(userId: $userId, name: $name) {
+        username
+      }
+    }
+  `,
 };
 
 export default mutations;

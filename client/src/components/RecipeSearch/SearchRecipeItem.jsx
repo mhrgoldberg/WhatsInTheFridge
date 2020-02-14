@@ -71,6 +71,7 @@ class SearchRecipeItem extends Component {
       `https://api.edamam.com/api/food-database/parser?ingr=${ingredientText}&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
     );
     const data = await apiCall.json();
+
     const dataParsed = {
       name: data.parsed[0].food.label || "",
       quantity: data.parsed[0].quantity || 0,

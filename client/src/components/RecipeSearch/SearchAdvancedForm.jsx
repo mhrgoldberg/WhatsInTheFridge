@@ -18,8 +18,6 @@ class SearchAdvancedForm extends React.Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-
-    debugger;
  
     this.props.updateSearchAdvancedState(value, name);
   }
@@ -32,7 +30,7 @@ class SearchAdvancedForm extends React.Component {
             <div className="healthSection">
               <div className="as-dropdown">
                 <label>
-                  Health Options <i class="fas fa-caret-down"></i>
+                  Health Options <i className="fas fa-caret-down"></i>
                   <div className="as-health-dropdown-content">
                     <div>
                       <label>
@@ -88,7 +86,7 @@ class SearchAdvancedForm extends React.Component {
             <div className="cuisineSection">
               <div className="as-dropdown">
                 <label>
-                  Calories <i class="fas fa-caret-down"></i>
+                  Calories <i className="fas fa-caret-down"></i>
                   <br />
                   <div className="as-dropdown-content">
                     <input
@@ -115,7 +113,7 @@ class SearchAdvancedForm extends React.Component {
             <div className="exclude-section">
               <div className="as-dropdown">
                 <label>
-                  Exclude ingredients <i class="fas fa-caret-down"></i>
+                  Exclude ingredients <i className="fas fa-caret-down"></i>
                   <div className="as-dropdown-content">
                     <br />
                     <input

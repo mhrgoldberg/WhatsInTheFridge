@@ -247,7 +247,7 @@ class SearchAdvanced extends Component {
           })
         }
       >
-        <i class="fas fa-caret-right"></i> Advanced Search Options
+        <i className="fas fa-caret-right"></i> Advanced Search Options
       </h2>
     );
 
@@ -261,7 +261,7 @@ class SearchAdvanced extends Component {
             })
           }
         >
-          <i class="fas fa-caret-down"></i> Advanced Search Options
+          <i className="fas fa-caret-down"></i> Advanced Search Options
         </h2>
       );
     }

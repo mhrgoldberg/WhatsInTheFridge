@@ -21,7 +21,6 @@ const SavedRecipesList = ({ currentUserId }) => (
 
         return <div>
           {recipeArr.map(recipe => {
-            // debugger;
             return (
               <SavedRecipe recipe={recipe} currentUserId={currentUserId} />
             )

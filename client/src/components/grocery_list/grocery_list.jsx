@@ -25,7 +25,7 @@ class GroceryList extends React.Component {
             return  <ul id="grocery-list">
             {ingredientArr.map((ingredient, i) => {
               return (
-                <li>
+                <li key={i}>
                   <div className="ingredient-item">
                     <div>
                     <div className="ingredient-quantity">
@@ -46,10 +46,8 @@ class GroceryList extends React.Component {
                       }}
                       >
                       {(removeIngredient) => (
-                      <button className="delete-ingredient"
+                      <div className="delete-ingredient"
                           onClick={() => {
-                            console.log(this.props.currentUserId);
-                            console.log(ingredient.name);
                             removeIngredient({
                               variables: {
                                 userId: this.props.currentUserId,
@@ -60,7 +58,7 @@ class GroceryList extends React.Component {
                             }))
                           }}
                         >
-                        x</button>
+                        x</div>
                       )}
                     </Mutation>
                    

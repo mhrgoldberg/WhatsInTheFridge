@@ -3,8 +3,10 @@ import NutritionPieChart from "../nutrition_pie_chart";
 import { Mutation } from "react-apollo";
 // import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
+import queries from "../../graphql/queries";
 
 const { REMOVE_RECIPE } = mutations;
+const { GET_CURRENT_USER_RECIPES } = queries;
 
 
 const SavedRecipe = ({ recipe, currentUserId }) => {
@@ -21,12 +23,16 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
           </a>
         </div>
         <div className="recipe-url-button">
-        <Mutation mutation={REMOVE_RECIPE}>
+        <Mutation mutation={REMOVE_RECIPE}
+        refetchQueries={() => {
+          return [{
+             query: GET_CURRENT_USER_RECIPES,
+             variables: { id: currentUserId }
+          }];
+        }}>
           {(removeRecipe) => (
-
             <button
               onClick={() => {
-                debugger;
                 removeRecipe({
                   variables: {
                     recipeURL: recipe.recipeURL,

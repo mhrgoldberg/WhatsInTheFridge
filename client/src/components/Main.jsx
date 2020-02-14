@@ -123,13 +123,14 @@ class Main extends Component {
          
           {midDiv}
           <div className="main-inner-container3">
+            <div className="grocery-chalkboard">
             <div className="main-inner-container3-heading">
               <h1>Grocery List</h1>
             </div>
             <div className="grocery-board">
               <Grocery />
             </div>
-           
+            </div>
           </div>
         </div>
       </div>

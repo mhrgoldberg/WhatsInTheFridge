@@ -6,7 +6,7 @@
   width: 200px;
   height: 50px;
   max-width: 600px;
-  background: #3d6e3a;
+  /* background: #3d6e3a; */
   border-radius: 5px;
   /* box-shadow: 0px 8px 24px rgba(13,13,18,0.50); */
   margin-bottom: 20px;
@@ -52,7 +52,7 @@
 }
 
 .main-inner-container3-heading{
-  margin-top: 23px;
+  margin-top: 5px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -83,4 +83,18 @@
   cursor: pointer;
   font-size: 20px;
   padding-right: 5px;
+}
+
+.grocery-chalkboard{
+  background: url(../../images/blackboard.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 250px;
+  height: fit-content;
+  border: 5px solid rgba(0,74,3);
+  margin: 0 auto;
+  width: 215px; 
+  border-radius: 5px;
 }

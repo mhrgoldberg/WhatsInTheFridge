@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 // import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
+import queries from "../../graphql/queries";
 import Modal from "../Modal.jsx";
 import Backdrop from "../Backdrop.jsx";
 import NutritionPieChart from "../nutrition_pie_chart";
 // import NutritionBarChart from "../nutrition_bar_chart";
 // import Fridge from "../fridge/fridge";
 const { SAVE_RECIPE, SAVE_INGREDIENT } = mutations;
+const { GET_CURRENT_USER_INGREDIENTS, GET_CURRENT_USER_RECIPES } = queries;
 
 class SearchRecipeItem extends Component {
   constructor(props) {
@@ -89,15 +91,22 @@ class SearchRecipeItem extends Component {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>
           {(saveRecipe, { data }) => (
-            <Mutation mutation={SAVE_INGREDIENT}>
-              {(saveIngredient, { data} ) => (
+            <Mutation mutation={SAVE_INGREDIENT}
+            refetchQueries={() => {
+              return [{
+                 query: GET_CURRENT_USER_INGREDIENTS,
+                 variables: { id: this.props.currentUserId }
+              }];
+            }}>
+              {(saveIngredient, { data } ) => (
                 <button
                   id="sr-save-recipe-btn"
                   onClick={() => {
-                    saveRecipe({ variables: this.state.variables })
+                    saveRecipe({ variables: this.state.variables, 
+                      refetchQueries: [{query: GET_CURRENT_USER_RECIPES, variables: { id: this.props.currentUserId }}] })
                       .then(recipe => { return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)})
                       .then(ingredients => {
-                        ingredients.forEach(ingredient =>(
+                        ingredients.forEach(ingredient => (
                         saveIngredient({variables: ingredient})
                       ))})  
                       .then(() => this.setState({ saved: true }))

@@ -140,7 +140,7 @@ class Fridge extends React.Component {
           onKeyDown={onKeyDown}
           value={userInput}
           name={userInput}
-          placeholder="Add items to your fridge here!"
+          placeholder="Add to your fridge here!"
         />
       );
     } else {

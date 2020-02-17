@@ -5,6 +5,10 @@
   border-bottom: 3px solid rgba(0,74,3);
 }
 
+.saved-recipe-li:last-of-type {
+  border-bottom: none;
+}
+
 .saved-recipe-li .left-side {
   width: 50%;
   text-align: center;

@@ -24,9 +24,10 @@ button{
   cursor: pointer;
 }
 
-button:hover{
-  background-color: rgb(114, 112, 112);
-}
+/* button:hover{
+  background-color: rgba(243, 208, 8, 0.781);
+  color: green;
+} */
 
 
 input{

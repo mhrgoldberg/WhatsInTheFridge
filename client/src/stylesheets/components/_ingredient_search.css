@@ -1,7 +1,7 @@
 .ingredient-input {
   border: none;
-  padding: 0.86rem 0.2rem;
-  width: 209px;
+  padding: 0.86rem 0.86rem;
+  width: 188px;
 
   margin: 0;
   color: white;
@@ -74,7 +74,7 @@
 }
 
 .suggestions li {
-  padding: 4px;
+  padding: 0.5em 0.86em;
   height: 16px;
   color: white;
   font-family: 'Josefin Slab', serif;

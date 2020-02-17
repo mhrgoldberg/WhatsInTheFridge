@@ -167,7 +167,7 @@
   width: 80%;
   height: 100%;
   margin: auto;
-  color: green;
+  color: #008000;
 }
 
 .as-dropdown:hover .as-health-dropdown-content label > input {
@@ -183,7 +183,7 @@
   margin: 0 auto;
   width: 402px;
   margin-bottom: 20px;
-  border-bottom: 1px solid green;
+  border-bottom: 2px solid #008000;
   justify-content: space-around;
 }
 
@@ -207,7 +207,7 @@
 }
 
 .keyboard-inputs p {
-  color: green;
+  color: #008000;
 }
 
 .keyboard-inputs input {
@@ -226,7 +226,7 @@
   min-width: 500px;
   padding: 10px;
   /* margin-bottom: 10px; */
-  border-bottom: 1px solid green;
+  border-bottom: 2px solid #008000;
 }
 
 .pop-up-dropdowns {
@@ -236,10 +236,10 @@
   margin: 0 auto;
   padding: 20px;
   /* margin-bottom: 10px; */
-  border-bottom: 1px solid green;
+  border-bottom: 2px solid #008000;
 }
 .pop-up-dropdowns label{
-  color: green;
+  color: #008000;
 }
 
 .minMaxSection {
@@ -250,7 +250,7 @@
   min-width: 500px;
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid green;
+  border-bottom: 2px solid #008000;
 }
 
 .minMaxSection label {
@@ -294,6 +294,9 @@
   text-align: center;
   color: rgba(0,74,3);
 }
+
+
+
 
 .as-form {
   width: 100%;
@@ -474,5 +477,19 @@ i {
   padding: 20px;
   width: calc(100% - 40px);
   justify-content: space-between;
+}
+
+.saved {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  padding: 2px;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  cursor: default;
 }
 

@@ -63,13 +63,13 @@
 }
 
 .main-inner-container2-headings h1 {
-  color: white;
+  color: rgba(0,74,3);
   margin: auto;
   cursor: pointer;
 }
 
 .main-inner-container2-headings .selected {
-  border-bottom: 5px solid white;
+  border-bottom: 5px solid rgba(0,74,3);
 }
 
 

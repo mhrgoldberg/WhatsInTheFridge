@@ -45,8 +45,8 @@
 }
 
 #grocery-list{
-  height: calc(100vh - 200px);
-  min-height: 473px;
+  max-height: calc(90vh - 250px);
+  min-height: 275px;
   overflow: scroll;
   align-items: center;
   display: flex;

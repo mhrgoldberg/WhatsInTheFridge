@@ -3,7 +3,7 @@ import { RotateLoader } from "react-spinners";
 const Loading = () => {
 		return (
 			<div className="loading-spinner">
-				<RotateLoader color={"green"} />
+				<RotateLoader color={"#008000"} />
 			</div>
 		);
 };

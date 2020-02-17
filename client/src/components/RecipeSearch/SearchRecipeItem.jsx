@@ -71,7 +71,7 @@ class SearchRecipeItem extends Component {
       `https://api.edamam.com/api/food-database/parser?ingr=${ingredientText}&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
     );
     const data = await apiCall.json();
-
+    // need condition that will retry if it does not get the correct result back
     const dataParsed = {
       name: data.parsed[0].food.label || "",
       quantity: data.parsed[0].quantity || 0,
@@ -87,7 +87,7 @@ class SearchRecipeItem extends Component {
     let savedButton;
 
     if (this.state.saved === true) {
-      savedButton = <button id="sr-save-recipe-btn">Recipe Saved</button>;
+      savedButton = <h5 className="saved">Recipe Saved</h5>;
     } else {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>

@@ -46,19 +46,40 @@ async function setupClient() {
 
   client = new ApolloClient({
     link,
-    cache
+    cache,
+    // resolvers: {
+    //   Mutation: {
+    //     toggleModal: (_root, variables, { cache, getCacheKey }) => {
+    //       const id = getCacheKey({ __typename: 'GroceryModal', id: variables.id })
+    //       const fragment = gql`
+    //         fragment completeTodo on TodoItem {
+    //           completed
+    //         }
+    //       `;
+    //       const todo = cache.readFragment({ fragment, id });
+    //       const data = { ...todo, completed: !todo.completed };
+    //       cache.writeData({ id, data });
+    //       return null;
+    //     },
+    //   },
     // onError: ({ networkError, graphQLErrors }) => {
     //   console.log("graphQLErrors", graphQLErrors);
     //   console.log("networkError", networkError);
     // }
+  // }
   });
 }
+
 
 async function populateCache() {
   const token = localStorage.getItem("auth-token");
   await cache.writeData({
     data: {
-      isLoggedIn: Boolean(token)
+      isLoggedIn: Boolean(token),
+      healthModal: false,
+      ingredientsModal: false,
+      healthFactsData: {},
+      ingredients: [],
     }
   });
 

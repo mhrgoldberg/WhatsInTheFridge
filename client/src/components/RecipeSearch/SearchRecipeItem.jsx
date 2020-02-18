@@ -48,8 +48,7 @@ class SearchRecipeItem extends Component {
   };
 
   parseMultipleIngredients = async ingredientLines => {
-  
-    const res = []; 
+    const res = [];
     for (let i = 0; i < ingredientLines.length; i++) {
       const ingredient = ingredientLines[i];
       const ing = await this.parseIngredient(ingredient);
@@ -59,11 +58,17 @@ class SearchRecipeItem extends Component {
           ingredientArr.includes(fridgeIngredient)
         )
       ) {
-         res.push(ing);
+        res.push(ing);
       }
     }
     return res;
   };
+
+  // checkNested(obj, level,  ...rest) {
+  //   if (obj === undefined) return false
+  //   if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
+  //   return checkNested(obj[level], ...rest)
+  // }
 
   parseIngredient = async ingredient => {
     const ingredientText = ingredient.split(" ").join("%20");
@@ -71,17 +76,40 @@ class SearchRecipeItem extends Component {
       `https://api.edamam.com/api/food-database/parser?ingr=${ingredientText}&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
     );
     const data = await apiCall.json();
-    // need condition that will retry if it does not get the correct result back
-    const dataParsed = {
-      name: data.parsed[0].food.label || "",
-      quantity: data.parsed[0].quantity || 0,
-      measureLabel: data.parsed[0].measure.label || "",
-      calories: data.parsed[0].food.nutrients.ENERC_KCAL || 0,
-      userId: this.props.currentUserId
-    };
-    return dataParsed;
+    const parsed = data.parsed[0];
+    if (Boolean(parsed)) {
+      // need condition that will retry if it does not get the correct result back
+      const dataParsed = {
+        name: Boolean(parsed.food) ? parsed.food.label : "",
+        quantity: Boolean(parsed.quantity) ? parsed.quantity : 1,
+        measureLabel: Boolean(parsed.measure) ? parsed.measure.label : "",
+        calories: Boolean(parsed.food.nutrients.ENERC_KCAL) ? parsed.food.nutrients.ENERC_KCAL : 0,
+        userId: this.props.currentUserId
+      };
+      return dataParsed;
+    }
+    // debugger;
+    // if (!Boolean(data.parsed[0].measure)) {
+    //   // need condition that will retry if it does not get the correct result back
+    //   const dataParsed = {
+    //     name: data.parsed[0].food.label || "",
+    //     quantity: data.parsed[0].quantity || 1,
+    //     measureLabel: "",
+    //     calories: data.parsed[0].food.nutrients.ENERC_KCAL || "",
+    //     userId: this.props.currentUserId
+    //   };
+    //   return dataParsed;
+    // }
+    if (data.text) {
+      return {
+        name: data.text,
+        quantity: 1,
+        measureLabel: "",
+        calories: "",
+        userId: this.props.currentUserId
+      };
+    }
   };
-
 
   render() {
     let savedButton;
@@ -92,32 +120,47 @@ class SearchRecipeItem extends Component {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>
           {(saveRecipe, { data }) => (
-            <Mutation mutation={SAVE_INGREDIENT}
-            refetchQueries={() => {
-              return [{
-                 query: GET_CURRENT_USER_INGREDIENTS,
-                 variables: { id: this.props.currentUserId }
-              }];
-            }}>
-              {(saveIngredient, { data } ) => (
+            <Mutation
+              mutation={SAVE_INGREDIENT}
+              refetchQueries={() => {
+                return [
+                  {
+                    query: GET_CURRENT_USER_INGREDIENTS,
+                    variables: { id: this.props.currentUserId }
+                  }
+                ];
+              }}
+            >
+              {(saveIngredient, { data }) => (
                 <button
                   id="sr-save-recipe-btn"
                   onClick={() => {
-                    saveRecipe({ variables: this.state.variables, 
-                      refetchQueries: [{query: GET_CURRENT_USER_RECIPES, variables: { id: this.props.currentUserId }}] })
-                      .then(recipe => { return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)})
-                      .then(ingredients => {
-                        ingredients.forEach(ingredient => (
-                        saveIngredient({variables: ingredient})
-                      ))})  
+                    saveRecipe({
+                      variables: this.state.variables,
+                      refetchQueries: [
+                        {
+                          query: GET_CURRENT_USER_RECIPES,
+                          variables: { id: this.props.currentUserId }
+                        }
+                      ]
+                    })
+                      .then(recipe => {
+                        return this.parseMultipleIngredients(
+                          recipe.data.saveRecipe.ingredients
+                        );
+                      })
+                      .then( ingredients => {
+                        ingredients.forEach(async ingredient =>
+                          await saveIngredient({ variables: ingredient })
+                        );
+                      })
                       .then(() => this.setState({ saved: true }))
                       .catch(err => console.log(err));
                   }}
                 >
                   Save Recipe
                 </button>
-              )
-              }
+              )}
             </Mutation>
           )}
         </Mutation>
@@ -125,7 +168,7 @@ class SearchRecipeItem extends Component {
     }
 
     return (
-      <div className="search-result" key={this.props.key}>
+      <div className="search-result">
         <div className="search-result-info">
           <div className="search-result-title">
             <h4>{this.props.recipe.recipe.label}</h4>

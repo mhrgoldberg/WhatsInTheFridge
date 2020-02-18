@@ -17,11 +17,11 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-name">{recipe.name}</div>
         <div className="recipe-info">{calories} Calories</div>
         <div className="recipe-info">{recipe.servings} Servings</div>
-        <div className="recipe-url-button">
+        {/* <div className="recipe-url-button"> */}
           <a href={recipe.recipeURL}>
             <button>Link to Recipe</button>
           </a>
-        </div>
+        {/* </div> */}
         <div className="recipe-url-button">
         <Mutation mutation={REMOVE_RECIPE}
         refetchQueries={() => {

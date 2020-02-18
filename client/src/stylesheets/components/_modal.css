@@ -1,16 +1,13 @@
 .modal {
   width: 500px;
   /* height: 300px; */
-  position: absolute;
+  position: fixed;
   left: 50%;
-  top: 50%; 
-  margin-left: -150px;
-  margin-top: -150px;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -125px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  /* position: fixed; */
-  /* top: 23vh; */
   border-radius: 5px;
-  /* margin: auto; */
   background: white;
 }
 

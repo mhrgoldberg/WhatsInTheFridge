@@ -33,7 +33,6 @@ class Search extends Component {
   };
 
   checkRecipeArr = recipesArr => {
-    console.log("sort")
     let validRecipes = [];
     recipesArr.forEach(recipe => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);

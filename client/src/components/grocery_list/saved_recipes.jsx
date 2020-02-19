@@ -12,10 +12,8 @@ const SavedRecipesList = ({ currentUserId }) => (
 
         if (loading) return <Loading />;
         if (error) return <li>Error</li>
-        // console.log(data.user.savedIngredients);
         let recipeArr = data.user.savedRecipes;
-        console.log(recipeArr)
-        console.log(currentUserId);
+
         if (recipeArr.length === 0) return <li>No saved recipes!</li>;
 
 

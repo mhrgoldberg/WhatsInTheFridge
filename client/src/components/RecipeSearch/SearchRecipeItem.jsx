@@ -176,7 +176,7 @@ class SearchRecipeItem extends Component {
           <div className="search-result-buttons">
             <div>{savedButton}</div>
             <a href={this.props.recipe.recipe.url} target="_blank">
-              <button>Link to Recipe</button>
+              <button>Full Recipe</button>
             </a>
             <React.Fragment>
               {this.state.ingredientsPullUp && (

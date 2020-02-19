@@ -1,19 +1,19 @@
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 import React, { Component } from "react";
 import Queries from "../graphql/queries";
-import Loading from './loading';
+import Loading from "./loading";
 
 const { CURRENT_USER } = Queries;
 
 const CURRENT_USER_RECIPES = gql`
-  query savedRecipes ($id: ID!) {
-    savedRecipes (_id: $id) {
-      _id, 
-      name, 
-      recipeURL, 
-      calories, 
-      servings, 
+  query savedRecipes($id: ID!) {
+    savedRecipes(_id: $id) {
+      _id
+      name
+      recipeURL
+      calories
+      servings
       userId
     }
   }
@@ -27,41 +27,29 @@ const Test = () => (
     <Query query={CURRENT_USER}>
       {({ loading, error, data }) => {
         if (loading) return <Loading />;
-        if (error) return <div>Error</div>
+        if (error) return <div>Error</div>;
 
         userId = data.currentUser;
 
-
         return (
           <div>
-           
-            <Query query={CURRENT_USER_RECIPES} variables={ {id: userId}}>
+            <Query query={CURRENT_USER_RECIPES} variables={{ id: userId }}>
               {({ loading, error, data }) => {
-                console.log(userId)
-                if (loading) return <div>Fetching</div>
-                if (error) return <div>Error</div>
+                if (loading) return <div>Fetching</div>;
+                if (error) return <div>Error</div>;
 
                 const recipes = data.savedRecipes;
-                console.log(recipes);
 
                 const recipeNames = [];
-                
-                recipes.map((recipe, i) => (
-                  recipeNames[i] = recipe.name
-                ))
 
-                console.log(recipeNames);
-                return <div>
-                  
-                </div>
+                recipes.map((recipe, i) => (recipeNames[i] = recipe.name));
 
+                return <div></div>;
               }}
             </Query>
           </div>
-        )
-
+        );
       }}
-      
     </Query>
   </div>
 );

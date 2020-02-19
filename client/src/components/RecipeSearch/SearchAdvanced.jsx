@@ -137,7 +137,7 @@ class SearchAdvanced extends Component {
     try {
       const api_call = await fetch(
         `https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
-      );
+      );  
       const data = await api_call.json();
       const parsedData = this.checkRecipeArr(data.hits);
       this.setState({ recipes: parsedData, spinner: false });

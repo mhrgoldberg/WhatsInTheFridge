@@ -115,7 +115,6 @@ class SearchAdvancedForm extends React.Component {
                 <label>
                   Exclude ingredients <i className="fas fa-caret-down"></i>
                   <div className="as-dropdown-content">
-                    <br />
                     <input
                       type="text"
                       placeholder="Item 1"

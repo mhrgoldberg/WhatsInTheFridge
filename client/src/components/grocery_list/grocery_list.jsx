@@ -18,7 +18,6 @@ class GroceryList extends React.Component {
         {({ loading, error, data }) => {
           if (loading) return <Loading />;
           if (error) return <li>Error</li>;
-          console.log(data.user.savedIngredients);
           let ingredientArr = data.user.savedIngredients;
           if (ingredientArr.length === 0) return <div className="ingredient-string" id="empty">Empty!</div>;
           return (

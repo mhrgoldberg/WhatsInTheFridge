@@ -15,7 +15,6 @@ class SearchAdvanced extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: [],
       error: "",
       currentUserId: null,
       loading: true,
@@ -140,7 +139,9 @@ class SearchAdvanced extends Component {
       );  
       const data = await api_call.json();
       const parsedData = this.checkRecipeArr(data.hits);
-      this.setState({ recipes: parsedData, spinner: false });
+      
+      await this.props.addToRecipes(parsedData);
+      this.setState({ spinner: false });
     } catch (err) {
       this.setState({ error: "No results found" });
     }
@@ -205,14 +206,14 @@ class SearchAdvanced extends Component {
       form = null;
     }
     let searchResult;
-
-    if (this.state.recipes.length > 0) {
+    let localRecipeArr = this.props.RecipeArr || [];
+    if (localRecipeArr.length > 0) {
       // this.setState({ advancedOptions: false });
       instructions = null;
       searchResult = (
         <SearchRecipes
           fridgeArr={this.props.fridgeArr}
-          recipes={this.state.recipes}
+          recipes={localRecipeArr}
           currentUserId={this.state.currentUserId}
           error={this.state.error}
         />

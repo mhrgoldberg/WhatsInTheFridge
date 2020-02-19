@@ -1,4 +1,4 @@
-import Grocery from './grocery_list/grocery.jsx';
+import Grocery from "./grocery_list/grocery.jsx";
 import React, { Component } from "react";
 import Nav from "./Nav.jsx";
 import Search from "./RecipeSearch/Search";
@@ -7,22 +7,23 @@ import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
 // import Modal from "./Modal.jsx";
 // import Backdrop from "./Backdrop.jsx";
 import { Query, ApolloConsumer } from "react-apollo";
-import queries from './../graphql/queries';
-import SavedRecipesList from './grocery_list/saved_recipes';
-import Loading from './loading.jsx';
-const { CURRENT_USER } = queries;
-
+import queries from "./../graphql/queries";
+import SavedRecipesList from "./grocery_list/saved_recipes";
+import Loading from "./loading.jsx";
+const { CURRENT_USER, HEALTH_MODAL_STATUS } = queries;
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fridgeArr: [],
+      recipesArr: [],
       search: true,
       savedReicpes: false,
       currentUserId: null
     };
     this.addToFridge = this.addToFridge.bind(this);
+    this.addToRecipes = this.addToRecipes.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);
     this.handleASToggle = this.handleASToggle.bind(this);
     this.deleteFridgeItem = this.deleteFridgeItem.bind(this);
@@ -38,9 +39,13 @@ class Main extends Component {
     }
   }
 
+  addToRecipes(recipesArr) {
+    this.setState({ recipesArr });
+  }
+
   deleteFridgeItem(i) {
     const fridgeArrCopy = this.state.fridgeArr.slice(0);
-    fridgeArrCopy.splice( i, 1 )
+    fridgeArrCopy.splice(i, 1);
     this.setState({
       fridgeArr: fridgeArrCopy
     });
@@ -73,7 +78,11 @@ class Main extends Component {
             <h1 className="selected">Search</h1>
             <h1 onClick={this.handleASToggle}>Saved Recipes</h1>
           </div>
-          <SearchAdvanced fridgeArr={this.state.fridgeArr} />
+          <SearchAdvanced
+            RecipeArr={this.state.recipesArr}
+            addToRecipes={this.addToRecipes}
+            fridgeArr={this.state.fridgeArr}
+          />
         </div>
       );
     }
@@ -99,7 +108,7 @@ class Main extends Component {
               if (this.state.loading) return Loading;
               return (
                 <ul className="SavedRecipesList">
-                  <SavedRecipesList currentUserId={this.state.currentUserId}/>
+                  <SavedRecipesList currentUserId={this.state.currentUserId} />
                 </ul>
               );
             }}
@@ -113,23 +122,22 @@ class Main extends Component {
         <Nav />
         <div className="main-outer-container">
           <div className="main-inner-container1">
-
             <Fridge
               fridgeArr={this.state.fridgeArr}
               deleteFridgeItem={this.deleteFridgeItem}
               addToFridge={this.addToFridge}
             />
           </div>
-         
+
           {midDiv}
           <div className="main-inner-container3">
             <div className="grocery-chalkboard">
-            <div className="main-inner-container3-heading">
-              <h1>Grocery List</h1>
-            </div>
-            <div className="grocery-board">
-              <Grocery />
-            </div>
+              <div className="main-inner-container3-heading">
+                <h1>Grocery List</h1>
+              </div>
+              <div className="grocery-board">
+                <Grocery />
+              </div>
             </div>
           </div>
         </div>

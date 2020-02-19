@@ -12,6 +12,9 @@ import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
 // import { Mutation } from "react-apollo";
 import mutations from "./graphql/mutations";
+import queries from "./graphql/queries";
+
+const { INGREDIENT_MODAL_STATUS } = queries;
 
 const VERIFY_USER = mutations.VERIFY_USER;
 
@@ -25,8 +28,8 @@ async function setupClient() {
 
   let uri = "http://localhost:5000/graphql";
 
-  if (process.env.NODE_ENV !== 'development') {
-    uri = "/graphql"
+  if (process.env.NODE_ENV !== "development") {
+    uri = "/graphql";
   }
 
   const httpLink = createHttpLink({
@@ -47,29 +50,26 @@ async function setupClient() {
   client = new ApolloClient({
     link,
     cache,
-    // resolvers: {
-    //   Mutation: {
-    //     toggleModal: (_root, variables, { cache, getCacheKey }) => {
-    //       const id = getCacheKey({ __typename: 'GroceryModal', id: variables.id })
-    //       const fragment = gql`
-    //         fragment completeTodo on TodoItem {
-    //           completed
-    //         }
-    //       `;
-    //       const todo = cache.readFragment({ fragment, id });
-    //       const data = { ...todo, completed: !todo.completed };
-    //       cache.writeData({ id, data });
-    //       return null;
-    //     },
-    //   },
+    resolvers: {
+      Mutation: {
+        toggleIngredientsModal: (_, { ingredientsData }, { cache }) => {
+          const modalStatus = cache.readQuery({ INGREDIENT_MODAL_STATUS });
+          const data = {
+            ingredientsModal: !modalStatus.ingredientsModal,
+            ingredientsData: ingredientsData
+          };
+          cache.writeData({ data });
+          return null;
+        }
+      }
+    }
     // onError: ({ networkError, graphQLErrors }) => {
     //   console.log("graphQLErrors", graphQLErrors);
     //   console.log("networkError", networkError);
     // }
-  // }
+    // }
   });
 }
-
 
 async function populateCache() {
   const token = localStorage.getItem("auth-token");
@@ -78,8 +78,14 @@ async function populateCache() {
       isLoggedIn: Boolean(token),
       healthModal: false,
       ingredientsModal: false,
-      healthFactsData: {},
-      ingredients: [],
+      healthFactsData: {
+        calories: 0,
+        servings: 0,
+        carb: 0,
+        protein: 0,
+        fat: 0
+      },
+      ingredientsData: []
     }
   });
 
@@ -98,20 +104,20 @@ async function populateCache() {
 }
 
 setupClient()
-.then(() => populateCache())
-.then(() => {
-  const Root = () => {
-    return (
-      <ApolloProvider client={client}>
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </ApolloProvider>
-    );
-  };
-  
-  ReactDOM.render(<Root />, document.getElementById("root"));
-})
+  .then(() => populateCache())
+  .then(() => {
+    const Root = () => {
+      return (
+        <ApolloProvider client={client}>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </ApolloProvider>
+      );
+    };
+
+    ReactDOM.render(<Root />, document.getElementById("root"));
+  });
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

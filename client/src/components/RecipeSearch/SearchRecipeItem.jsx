@@ -64,12 +64,6 @@ class SearchRecipeItem extends Component {
     return res;
   };
 
-  // checkNested(obj, level,  ...rest) {
-  //   if (obj === undefined) return false
-  //   if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
-  //   return checkNested(obj[level], ...rest)
-  // }
-
   parseIngredient = async ingredient => {
     const ingredientText = ingredient.split(" ").join("%20");
     const apiCall = await fetch(
@@ -88,18 +82,6 @@ class SearchRecipeItem extends Component {
       };
       return dataParsed;
     }
-    // debugger;
-    // if (!Boolean(data.parsed[0].measure)) {
-    //   // need condition that will retry if it does not get the correct result back
-    //   const dataParsed = {
-    //     name: data.parsed[0].food.label || "",
-    //     quantity: data.parsed[0].quantity || 1,
-    //     measureLabel: "",
-    //     calories: data.parsed[0].food.nutrients.ENERC_KCAL || "",
-    //     userId: this.props.currentUserId
-    //   };
-    //   return dataParsed;
-    // }
     if (data.text) {
       return {
         name: data.text,

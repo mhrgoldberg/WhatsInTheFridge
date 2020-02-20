@@ -474,7 +474,7 @@ i {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% - 20px);
   border-radius: 10px;
   margin-bottom: 25px;
   box-shadow: 0px 8px 24px rgba(13,13,18,0.50);
@@ -498,7 +498,7 @@ i {
   cursor: pointer;
 }
 
-.search{
+.Search{
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -519,7 +519,7 @@ i {
   display: flex;
   flex-direction: row;
   margin: 10px;
-  width: 96%;
+  width: calc(100% - 20px);
   justify-content: space-between;
 }
 

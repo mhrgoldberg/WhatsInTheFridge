@@ -6,6 +6,7 @@ import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import { SyncLoader } from "react-spinners";
+import AnimateHeight from 'react-animate-height';
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -15,12 +16,12 @@ class SearchAdvanced extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipes: [],
       error: "",
       currentUserId: null,
       loading: true,
       spinner: false,
       advancedOptions: false,
+      height: 0,
       searchOptions: {
         calMin: "",
         calMax: "",
@@ -137,10 +138,12 @@ class SearchAdvanced extends Component {
     try {
       const api_call = await fetch(
         `https://api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
-      );
+      );  
       const data = await api_call.json();
       const parsedData = this.checkRecipeArr(data.hits);
-      this.setState({ recipes: parsedData, spinner: false });
+      
+      await this.props.addToRecipes(parsedData);
+      this.setState({ spinner: false });
     } catch (err) {
       this.setState({ error: "No results found" });
     }
@@ -171,6 +174,7 @@ class SearchAdvanced extends Component {
   };
 
   render() {
+    const { height } = this.state;
     let instructions = (
       <React.Fragment>
         <div className="instructions-form">
@@ -192,27 +196,33 @@ class SearchAdvanced extends Component {
     );
 
     let form = (
-      <React.Fragment>
+      <AnimateHeight
+      duration={ 250 }
+      height={ height }
+      animateOpacity={ true }
+    >
         <SearchAdvancedForm
           updateSearchAdvancedState={this.updateSearchAdvancedState}
           searchOptions={this.state.searchOptions}
           getRecipe={this.getRecipe}
         />
-      </React.Fragment>
+
+      </AnimateHeight>
     );
 
-    if (!this.state.advancedOptions) {
-      form = null;
-    }
+    // if (!this.state.advancedOptions) {
+    //   form = null;
+    // }
     let searchResult;
-
-    if (this.state.recipes.length > 0) {
+    let localRecipeArr = this.props.RecipeArr || [];
+    if (localRecipeArr.length > 0) {
       // this.setState({ advancedOptions: false });
       instructions = null;
       searchResult = (
+        
         <SearchRecipes
           fridgeArr={this.props.fridgeArr}
-          recipes={this.state.recipes}
+          recipes={localRecipeArr}
           currentUserId={this.state.currentUserId}
           error={this.state.error}
         />
@@ -223,7 +233,7 @@ class SearchAdvanced extends Component {
       <button
         className="as-search-btn"
         onClick={() => {
-          this.setState({ advancedOptions: false, spinner: true });
+          this.setState({ height: 0, spinner: true });
           this.getRecipe(this.state.searchOptions);
         }}
       >
@@ -243,7 +253,8 @@ class SearchAdvanced extends Component {
       <h2
         onClick={() =>
           this.setState({
-            advancedOptions: !this.state.advancedOptions
+            advancedOptions: !this.state.advancedOptions,
+            height: height === 0 ? 'auto' : 0,
           })
         }
       >
@@ -251,13 +262,13 @@ class SearchAdvanced extends Component {
       </h2>
     );
 
-    if (this.state.advancedOptions === true) {
+    if (height === 'auto') {
       searchResult = null;
       advancedSearchToggle = (
         <h2
           onClick={() =>
             this.setState({
-              advancedOptions: !this.state.advancedOptions
+              height: height === 0 ? 'auto' : 0,
             })
           }
         >

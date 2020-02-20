@@ -27,7 +27,6 @@ const SearchRecipes = props => {
               {props.recipes.map((recipe, i) => {
                 if (recipeNames.includes(recipe.recipe.label)) {
                   return (
-                    <div>
                       <SearchRecipeItem
                         key={i}
                         fridgeArr={props.fridgeArr}
@@ -35,7 +34,6 @@ const SearchRecipes = props => {
                         currentUserId={props.currentUserId}
                         saved={true}
                       />
-                    </div>
                   );
                 } else {
                   return (

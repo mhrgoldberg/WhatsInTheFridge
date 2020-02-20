@@ -12,6 +12,18 @@ const queries = {
       currentUser @client
     }
   `,
+  HEALTH_MODAL: gql`
+    query HealthModalStatus {
+      healthModal @client
+    }
+  `,
+  INGREDIENT_MODAL_STATUS: gql`
+    query IngredientsModalStatus {
+      ingredientsModal @client
+      ingredientsData @client
+    }
+  `,
+
   GET_CURRENT_USER_INGREDIENTS: gql`
     query User($id: ID!) {
       user(_id: $id) {

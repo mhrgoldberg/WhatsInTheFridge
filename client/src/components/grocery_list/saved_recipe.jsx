@@ -18,8 +18,8 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-info">{calories} Calories</div>
         <div className="recipe-info">{recipe.servings} Servings</div>
         {/* <div className="recipe-url-button"> */}
-          <a href={recipe.recipeURL}>
-            <button>Link to Recipe</button>
+          <a href={recipe.recipeURL} target="_blank">
+            <button>Full Recipe</button>
           </a>
         {/* </div> */}
         <div className="recipe-url-button">

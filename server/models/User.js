@@ -51,11 +51,8 @@ UserSchema.statics.removeRecipe = (args) => {
         }
       })
       // delete user.savedRecipes[recipeIdx];
-      console.log(user.savedRecipes);
       user.savedRecipes.splice(recipeIdx, 1);
-      console.log(user.savedRecipes);
       user.save();
-      console.log(user);
       return args;
     })
 }
@@ -86,9 +83,7 @@ UserSchema.statics.removeIngredient = (args) => {
         }
       })
       
-      console.log(user.savedIngredients);
       user.savedIngredients.splice(ingredientIdx, 1);
-      console.log(user.savedIngredients);
       return user.save();
       // console.log(user);
       // return args;

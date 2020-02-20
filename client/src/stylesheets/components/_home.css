@@ -11,12 +11,13 @@
 }
 
 .main-outer-container {
-  display: flex;
-  flex-direction: row;
   margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   height: calc( 100% - 80px);
   min-height: 600px;
   min-width: 1165px;
+  max-width: 1600px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

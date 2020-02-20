@@ -66,6 +66,14 @@ const mutations = {
       }
     }
   `,
+  TOGGLE_INGREDIENTS_MODAL: gql`
+    mutation ToggleIngredientsModal( $ingredientsData: [String]!) {
+      toggleIngredientsModal(ingredientsData: $ingredientsData) {
+        ingredientsModal @client
+        ingredientsData @client
+      }
+    }
+  `,
 };
 
 export default mutations;

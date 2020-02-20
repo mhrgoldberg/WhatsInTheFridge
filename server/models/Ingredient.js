@@ -7,13 +7,13 @@ const IngredientSchema = new Schema({
     required: true
   },
   quantity: {
-    type: Number
+    type: mongoose.Decimal128
   },
   measureLabel: {
     type: String
   },
   calories: {
-    type: Number
+    type: mongoose.Decimal128
   }
 });
 

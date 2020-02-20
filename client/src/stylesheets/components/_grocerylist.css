@@ -10,6 +10,7 @@
   border-radius: 5px;
   /* box-shadow: 0px 8px 24px rgba(13,13,18,0.50); */
   /* margin-bottom: 20px; */
+  padding-bottom: 10px;
 }
 
 
@@ -31,6 +32,7 @@
 
 .ingredient-quantity {
   padding-left: 5px;
+  padding-bottom: 3px;
   color: white;
   font-size: 12px;
   font-family: 'Josefin Slab', serif;
@@ -38,14 +40,19 @@
 
 .ingredient-string {
   padding-left: 5px;
+  max-width: 150px;
   color: white;
   /* text-align: center; */
   font-size: 18px;
   font-family: 'Josefin Slab', serif;
 }
+#empty{
+  color: red;
+  text-align: center;
+}
 
 #grocery-list{
-  max-height: calc(90vh - 250px);
+  max-height: calc(100vh - 170px);
   min-height: 275px;
   overflow: scroll;
   align-items: center;

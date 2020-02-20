@@ -17,7 +17,7 @@
   height: calc( 100% - 80px);
   min-height: 600px;
   min-width: 1165px;
-  max-width: 1600px;
+  max-width: 1500px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

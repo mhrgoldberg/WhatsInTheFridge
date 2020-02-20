@@ -87,7 +87,7 @@ class SearchRecipeItem extends Component {
         name: data.text,
         quantity: 1,
         measureLabel: "",
-        calories: "",
+        calories: 0,
         userId: this.props.currentUserId
       };
     }

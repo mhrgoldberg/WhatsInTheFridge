@@ -87,7 +87,7 @@ class SearchAdvancedForm extends React.Component {
               <div className="as-dropdown">
                 <label>
                   Calories <i className="fas fa-caret-down"></i>
-                  <br />
+                  
                   <div className="as-dropdown-content">
                     <input
                       type="number"
@@ -97,7 +97,6 @@ class SearchAdvancedForm extends React.Component {
                       value={this.props.searchOptions.calMin}
                       onChange={this.handleInputChange}
                     />
-                    <br />
                     <input
                       type="number"
                       name="calMax"
@@ -122,7 +121,6 @@ class SearchAdvancedForm extends React.Component {
                       value={this.props.searchOptions.exclude1}
                       onChange={this.handleInputChange}
                     />
-                    <br />
                     <input
                       type="text"
                       placeholder="Item 2"
@@ -130,7 +128,6 @@ class SearchAdvancedForm extends React.Component {
                       value={this.props.searchOptions.exclude2}
                       onChange={this.handleInputChange}
                     />
-                    <br />
                     <input
                       type="text"
                       placeholder="Item 3"
@@ -138,7 +135,6 @@ class SearchAdvancedForm extends React.Component {
                       value={this.props.searchOptions.exclude3}
                       onChange={this.handleInputChange}
                     />
-                    <br />
                     <input
                       type="text"
                       placeholder="Item 4"

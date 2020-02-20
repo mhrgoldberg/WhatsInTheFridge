@@ -111,7 +111,9 @@ class SearchRecipeItem extends Component {
                     variables: { id: this.props.currentUserId }
                   }
                 ];
-              }}
+              }
+            }
+            awaitRefetchQueries={false}
             >
               {(saveIngredient, { data }) => (
                 <button

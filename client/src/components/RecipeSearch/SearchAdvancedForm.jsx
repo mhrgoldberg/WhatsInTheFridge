@@ -189,7 +189,7 @@ class SearchAdvancedForm extends React.Component {
                 onChange={this.handleInputChange}
                 defaultValue={this.props.searchOptions.dietChoice}
               >
-                <option value=""></option>
+                <option value="">--</option>
                 <option value="balanced">Balanced</option>
                 <option value="high-protein">High Protein</option>
                 <option value="low-fat">Low Fat</option>

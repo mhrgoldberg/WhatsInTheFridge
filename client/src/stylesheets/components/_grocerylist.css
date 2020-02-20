@@ -49,6 +49,8 @@
 #empty{
   color: red;
   text-align: center;
+  max-width: none;
+  font-size: 1.3rem;
 }
 
 #grocery-list{

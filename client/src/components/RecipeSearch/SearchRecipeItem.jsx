@@ -29,6 +29,7 @@ class SearchRecipeItem extends Component {
         userId: this.props.currentUserId
       },
       saved: this.props.saved,
+      saving: false,
       ingredientsPullUp: false,
       healthPullUp: false
     };
@@ -70,17 +71,21 @@ class SearchRecipeItem extends Component {
       `https://api.edamam.com/api/food-database/parser?ingr=${ingredientText}&app_id=abcacee6&app_key=7f1529c466e340c215eea57a940d63c6`
     );
     const data = await apiCall.json();
-    const parsed = data.parsed[0];
-    if (Boolean(parsed)) {
-      // need condition that will retry if it does not get the correct result back
-      const dataParsed = {
-        name: Boolean(parsed.food) ? parsed.food.label : "",
-        quantity: Boolean(parsed.quantity) ? parsed.quantity : 1,
-        measureLabel: Boolean(parsed.measure) ? parsed.measure.label : "",
-        calories: Boolean(parsed.food.nutrients.ENERC_KCAL) ? parsed.food.nutrients.ENERC_KCAL : 0,
-        userId: this.props.currentUserId
-      };
-      return dataParsed;
+    if (data.parsed) {
+      const parsed = data.parsed[0];
+      if (Boolean(parsed)) {
+        // need condition that will retry if it does not get the correct result back
+        const dataParsed = {
+          name: Boolean(parsed.food) ? parsed.food.label : "",
+          quantity: Boolean(parsed.quantity) ? parsed.quantity : 1,
+          measureLabel: Boolean(parsed.measure) ? parsed.measure.label : "",
+          calories: Boolean(parsed.food.nutrients.ENERC_KCAL)
+            ? parsed.food.nutrients.ENERC_KCAL
+            : 0,
+          userId: this.props.currentUserId
+        };
+        return dataParsed;
+      }
     }
     if (data.text) {
       return {
@@ -98,10 +103,12 @@ class SearchRecipeItem extends Component {
 
     if (this.state.saved === true) {
       savedButton = <h5 className="saved">Recipe Saved</h5>;
+    } else if (this.state.saving) {
+      savedButton = <h5 className="saved">Saving...</h5>;
     } else {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>
-          {(saveRecipe, { data }) => (
+          {(saveRecipe, { loading, error }) => (
             <Mutation
               mutation={SAVE_INGREDIENT}
               refetchQueries={() => {
@@ -111,14 +118,15 @@ class SearchRecipeItem extends Component {
                     variables: { id: this.props.currentUserId }
                   }
                 ];
-              }
-            }
-            awaitRefetchQueries={false}
+              }}
+              awaitRefetchQueries={false}
             >
-              {(saveIngredient, { data }) => (
+              {/* {error && <p>Error :( Please try again</p>} */}
+              {(saveIngredient, { loading, error }) => (
                 <button
                   id="sr-save-recipe-btn"
                   onClick={() => {
+                    this.setState({ saving: true });
                     saveRecipe({
                       variables: this.state.variables,
                       refetchQueries: [
@@ -128,18 +136,22 @@ class SearchRecipeItem extends Component {
                         }
                       ]
                     })
+                      .catch(err => console.log(err))
                       .then(recipe => {
                         return this.parseMultipleIngredients(
                           recipe.data.saveRecipe.ingredients
                         );
                       })
-                      .then( ingredients => {
-                        ingredients.forEach(async ingredient =>
-                          await saveIngredient({ variables: ingredient })
+                      .then(ingredients => {
+                        ingredients.forEach(
+                          async ingredient =>
+                            await saveIngredient({ variables: ingredient })
                         );
                       })
-                      .then(() => this.setState({ saved: true }))
-                      .catch(err => console.log(err));
+                      .catch(err => console.log(err))
+                      .then(() =>
+                        this.setState({ saving: false, saved: true })
+                      );
                   }}
                 >
                   Save Recipe

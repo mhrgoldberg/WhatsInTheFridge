@@ -6,6 +6,7 @@ import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import { SyncLoader } from "react-spinners";
+import AnimateHeight from 'react-animate-height';
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -20,6 +21,7 @@ class SearchAdvanced extends Component {
       loading: true,
       spinner: false,
       advancedOptions: false,
+      height: 0,
       searchOptions: {
         calMin: "",
         calMax: "",
@@ -172,6 +174,7 @@ class SearchAdvanced extends Component {
   };
 
   render() {
+    const { height } = this.state;
     let instructions = (
       <React.Fragment>
         <div className="instructions-form">
@@ -193,24 +196,30 @@ class SearchAdvanced extends Component {
     );
 
     let form = (
-      <React.Fragment>
+      <AnimateHeight
+      duration={ 250 }
+      height={ height }
+      animateOpacity={ true }
+    >
         <SearchAdvancedForm
           updateSearchAdvancedState={this.updateSearchAdvancedState}
           searchOptions={this.state.searchOptions}
           getRecipe={this.getRecipe}
         />
-      </React.Fragment>
+
+      </AnimateHeight>
     );
 
-    if (!this.state.advancedOptions) {
-      form = null;
-    }
+    // if (!this.state.advancedOptions) {
+    //   form = null;
+    // }
     let searchResult;
     let localRecipeArr = this.props.RecipeArr || [];
     if (localRecipeArr.length > 0) {
       // this.setState({ advancedOptions: false });
       instructions = null;
       searchResult = (
+        
         <SearchRecipes
           fridgeArr={this.props.fridgeArr}
           recipes={localRecipeArr}
@@ -224,7 +233,7 @@ class SearchAdvanced extends Component {
       <button
         className="as-search-btn"
         onClick={() => {
-          this.setState({ advancedOptions: false, spinner: true });
+          this.setState({ height: 0, spinner: true });
           this.getRecipe(this.state.searchOptions);
         }}
       >
@@ -244,7 +253,8 @@ class SearchAdvanced extends Component {
       <h2
         onClick={() =>
           this.setState({
-            advancedOptions: !this.state.advancedOptions
+            advancedOptions: !this.state.advancedOptions,
+            height: height === 0 ? 'auto' : 0,
           })
         }
       >
@@ -252,13 +262,13 @@ class SearchAdvanced extends Component {
       </h2>
     );
 
-    if (this.state.advancedOptions === true) {
+    if (height === 'auto') {
       searchResult = null;
       advancedSearchToggle = (
         <h2
           onClick={() =>
             this.setState({
-              advancedOptions: !this.state.advancedOptions
+              height: height === 0 ? 'auto' : 0,
             })
           }
         >

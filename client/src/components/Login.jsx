@@ -29,6 +29,8 @@ class Login extends Component {
   }
 
   render() {
+    let errors; 
+    let errorMessage; 
     return (
       <div>
         <Mutation
@@ -50,7 +52,11 @@ class Login extends Component {
                       username: this.state.username,
                       password: this.state.password
                     }
-                  });
+                  }).catch(err => {
+                    errorMessage = err.message.split(":");
+                    errors = <p className="login-errors">{errorMessage[errorMessage.length-1]}</p>;
+                    console.log(err);
+                  })
                 }}
               >
                 <input
@@ -66,6 +72,7 @@ class Login extends Component {
                 />
                 <button type="submit">Log In</button>
               </form>
+              {errors}
             </div>
           )}
         </Mutation>
@@ -76,6 +83,7 @@ class Login extends Component {
             const { token } = data.login;
             localStorage.setItem("auth-token", token);
             this.props.history.push("/");
+            console.log(data);
           }}
           update={(client, data) => this.updateCache(client, data)}
         >

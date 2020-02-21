@@ -30,6 +30,8 @@ class Register extends Component {
   }
 
   render() {
+    let errors;
+    let errorMessage; 
     return (
       <Mutation
         mutation={REGISTER_USER}
@@ -50,6 +52,10 @@ class Register extends Component {
                     username: this.state.username,
                     password: this.state.password
                   }
+                }).catch(err => {
+                  errorMessage = err.message.split(":");
+                  errors = <p className="login-errors">{errorMessage[errorMessage.length - 1]}</p>;
+                  console.log(err);
                 });
               }}
             >
@@ -66,6 +72,7 @@ class Register extends Component {
               />
               <button type="submit">Register</button>
             </form>
+            {errors}
           </div>
         )}
       </Mutation>

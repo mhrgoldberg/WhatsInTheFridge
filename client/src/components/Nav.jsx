@@ -83,6 +83,7 @@ class Nav extends Component {
                         {this.state.loggingIn && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
                         {this.state.loggingIn && (
                           <Modal
+                            className="modal"
                             title="Log In"
                             canCancel
                             canConfirm
@@ -107,6 +108,7 @@ class Nav extends Component {
                         {this.state.signingUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
                         {this.state.signingUp && (
                           <Modal
+                            className="modal"
                             title="Register"
                             canCancel
                             canConfirm

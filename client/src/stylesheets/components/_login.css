@@ -1,0 +1,11 @@
+.login-errors {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    background: indianred;
+    margin-top: 10px;
+    color: white;
+    border-radius: 5px;
+}

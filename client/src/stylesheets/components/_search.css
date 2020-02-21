@@ -196,6 +196,7 @@
   width: 100px;
   color: white;
   padding: 3px 6px;
+  margin: 2px;
 }
 
 .as-dropdown-content input::placeholder { 

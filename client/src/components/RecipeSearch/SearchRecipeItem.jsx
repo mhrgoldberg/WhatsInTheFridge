@@ -180,6 +180,7 @@ class SearchRecipeItem extends Component {
               )}
               {this.state.ingredientsPullUp && (
                 <Modal
+                  className="modal-sr"
                   title="Ingredients"
                   canCancel
                   canConfirm
@@ -212,6 +213,7 @@ class SearchRecipeItem extends Component {
               )}
               {this.state.healthPullUp && (
                 <Modal
+                  className="modal-sr"
                   title="Health Facts"
                   canCancel
                   canConfirm

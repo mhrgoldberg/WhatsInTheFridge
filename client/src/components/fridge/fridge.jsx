@@ -26,7 +26,7 @@ class Fridge extends React.Component {
 
   apiCall = async userInput => {
     const api_call = await fetch(
-      `http://api.edamam.com/auto-complete?q=${userInput}&limit=5&app_id=${API_ID}&app_key=${API_KEY}`
+      `https://api.edamam.com/auto-complete?q=${userInput}&limit=5&app_id=${API_ID}&app_key=${API_KEY}`
     );
     const filteredSuggestions = await api_call.json();
 

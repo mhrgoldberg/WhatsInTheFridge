@@ -3,7 +3,7 @@
   height: 100vh;
   min-width: 850px;
   min-height: 600px;
-  background: url(../../images/poster-fridge.jpeg);
+  background: url(../../images/poster-fridge-with-text.jpg);
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;

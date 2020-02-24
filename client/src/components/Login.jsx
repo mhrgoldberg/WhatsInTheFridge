@@ -42,7 +42,7 @@ class Login extends Component {
           }}
           update={(client, data) => this.updateCache(client, data)}
         >
-          {loginUser => (
+          {(loginUser, { loading, error }) => (
             <div>
               <form
                 onSubmit={e => {
@@ -52,13 +52,15 @@ class Login extends Component {
                       username: this.state.username,
                       password: this.state.password
                     }
-                  }).catch(err => {
-                    errorMessage = err.message.split(":");
-                    errors = <p className="login-errors">{errorMessage[errorMessage.length-1]}</p>;
-                    console.log(err);
+                  })
+                  .catch(err => {
+                    // errorMessage = err.message.split(":");
+                    // errors = <p className="login-errors">{errorMessage[errorMessage.length-1]}</p>;
+                    // console.log(err);
                   })
                 }}
               >
+                {error && <p className="login-errors">{error.message.split(":")[error.message.split(":").length-1]}</p>}
                 <input
                   value={this.state.username}
                   onChange={this.update("username")}

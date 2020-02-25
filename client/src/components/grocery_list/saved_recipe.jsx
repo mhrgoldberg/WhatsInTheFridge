@@ -26,8 +26,8 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <Mutation mutation={REMOVE_RECIPE}
         refetchQueries={() => {
           return [{
-             query: GET_CURRENT_USER_RECIPES,
-             variables: { id: currentUserId }
+            query: GET_CURRENT_USER_RECIPES,
+            variables: { id: currentUserId }
           }];
         }}>
           {(removeRecipe) => (

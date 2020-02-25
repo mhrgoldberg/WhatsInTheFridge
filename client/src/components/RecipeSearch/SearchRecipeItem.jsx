@@ -110,17 +110,7 @@ class SearchRecipeItem extends Component {
         <Mutation mutation={SAVE_RECIPE}>
           {(saveRecipe, { loading, error }) => (
             <Mutation
-              mutation={SAVE_INGREDIENT}
-              refetchQueries={() => {
-                return [
-                  {
-                    query: GET_CURRENT_USER_INGREDIENTS,
-                    variables: { id: this.props.currentUserId }
-                  }
-                ];
-              }}
-              awaitRefetchQueries={false}
-            >
+              mutation={SAVE_INGREDIENT}>
               {/* {error && <p>Error :( Please try again</p>} */}
               {(saveIngredient, { loading, error }) => (
                 <button
@@ -132,6 +122,7 @@ class SearchRecipeItem extends Component {
                       refetchQueries: [
                         {
                           query: GET_CURRENT_USER_RECIPES,
+                          options: { pollInterval: 50 },
                           variables: { id: this.props.currentUserId }
                         }
                       ]

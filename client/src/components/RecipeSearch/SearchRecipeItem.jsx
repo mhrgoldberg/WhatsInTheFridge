@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { Mutation, ApolloConsumer } from "react-apollo";
+import { Mutation } from "react-apollo";
 // import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
-import Modal from "../Modal.jsx";
-import Backdrop from "../Backdrop.jsx";
-// import NutritionBarChart from "../nutrition_bar_chart";
-// import Fridge from "../fridge/fridge";
 const { SAVE_RECIPE, SAVE_INGREDIENT, TOGGLE_INGREDIENTS_MODAL } = mutations;
 const { GET_CURRENT_USER_INGREDIENTS, GET_CURRENT_USER_RECIPES } = queries;
 
@@ -91,7 +87,7 @@ class SearchRecipeItem extends Component {
     } = this.props;
 
     if (this.state.saved === true) {
-      savedButton = <h5 className="saved">Recipe Saved</h5>;
+      savedButton = <h5 className="saved">Recipe Saved <i className="fas fa-bookmark"></i></h5>;
     } else if (this.state.saving) {
       savedButton = <h5 className="saved">Saving...</h5>;
     } else {
@@ -142,7 +138,7 @@ class SearchRecipeItem extends Component {
                       );
                   }}
                 >
-                  Save Recipe
+                  Save Recipe <i className="far fa-bookmark"></i>
                 </button>
               )}
             </Mutation>
@@ -160,16 +156,16 @@ class SearchRecipeItem extends Component {
           <div className="search-result-buttons">
             <div>{savedButton}</div>
             <a href={this.props.recipe.recipe.url} target="_blank">
-              <button>Full Recipe</button>
+              <button>Full Recipe <i className="fas fa-external-link-alt"></i></button>
             </a>
             <React.Fragment>
               <div className="modal-control">
                 <button
                   id="sr-modal-button"
                   className="btn"
-                  onClick={() => {openIngredientModal(this.props.recipe.recipe.ingredients)}}
+                  onClick={() => {openIngredientModal(this.props.recipe.recipe.ingredientLines)}}
                 >
-                  Ingredients
+                  Ingredients <i className="fas fa-list-ul"></i>
                 </button>
               </div>
             </React.Fragment>
@@ -192,7 +188,7 @@ class SearchRecipeItem extends Component {
                     })
                   }
                 >
-                  Health Facts
+                  Health Data <i className="fas fa-chart-pie"></i>
                 </button>
               </div>
             </React.Fragment>

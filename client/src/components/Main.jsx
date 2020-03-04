@@ -1,18 +1,16 @@
 import Grocery from "./grocery_list/grocery.jsx";
 import React, { Component } from "react";
 import Nav from "./Nav.jsx";
-// import Search from "./RecipeSearch/Search";
 import Modal from "./Modal";
 import Backdrop from "./Backdrop";
 import Fridge from "./fridge/fridge";
 import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
-import { Query, ApolloConsumer } from "react-apollo";
+import { ApolloConsumer } from "react-apollo";
 import queries from "./../graphql/queries";
 import SavedRecipesList from "./grocery_list/saved_recipes";
 import Loading from "./loading.jsx";
 import NutritionPieChart from "./nutrition_pie_chart";
 const { CURRENT_USER, HEALTH_MODAL_STATUS } = queries;
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -162,7 +160,7 @@ class Main extends Component {
           >
             <ul className="ingredient-modal">
               {this.state.ingredientsArr.map((ingredient, i) => {
-                return <li key={i}>{ingredient.text}</li>;
+                return <li key={i}>{ingredient}</li>;
               })}
             </ul>
           </Modal>

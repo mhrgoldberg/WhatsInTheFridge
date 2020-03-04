@@ -39,6 +39,11 @@
   color: rgba(0,74,3);
   background: white;
   border: 1px solid rgba(0,74,3);
+  width: 120px;
+}
+
+#sr-save-recipe-btn i {
+  color: rgba(0,74,3);
 }
 
 .search-result-buttons div button {
@@ -51,6 +56,7 @@
   color: white;
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
+  width: 120px;
 }
 
 
@@ -401,12 +407,12 @@
   color: rgba(0,74,3);
 }
 
-i {
+/* i {
   border: solid rgba(0,74,3);
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 3px;
-}
+} */
 
 .down {
   transform: rotate(45deg);
@@ -559,7 +565,7 @@ i {
   align-items: center;
   justify-content: center;
   height: 30px;
-  width: 100px;
+  width: 120px;
   padding: 2px;
   margin: 5px;
   border-radius: 5px;
@@ -569,5 +575,14 @@ i {
 }
 
 .search-result-info {
-  max-width: 500px;
+  min-width: 300px;
+}
+
+.search-result i {
+  padding-left: 10px;
+  color: white;
+}
+
+#sr-modal-button {
+  width: 120px;
 }

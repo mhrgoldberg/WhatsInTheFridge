@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, ApolloConsumer } from "react-apollo";
 // import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import Modal from "../Modal.jsx";
 import Backdrop from "../Backdrop.jsx";
-import NutritionPieChart from "../nutrition_pie_chart";
 // import NutritionBarChart from "../nutrition_bar_chart";
 // import Fridge from "../fridge/fridge";
-const { SAVE_RECIPE, SAVE_INGREDIENT } = mutations;
+const { SAVE_RECIPE, SAVE_INGREDIENT, TOGGLE_INGREDIENTS_MODAL } = mutations;
 const { GET_CURRENT_USER_INGREDIENTS, GET_CURRENT_USER_RECIPES } = queries;
 
 class SearchRecipeItem extends Component {
@@ -30,23 +29,9 @@ class SearchRecipeItem extends Component {
       },
       saved: this.props.saved,
       saving: false,
-      ingredientsPullUp: false,
-      healthPullUp: false
     };
     this.parseMultipleIngredients = this.parseMultipleIngredients.bind(this);
   }
-
-  startModalHandler = () => {
-    this.setState({ ingredientsPullUp: true });
-  };
-
-  modalCancelHandler = () => {
-    this.setState({ ingredientsPullUp: false, healthPullUp: false });
-  };
-
-  startHealthHandler = () => {
-    this.setState({ healthPullUp: true });
-  };
 
   parseMultipleIngredients = async ingredientLines => {
     const res = [];
@@ -100,6 +85,10 @@ class SearchRecipeItem extends Component {
 
   render() {
     let savedButton;
+    const {
+      openIngredientModal,
+      openHealthFactsModal,
+    } = this.props;
 
     if (this.state.saved === true) {
       savedButton = <h5 className="saved">Recipe Saved</h5>;
@@ -119,7 +108,6 @@ class SearchRecipeItem extends Component {
                   }
                 ];
               }}
-              awaitRefetchQueries={false}
             >
               {/* {error && <p>Error :( Please try again</p>} */}
               {(saveIngredient, { loading, error }) => (
@@ -175,72 +163,34 @@ class SearchRecipeItem extends Component {
               <button>Full Recipe</button>
             </a>
             <React.Fragment>
-              {this.state.ingredientsPullUp && (
-                <Backdrop canCancel onCancel={this.modalCancelHandler} />
-              )}
-              {this.state.ingredientsPullUp && (
-                <Modal
-                  className="modal-sr"
-                  title="Ingredients"
-                  canCancel
-                  canConfirm
-                  onCancel={this.modalCancelHandler}
-                  onConfirm={this.startModalHandler}
-                  submit="Ingredients"
-                >
-                  <ul className="ingredient-modal">
-                    {this.props.recipe.recipe.ingredients.map(
-                      (ingredient, i) => {
-                        return <li key={i}>{ingredient.text}</li>;
-                      }
-                    )}
-                  </ul>
-                </Modal>
-              )}
               <div className="modal-control">
                 <button
                   id="sr-modal-button"
                   className="btn"
-                  onClick={this.startModalHandler}
+                  onClick={() => {openIngredientModal(this.props.recipe.recipe.ingredients)}}
                 >
                   Ingredients
                 </button>
               </div>
             </React.Fragment>
             <React.Fragment>
-              {this.state.healthPullUp && (
-                <Backdrop canCancel onCancel={this.modalCancelHandler} />
-              )}
-              {this.state.healthPullUp && (
-                <Modal
-                  className="modal-sr"
-                  title="Health Facts"
-                  canCancel
-                  canConfirm
-                  onCancel={this.modalCancelHandler}
-                  onConfirm={this.startHealthHandler}
-                  submit="Health"
-                >
-                  <ul className="health-modal">
-                    <li>
-                      Calories: {this.props.recipe.recipe.calories.toFixed(0)}
-                    </li>
-                    <li>Servings: {this.props.recipe.recipe.yield}</li>
-                  </ul>
-                  <NutritionPieChart
-                    carb={this.props.recipe.recipe.digest[0].total.toFixed(2)}
-                    protein={this.props.recipe.recipe.digest[1].total.toFixed(
-                      2
-                    )}
-                    fat={this.props.recipe.recipe.digest[2].total.toFixed(2)}
-                  />
-                </Modal>
-              )}
+             
               <div className="modal-control">
                 <button
                   className="btn"
                   id="sr-modal-button"
-                  onClick={this.startHealthHandler}
+                  onClick={() =>
+                    openHealthFactsModal({
+                      carb: this.props.recipe.recipe.digest[0].total.toFixed(2),
+                      protein: this.props.recipe.recipe.digest[1].total.toFixed(
+                        2
+                      ),
+                      fat: this.props.recipe.recipe.digest[2].total.toFixed(2),
+                      calories: this.props.recipe.recipe.calories.toFixed(0),
+                      servings: this.props.recipe.recipe.yield
+
+                    })
+                  }
                 >
                   Health Facts
                 </button>

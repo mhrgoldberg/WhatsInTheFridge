@@ -1,15 +1,16 @@
 import Grocery from "./grocery_list/grocery.jsx";
 import React, { Component } from "react";
 import Nav from "./Nav.jsx";
-import Search from "./RecipeSearch/Search";
+// import Search from "./RecipeSearch/Search";
+import Modal from "./Modal";
+import Backdrop from "./Backdrop";
 import Fridge from "./fridge/fridge";
 import SearchAdvanced from "./RecipeSearch/SearchAdvanced";
-// import Modal from "./Modal.jsx";
-// import Backdrop from "./Backdrop.jsx";
 import { Query, ApolloConsumer } from "react-apollo";
 import queries from "./../graphql/queries";
 import SavedRecipesList from "./grocery_list/saved_recipes";
 import Loading from "./loading.jsx";
+import NutritionPieChart from "./nutrition_pie_chart";
 const { CURRENT_USER, HEALTH_MODAL_STATUS } = queries;
 
 class Main extends Component {
@@ -20,13 +21,37 @@ class Main extends Component {
       recipesArr: [],
       search: true,
       savedReicpes: false,
-      currentUserId: null
+      currentUserId: null,
+      ingredientModal: false,
+      healthFactsModal: false,
+      ingredientsArr: [],
+      healthFactsData: {}
     };
     this.addToFridge = this.addToFridge.bind(this);
     this.addToRecipes = this.addToRecipes.bind(this);
     this.handleSearchToggle = this.handleSearchToggle.bind(this);
     this.handleASToggle = this.handleASToggle.bind(this);
     this.deleteFridgeItem = this.deleteFridgeItem.bind(this);
+    this.openIngredientModal = this.openIngredientModal.bind(this);
+    this.openHealthFactsModal = this.openHealthFactsModal.bind(this);
+    this.closeIngredientModal = this.closeIngredientModal.bind(this);
+    this.closeHealthFactsModal = this.closeHealthFactsModal.bind(this);
+  }
+
+  openIngredientModal(ingredientsArr) {
+    this.setState({ ingredientsArr, ingredientModal: true });
+  }
+
+  closeIngredientModal() {
+    this.setState({ ingredientModal: false });
+  }
+
+  openHealthFactsModal(healthFactsData) {
+    this.setState({ healthFactsData, healthFactsModal: true });
+  }
+
+  closeHealthFactsModal() {
+    this.setState({ healthFactsModal: false });
   }
 
   addToFridge(item) {
@@ -71,6 +96,7 @@ class Main extends Component {
 
   render() {
     let midDiv;
+
     if (this.state.search) {
       midDiv = (
         <div className="main-inner-container2">
@@ -79,6 +105,8 @@ class Main extends Component {
             <h1 onClick={this.handleASToggle}>Saved Recipes</h1>
           </div>
           <SearchAdvanced
+            openIngredientModal={this.openIngredientModal}
+            openHealthFactsModal={this.openHealthFactsModal}
             RecipeArr={this.state.recipesArr}
             addToRecipes={this.addToRecipes}
             fridgeArr={this.state.fridgeArr}
@@ -120,6 +148,49 @@ class Main extends Component {
     return (
       <div className="main-container">
         <Nav />
+        {this.state.ingredientModal && (
+          <Backdrop canCancel onCancel={this.closeIngredientModal} />
+        )}
+        {this.state.ingredientModal && (
+          <Modal
+            className="modal"
+            title="Ingredients"
+            canCancel
+            canConfirm
+            onCancel={this.closeIngredientModal}
+            submit="Ingredients"
+          >
+            <ul className="ingredient-modal">
+              {this.state.ingredientsArr.map((ingredient, i) => {
+                return <li key={i}>{ingredient.text}</li>;
+              })}
+            </ul>
+          </Modal>
+        )}
+        {this.state.healthFactsModal && (
+          <Backdrop canCancel onCancel={this.closeHealthFactsModal} />
+        )}
+        {this.state.healthFactsModal && (
+          <Modal
+            className="modal"
+            title="Health Facts"
+            canCancel
+            canConfirm
+            onCancel={this.closeHealthFactsModal}
+            submit="Health"
+          >
+            <ul className="health-modal">
+              <li>Calories: {this.state.healthFactsData.calories}</li>
+              <li>Servings: {this.state.healthFactsData.servings}</li>
+            </ul>
+            <NutritionPieChart
+              carb={this.state.healthFactsData.carb}
+              protein={this.state.healthFactsData.protein}
+              fat={this.state.healthFactsData.fat}
+            />
+          </Modal>
+        )}
+
         <div className="main-outer-container">
           <div className="main-inner-container1">
             <Fridge

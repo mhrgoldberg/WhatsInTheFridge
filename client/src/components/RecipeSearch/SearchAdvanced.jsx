@@ -221,6 +221,8 @@ class SearchAdvanced extends Component {
       searchResult = (
         
         <SearchRecipes
+          openIngredientModal={this.props.openIngredientModal}
+          openHealthFactsModal={this.props.openHealthFactsModal}
           fridgeArr={this.props.fridgeArr}
           recipes={localRecipeArr}
           currentUserId={this.state.currentUserId}

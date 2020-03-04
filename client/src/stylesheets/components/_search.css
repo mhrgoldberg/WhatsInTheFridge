@@ -471,6 +471,36 @@ i {
   color: #008000;
 }
 
+.saved-recipe-li .fas {
+  border: none;
+  color: #008000;
+  padding: 5  px;
+}
+
+.saved-recipe-li button {
+  width: 120px;
+  /* width: 30px; */
+  font-size:  25px;
+  background: none;
+}
+
+
+#icon-btn{
+  width: 30px;
+  font-size:  25px;
+  background: none;
+}
+
+.reset-margin-padding{
+  margin: 0;
+  padding: 0;
+}
+
+.buttons-parallel{
+  display: flex;
+  flex-direction: row;
+}
+
 .instructions-form {
   display: flex;
   flex-direction: row;

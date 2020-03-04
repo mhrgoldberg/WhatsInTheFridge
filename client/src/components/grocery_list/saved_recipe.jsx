@@ -18,8 +18,9 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-info">{calories} Calories</div>
         <div className="recipe-info">{recipe.servings} Servings</div>
         {/* <div className="recipe-url-button"> */}
-          <a href={recipe.recipeURL} target="_blank">
-            <button>Full Recipe</button>
+        <div className="buttons-parallel">
+          <a href={recipe.recipeURL} className="reset-margin-padding" target="_blank">
+            <button id="icon-btn"><i className="fas fa-external-link-alt"></i></button>
           </a>
         {/* </div> */}
         <div className="recipe-url-button">
@@ -31,7 +32,7 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
           }];
         }}>
           {(removeRecipe) => (
-            <button
+            <button id="icon-btn"
               onClick={() => {
                 removeRecipe({
                   variables: {
@@ -43,10 +44,11 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
                 }))
               }}
             >
-              Remove
+              <i className="fas fa-trash"></i>
         </button>
           )}
         </Mutation>
+        </div>
         </div>
       </div>  
       <div className="strong-side">

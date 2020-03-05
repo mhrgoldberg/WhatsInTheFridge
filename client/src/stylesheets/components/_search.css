@@ -641,7 +641,8 @@
 
 #sr-modal-button:hover{
   color: #f3ce08;
-  border: 1px solid rgba(0,74,3); 
+  border: 1px solid rgba(0,74,3);
+  transform: scale(1.0); 
 }
 #sr-modal-button:hover i{
   color: #f3ce08;

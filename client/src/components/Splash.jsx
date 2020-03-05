@@ -5,14 +5,6 @@ class Splash extends React.Component {
     return (
       <div className="splash-container">
         <Nav />
-        <a
-          href="https://github.com/mitchellreiss/WhatsInTheFridge"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="git-link"
-        >
-          <i className="fab fa-github"></i>
-        </a>
       </div>
     );
   }

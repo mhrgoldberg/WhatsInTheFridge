@@ -17,13 +17,11 @@ class Nav extends Component {
     super(props);
 
     this.state = {
-      loggingIn: false, 
+      loggingIn: false,
       signingUp: false
     };
-  
   }
 
-  
   startLoginHandler = () => {
     this.setState({ loggingIn: true });
   };
@@ -33,12 +31,12 @@ class Nav extends Component {
   };
 
   startSignupHandler = () => {
-    this.setState({ signingUp: true})
-  }
+    this.setState({ signingUp: true });
+  };
 
   modalSignupHandler = () => {
-    this.setState({ signingUp: false})
-  }
+    this.setState({ signingUp: false });
+  };
 
   modalCancelHandler = () => {
     this.setState({ loggingIn: false, signingUp: false });
@@ -53,12 +51,13 @@ class Nav extends Component {
               if (data.isLoggedIn) {
                 return (
                   <div className="navbar">
-                    <div className="l-side-navbar" >
+                    <div className="l-side-navbar">
                       <div className="logo-in"></div>
                       <h1 className="title-in">What's in the Fridge?</h1>
                     </div>
                     <div className="nav-buttons">
-                      <button className="logout"
+                      <button
+                        className="logout"
                         onClick={e => {
                           e.preventDefault();
                           localStorage.removeItem("auth-token");
@@ -80,7 +79,12 @@ class Nav extends Component {
                     </div>
                     <div className="nav-buttons">
                       <React.Fragment>
-                        {this.state.loggingIn && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+                        {this.state.loggingIn && (
+                          <Backdrop
+                            canCancel
+                            onCancel={this.modalCancelHandler}
+                          />
+                        )}
                         {this.state.loggingIn && (
                           <Modal
                             className="modal"
@@ -105,7 +109,12 @@ class Nav extends Component {
                         </div>
                       </React.Fragment>
                       <React.Fragment>
-                        {this.state.signingUp && <Backdrop canCancel onCancel={this.modalCancelHandler} />}
+                        {this.state.signingUp && (
+                          <Backdrop
+                            canCancel
+                            onCancel={this.modalCancelHandler}
+                          />
+                        )}
                         {this.state.signingUp && (
                           <Modal
                             className="modal"
@@ -129,6 +138,14 @@ class Nav extends Component {
                           </button>
                         </div>
                       </React.Fragment>
+                      <a
+                        href="https://github.com/mitchellreiss/WhatsInTheFridge"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="git-link"
+                      >
+                        <i className="fab fa-github-square"></i>
+                      </a>
                     </div>
                   </div>
                 );

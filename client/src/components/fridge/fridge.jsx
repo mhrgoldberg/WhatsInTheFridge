@@ -82,7 +82,7 @@ class Fridge extends React.Component {
     }
     // User pressed the down arrow, increment the index
     else if (e.keyCode === 40) {
-      if (selectionIndex - 1 === filteredSuggestions.length) {
+      if (selectionIndex + 1 === filteredSuggestions.length) {
         return;
       }
 

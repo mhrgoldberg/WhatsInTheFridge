@@ -15,15 +15,15 @@ const SavedRecipesList = ({ currentUserId }) => (
         let recipeArr = data.user.savedRecipes;
 
         if (recipeArr.length === 0) return <li id="empty">No saved recipes yet!</li>;
+        
 
-
-        return <div>
+        return <React.Fragment>
           {recipeArr.map((recipe, i) => {
             return (
               <SavedRecipe key={i} recipe={recipe}  currentUserId={currentUserId} />
             )
           })}
-        </div>
+        </React.Fragment>
 
         
       }}

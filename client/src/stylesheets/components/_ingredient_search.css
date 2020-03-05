@@ -82,6 +82,7 @@
   height: 16px;
   color: white;
   font-family: 'Josefin Slab', serif;
+  transition: background-color 0.4s ease;
 }
 
 .suggestion-active,

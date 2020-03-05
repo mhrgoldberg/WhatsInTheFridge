@@ -4,6 +4,7 @@ import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import SearchForm from "./SearchForm";
 import SearchRecipes from "./SearchRecipes";
+import Loading from "../loading";
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -79,7 +80,7 @@ class Search extends Component {
               });
             });
           }
-          if (this.state.loading) return <h2>Loading...</h2>;
+          if (this.state.loading) return <Loading />;
           return (
             <div className="Search">
               <div className="search-top">

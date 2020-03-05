@@ -40,12 +40,13 @@
   background: white;
   border: 1px solid rgba(0,74,3);
   width: 120px;
+  transition: all 0.3s ease;
 }
 
 #sr-save-recipe-btn:hover {
   color: #f3ce08;
   border: 1px solid #f3ce08;
-  background-color: rgba(110, 110, 110, 0.829);
+  background-color: rgba(0,74,3, 0.6);
 }
 #sr-save-recipe-btn:hover i {
   color: #f3ce08;
@@ -53,17 +54,22 @@
 
 #sr-save-recipe-btn i {
   color: rgba(0,74,3);
+  transition: all 0.3s ease;
 }
 
 .search-result-buttons div button {
   color: white;
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
+  transition: all 0.3s ease;
 }
 .search-result-buttons a button:hover {
   color: #f3ce08;
 }
 
+.search-result-buttons i {
+  transition: all 0.3s ease;
+}
 .search-result-buttons a button:hover i {
   color: #f3ce08;
 }
@@ -73,6 +79,7 @@
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
   width: 120px;
+  transition: all 0.3s ease;
 }
 
 
@@ -371,12 +378,16 @@
   margin: auto 0;
   font-size: 1.2em;
   /* box-shadow: 0px 2px 12px 0px rgba(13,13,18,0.50); */
+  transition: all 0.3s ease;
 }
 
 .as-search-btn:hover {
   color: #f3ce08;
 }
 
+.as-search-btn i {
+  transition: all 0.3s ease;
+}
 .as-search-btn:hover i {
   color: #f3ce08;
 }
@@ -527,7 +538,7 @@
 }
 
 #icon-btn:hover i{
-  transform: scale(1.1); 
+  transform: scale(1.2); 
 }
 
 .reset-margin-padding{

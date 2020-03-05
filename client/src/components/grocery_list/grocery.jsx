@@ -3,6 +3,7 @@ import { Query, ApolloConsumer } from "react-apollo";
 import GroceryList from "./grocery_list";
 import SavedRecipesList from "./saved_recipes";
 import queries from "../../graphql/queries";
+import Loading from "../loading"
 const { CURRENT_USER, GET_CURRENT_USER_INGREDIENTS, GET_INGREDIENT } = queries;
 
 class Grocery extends Component {
@@ -26,7 +27,7 @@ class Grocery extends Component {
               });
             });
           }
-          if (this.state.loading) return <p>loading...</p>;
+          if (this.state.loading) return <Loading />;
           return (
             <div className="grocery-container">
               <GroceryList currentUserId={this.state.currentUserId} />

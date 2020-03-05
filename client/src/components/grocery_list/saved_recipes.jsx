@@ -14,7 +14,7 @@ const SavedRecipesList = ({ currentUserId }) => (
         if (error) return <li>Error</li>
         let recipeArr = data.user.savedRecipes;
 
-        if (recipeArr.length === 0) return <li>No saved recipes!</li>;
+        if (recipeArr.length === 0) return <li id="empty">No saved recipes yet!</li>;
 
 
         return <div>

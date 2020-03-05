@@ -171,7 +171,7 @@ class Main extends Component {
         {this.state.healthFactsModal && (
           <Modal
             className="modal"
-            title="Health Facts"
+            title="Health Data"
             canCancel
             canConfirm
             onCancel={this.closeHealthFactsModal}
@@ -197,7 +197,7 @@ class Main extends Component {
               addToFridge={this.addToFridge}
             />
           </div>
-
+          
           {midDiv}
           <div className="main-inner-container3">
             <div className="grocery-chalkboard">

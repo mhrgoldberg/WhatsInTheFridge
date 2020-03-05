@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
 import SearchAdvancedForm from "./SearchAdvancedForm";
 import SearchRecipes from "./SearchRecipes";
 import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
-import { SyncLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners";
 import AnimateHeight from 'react-animate-height';
+import Loading from "../loading"
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -245,7 +245,7 @@ class SearchAdvanced extends Component {
     if (this.state.spinner) {
       button = (
         <div className="as-search-btn-loading">
-          <SyncLoader color={"#f3ce08"} size={10} />
+          <ScaleLoader height={20} color={"#f3ce08"} />
         </div>
       );
     }
@@ -288,7 +288,7 @@ class SearchAdvanced extends Component {
               });
             });
           }
-          if (this.state.loading) return <h2>Loading...</h2>;
+          if (this.state.loading) return <Loading />;
           return (
             <div className="Search">
               <header className="Search-header"></header>

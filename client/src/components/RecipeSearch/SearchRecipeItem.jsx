@@ -89,7 +89,7 @@ class SearchRecipeItem extends Component {
     if (this.state.saved === true) {
       savedButton = <h5 className="saved">Recipe Saved <i className="fas fa-bookmark"></i></h5>;
     } else if (this.state.saving) {
-      savedButton = <h5 className="saved">Saving...</h5>;
+      savedButton = <h5 className="saved">adding ingredients to grocery list...</h5>;
     } else {
       savedButton = (
         <Mutation mutation={SAVE_RECIPE}>

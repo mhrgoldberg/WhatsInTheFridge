@@ -19,7 +19,7 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-info">{recipe.servings} Servings</div>
         {/* <div className="recipe-url-button"> */}
         <div className="buttons-parallel">
-          <a href={recipe.recipeURL} className="reset-margin-padding" target="_blank">
+          <a href={recipe.recipeURL} className="reset-margin-padding" target="_blank" rel="noopener noreferrer">
             <button id="icon-btn"><i className="fas fa-external-link-alt"></i></button>
           </a>
         {/* </div> */}

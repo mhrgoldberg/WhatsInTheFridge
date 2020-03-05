@@ -155,7 +155,7 @@ class SearchRecipeItem extends Component {
           </div>
           <div className="search-result-buttons">
             <div>{savedButton}</div>
-            <a href={this.props.recipe.recipe.url} target="_blank">
+            <a href={this.props.recipe.recipe.url} target="_blank" rel="noopener noreferrer">
               <button>Full Recipe <i className="fas fa-external-link-alt"></i></button>
             </a>
             <React.Fragment>

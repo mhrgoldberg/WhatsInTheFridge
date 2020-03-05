@@ -21,3 +21,13 @@
   border: 1px solid rgba(110, 110, 110, 0.829);
 }
 
+.git-link{
+  font-size: 71px;
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  cursor: pointer;
+}
+.git-link i{
+  cursor: pointer;
+}

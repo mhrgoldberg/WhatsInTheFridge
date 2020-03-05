@@ -19,7 +19,7 @@
 
 .search-result-title h4 {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.3rem;
   color: rgba(0,74,3)
 }
 
@@ -42,6 +42,15 @@
   width: 120px;
 }
 
+#sr-save-recipe-btn:hover {
+  color: #f3ce08;
+  border: 1px solid #f3ce08;
+  background-color: rgba(110, 110, 110, 0.829);
+}
+#sr-save-recipe-btn:hover i {
+  color: #f3ce08;
+}
+
 #sr-save-recipe-btn i {
   color: rgba(0,74,3);
 }
@@ -50,6 +59,13 @@
   color: white;
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
+}
+.search-result-buttons a button:hover {
+  color: #f3ce08;
+}
+
+.search-result-buttons a button:hover i {
+  color: #f3ce08;
 }
 
 .search-result-buttons a button {
@@ -356,6 +372,14 @@
   /* box-shadow: 0px 2px 12px 0px rgba(13,13,18,0.50); */
 }
 
+.as-search-btn:hover {
+  color: #f3ce08;
+}
+
+.as-search-btn:hover i {
+  color: #f3ce08;
+}
+
 .as-search-btn-loading{
   color: white;
   background: rgba(0,74,3);
@@ -497,6 +521,14 @@
   background: none;
 }
 
+#icon-btn i {
+  transition: all .2s ease-in-out; 
+}
+
+#icon-btn:hover i{
+  transform: scale(1.1); 
+}
+
 .reset-margin-padding{
   margin: 0;
   padding: 0;
@@ -543,13 +575,17 @@
 
 #instructions-list li {
   font-size: 0.78em;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media only screen and (max-width: 1300px) {
   .counter-image{
     height: 250px;
   }
-
+  #instructions-list li {
+  font-size: 0.76em;
+  font-family: 'Roboto', sans-serif;
+}
 }
 
 .search-bar{
@@ -576,6 +612,10 @@
 
 .search-result-info {
   min-width: 300px;
+  height: 214px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .search-result i {
@@ -585,4 +625,11 @@
 
 #sr-modal-button {
   width: 120px;
+}
+
+#sr-modal-button:hover{
+  color: #f3ce08;
+}
+#sr-modal-button:hover i{
+  color: #f3ce08;
 }

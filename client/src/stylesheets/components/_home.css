@@ -67,9 +67,10 @@
   color: rgba(0,74,3);
   margin: auto;
   cursor: pointer;
+  transition: all .2s ease-in-out; 
 }
 
-.main-inner-container2-headings .selected {
+.main-inner-container2-headings #selected {
   border-bottom: 5px solid rgba(0,74,3);
 }
 
@@ -84,6 +85,16 @@
   margin: auto;
   text-align: center;
   color: rgba(0,74,3);
+  
+}
+.main-inner-container2-headings h1:hover {
+  /* color: #008000; */
+  transform: scale(1.1); 
+}
+#selected:hover{
+  color:  rgba(0,74,3);
+  cursor: default;
+  transform: none;
 }
 
 .fridge-instructions-2 {

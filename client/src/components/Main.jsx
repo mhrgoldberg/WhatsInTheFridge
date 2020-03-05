@@ -99,7 +99,7 @@ class Main extends Component {
       midDiv = (
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
-            <h1 className="selected">Search</h1>
+            <h1 id="selected">Search</h1>
             <h1 onClick={this.handleASToggle}>Saved Recipes</h1>
           </div>
           <SearchAdvanced
@@ -118,7 +118,7 @@ class Main extends Component {
         <div className="main-inner-container2">
           <div className="main-inner-container2-headings">
             <h1 onClick={this.handleASToggle}>Search</h1>
-            <h1 className="selected">Saved Recipes</h1>
+            <h1 id="selected">Saved Recipes</h1>
           </div>
           {/* component here */}
           <ApolloConsumer>

@@ -69,5 +69,11 @@
 
 .modal__content button {
   margin: auto;
+  color: #f3ce08;
+  border: 1px solid rgba(110, 110, 110, 0.829);
+}
+
+.modal__content button:hover {
+  border: 1px solid #f3ce08;
 }
 

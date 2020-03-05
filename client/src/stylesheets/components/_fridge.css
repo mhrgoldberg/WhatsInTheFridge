@@ -42,6 +42,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   min-height: 250px;
   height: fit-content;
   border: 5px solid rgba(0,74,3);

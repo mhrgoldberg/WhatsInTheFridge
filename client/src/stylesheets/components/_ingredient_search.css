@@ -11,6 +11,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   /* border-radius: 5px; */
 
 }
@@ -30,6 +31,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   /* border-radius: 5px; */
 
 }
@@ -55,6 +57,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
 }
 
 .suggestions {
@@ -70,6 +73,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   width: 215px;
 }
 

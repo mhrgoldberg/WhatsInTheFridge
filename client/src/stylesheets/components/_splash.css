@@ -12,3 +12,12 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.modal-control button:hover{
+  border: 1px solid #f3ce08;
+}
+.modal-control button {
+  color: #f3ce08;
+  border: 1px solid rgba(110, 110, 110, 0.829);
+}
+

@@ -245,7 +245,7 @@ class SearchAdvanced extends Component {
     if (this.state.spinner) {
       button = (
         <div className="as-search-btn-loading">
-          <SyncLoader color={"white"} size={10} />
+          <SyncLoader color={"#f3ce08"} size={10} />
         </div>
       );
     }

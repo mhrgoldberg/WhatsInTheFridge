@@ -41,10 +41,12 @@
 .logout {
   color: white;
   background-color: transparent;
+  transition: all 0.3s ease;
 }
 .logout:hover{
   color: white;
   background-color: transparent;
+  transform: scale(1.2);
 }
 
 

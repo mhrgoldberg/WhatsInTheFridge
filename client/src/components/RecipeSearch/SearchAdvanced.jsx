@@ -238,7 +238,7 @@ class SearchAdvanced extends Component {
           this.getRecipe(this.state.searchOptions);
         }}
       >
-        Search
+        <i className="fas fa-search"></i>Search
       </button>
     );
 

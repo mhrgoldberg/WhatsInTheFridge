@@ -40,6 +40,8 @@
   background: white;
   border: 1px solid rgba(0,74,3);
   width: 120px;
+  display: flex;
+  justify-content: space-around;
   transition: all 0.3s ease;
 }
 
@@ -79,6 +81,8 @@
   background: rgba(0,74,3);
   border: 1px solid rgba(0,74,3);
   width: 120px;
+  display: flex;
+  justify-content: space-around;
   transition: all 0.3s ease;
 }
 
@@ -377,7 +381,8 @@
   border: 1px solid rgba(0,74,3);
   margin: auto 0;
   font-size: 1.2em;
-  /* box-shadow: 0px 2px 12px 0px rgba(13,13,18,0.50); */
+  display: flex;
+  justify-content: space-around;
   transition: all 0.3s ease;
 }
 
@@ -637,6 +642,8 @@
 
 #sr-modal-button {
   width: 120px;
+  display: flex;
+  justify-content: space-around;
 }
 
 #sr-modal-button:hover{
@@ -646,4 +653,9 @@
 }
 #sr-modal-button:hover i{
   color: #f3ce08;
+}
+
+.fa-search {
+  /* padding-left: 5px; */
+  color: white;
 }

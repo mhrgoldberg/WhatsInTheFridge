@@ -48,12 +48,22 @@
   font-family: 'Josefin Slab', serif;
 }
 #empty{
-  color: red;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.432);
+  border-radius: 5px;
   text-align: center;
   max-width: none;
   font-size: 1.3rem;
-  padding-top: 10px;
+  padding: 10px;
+  width: 80%;
+  margin: 0 auto;
 }
+
+/* #empty-grocery{
+  background-color: none;
+  width: 100%;
+  color: red;
+} */
 
 #grocery-list{
   max-height: calc(100vh - 247px);

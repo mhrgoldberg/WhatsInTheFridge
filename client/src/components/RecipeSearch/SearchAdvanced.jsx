@@ -20,6 +20,7 @@ class SearchAdvanced extends Component {
       currentUserId: null,
       loading: true,
       spinner: false,
+      firstSearch: false,
       advancedOptions: false,
       height: 0,
       searchOptions: {
@@ -146,7 +147,7 @@ class SearchAdvanced extends Component {
       const parsedData = this.checkRecipeArr(data.hits);
       
       await this.props.addToRecipes(parsedData);
-      this.setState({ spinner: false });
+      this.setState({ spinner: false, firstSearch: true });
     } catch (err) {
       this.setState({ error: "No results found" });
     }
@@ -228,6 +229,13 @@ class SearchAdvanced extends Component {
           error={this.state.error}
         />
       );
+    }
+
+    if (localRecipeArr.length === 0 && this.state.firstSearch) {
+      instructions = null;
+      searchResult = (
+        <div id="empty">No recipes found. Please try a differnet combination of fridge items or advanced search options.</div>
+      )
     }
 
     let button = (

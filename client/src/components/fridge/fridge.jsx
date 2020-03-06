@@ -158,6 +158,8 @@ class Fridge extends React.Component {
           {ingredientInput}
           {suggestionsListComponent}
         </div>
+{/* 
+        <i class="fas fa-exclamation-triangle"></i> */}
       </div>
     );
   }

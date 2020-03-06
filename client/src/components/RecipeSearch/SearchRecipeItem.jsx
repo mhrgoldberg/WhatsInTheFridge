@@ -111,6 +111,7 @@ class SearchRecipeItem extends Component {
                   id="sr-save-recipe-btn"
                   onClick={() => {
                     this.setState({ saving: true });
+                    debugger;
                     saveRecipe({
                       variables: this.state.variables,
                       refetchQueries: [

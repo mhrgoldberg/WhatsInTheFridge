@@ -141,15 +141,13 @@ class SearchAdvanced extends Component {
         `https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
       );  
       const data = await api_call.json();
-      if (data.hits.length === 0) {
-        this.setState({ error: "No results found" });
-      }
+ 
       const parsedData = this.checkRecipeArr(data.hits);
       
       await this.props.addToRecipes(parsedData);
       this.setState({ spinner: false, firstSearch: true });
     } catch (err) {
-      this.setState({ error: "No results found" });
+      // this.setState({ error: "No results found" });
     }
   };
 

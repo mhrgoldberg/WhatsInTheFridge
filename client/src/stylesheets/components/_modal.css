@@ -21,6 +21,7 @@
 .modal__header {
   margin: 0; 
   font-size: 1.25rem;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .modal__header h1 {

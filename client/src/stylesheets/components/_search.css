@@ -118,12 +118,25 @@
 }
 
 .health-modal {
-  list-style: circle;
-  margin-left: 10px;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #57A8A3;
+  font-c: white;
+  /* width: 57%; */
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 20px;
+  margin-right: 82px;
 }
 
 .health-modal > li {
-  padding-bottom: 5px;
+  color: white;
+  font: 18px;
+  font-weight: 600;
 }
 
 

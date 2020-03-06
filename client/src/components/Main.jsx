@@ -177,15 +177,15 @@ class Main extends Component {
             onCancel={this.closeHealthFactsModal}
             submit="Health"
           >
-            <ul className="health-modal">
-              <li>Calories: {this.state.healthFactsData.calories}</li>
-              <li>Servings: {this.state.healthFactsData.servings}</li>
-            </ul>
             <NutritionPieChart
               carb={this.state.healthFactsData.carb}
               protein={this.state.healthFactsData.protein}
               fat={this.state.healthFactsData.fat}
             />
+            <ul className="health-modal">
+              <li>Calories: {this.state.healthFactsData.calories}</li>
+              <li>Servings: {this.state.healthFactsData.servings}</li>
+            </ul>
           </Modal>
         )}
 

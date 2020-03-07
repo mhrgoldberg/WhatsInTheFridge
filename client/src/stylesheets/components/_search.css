@@ -689,6 +689,7 @@
   width: 120px;
   display: flex;
   justify-content: space-around;
+  padding: 5px;
 }
 
 #sr-modal-button:hover{

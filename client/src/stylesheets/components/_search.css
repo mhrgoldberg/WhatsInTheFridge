@@ -100,7 +100,7 @@
 }
 
 .search-recipes-list {
-  height: calc(100vh - 325px);
+  height: calc(100vh - 331px);
   min-height: 420px;
   overflow: scroll;
   align-items: center;

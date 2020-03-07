@@ -124,8 +124,8 @@
 
 .ingredient-modal li{
   text-decoration: none;
-  color: #000;
   padding: 5px;
+  color: rgb(88, 88, 88);
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -136,7 +136,7 @@
 }
 
 .ingredient-modal li:hover {
-  color: #008000;
+  color: #000;
 }
 
 /* 
@@ -452,7 +452,7 @@
   justify-content: center;
   height: 30px;
   width: 100px;
-  padding: 2px;
+  padding: 5px;
   /* margin: 5px; */
   border-radius: 5px;
   font-size: 15px;

@@ -21,6 +21,7 @@
   color: #f3ce08;
   border: 1px solid rgba(110, 110, 110, 0.829);
   transition: all 0.3s ease;
+  padding: 2px;
 }
 
 .git-link{

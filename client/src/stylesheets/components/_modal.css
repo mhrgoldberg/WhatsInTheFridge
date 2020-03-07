@@ -72,6 +72,7 @@
   margin: auto;
   color: #f3ce08;
   border: 1px solid rgba(110, 110, 110, 0.829);
+  padding: 2px; 
 }
 
 .modal__content button:hover {

@@ -108,6 +108,38 @@
   flex-direction: column;
 }
 
+
+.ingredient-modal {
+  list-style-type: none;
+}
+
+.ingredient-modal li {
+  font: 200 20px/1.5;
+  border-bottom: 1px solid #ccc;
+}
+
+.ingredient-modal li:last-child {
+  border: none;
+}
+
+.ingredient-modal li{
+  text-decoration: none;
+  color: #000;
+  padding: 5px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  display: block;
+  width: 100%;
+}
+
+.ingredient-modal li:hover {
+  color: #008000;
+}
+
+/* 
 .ingredient-modal {
   list-style: circle;
   margin-left: 10px;
@@ -115,7 +147,7 @@
 
 .ingredient-modal > li {
   padding-bottom: 5px;
-}
+} */
 
 .health-modal {
   list-style: none;
@@ -124,7 +156,7 @@
   justify-content: space-evenly;
   align-items: center;
   background: #57A8A3;
-  font-c: white;
+  color: white;
   /* width: 57%; */
   height: 40px;
   border-radius: 5px;

@@ -111,7 +111,6 @@ class SearchRecipeItem extends Component {
                   id="sr-save-recipe-btn"
                   onClick={() => {
                     this.setState({ saving: true });
-                    debugger;
                     saveRecipe({
                       variables: this.state.variables,
                       refetchQueries: [
@@ -121,7 +120,7 @@ class SearchRecipeItem extends Component {
                         }
                       ]
                     })
-                      .catch(err => console.log(err))
+                      // .catch(err => console.log(err))
                       .then(recipe => {
                         return this.parseMultipleIngredients(
                           recipe.data.saveRecipe.ingredients
@@ -133,7 +132,7 @@ class SearchRecipeItem extends Component {
                             await saveIngredient({ variables: ingredient })
                         );
                       })
-                      .catch(err => console.log(err))
+                      // .catch(err => console.log(err))
                       .then(() =>
                         this.setState({ saving: false, saved: true })
                       );

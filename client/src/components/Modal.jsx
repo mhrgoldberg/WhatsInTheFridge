@@ -8,7 +8,6 @@ const modal = props => (
     </section>
     <section className="modal__actions">
       {props.canCancel && <button id="modal-button" className="btn" onClick={props.onCancel}>X</button> }
-      {/* {props.canConfirm && <button className="btn" onClick={props.onConfirm}>{props.submit}</button> } */}
     </section>
   </div>
 );

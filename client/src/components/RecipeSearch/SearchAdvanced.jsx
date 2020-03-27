@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
 import SearchAdvancedForm from "./SearchAdvancedForm";
 import SearchRecipes from "./SearchRecipes";
 import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
-import { SyncLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners";
 import AnimateHeight from 'react-animate-height';
+import Loading from "../loading"
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -20,6 +20,7 @@ class SearchAdvanced extends Component {
       currentUserId: null,
       loading: true,
       spinner: false,
+      firstSearch: false,
       advancedOptions: false,
       height: 0,
       searchOptions: {
@@ -140,12 +141,13 @@ class SearchAdvanced extends Component {
         `https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
       );  
       const data = await api_call.json();
+ 
       const parsedData = this.checkRecipeArr(data.hits);
       
       await this.props.addToRecipes(parsedData);
-      this.setState({ spinner: false });
+      this.setState({ spinner: false, firstSearch: true });
     } catch (err) {
-      this.setState({ error: "No results found" });
+      // this.setState({ error: "No results found" });
     }
   };
 
@@ -209,10 +211,6 @@ class SearchAdvanced extends Component {
 
       </AnimateHeight>
     );
-
-    // if (!this.state.advancedOptions) {
-    //   form = null;
-    // }
     let searchResult;
     let localRecipeArr = this.props.RecipeArr || [];
     if (localRecipeArr.length > 0) {
@@ -221,12 +219,21 @@ class SearchAdvanced extends Component {
       searchResult = (
         
         <SearchRecipes
+          openIngredientModal={this.props.openIngredientModal}
+          openHealthFactsModal={this.props.openHealthFactsModal}
           fridgeArr={this.props.fridgeArr}
           recipes={localRecipeArr}
           currentUserId={this.state.currentUserId}
           error={this.state.error}
         />
       );
+    }
+
+    if (localRecipeArr.length === 0 && this.state.firstSearch) {
+      instructions = null;
+      searchResult = (
+        <div id="empty">No recipes found. Please try a differnet combination of fridge items or advanced search options.</div>
+      )
     }
 
     let button = (
@@ -237,14 +244,14 @@ class SearchAdvanced extends Component {
           this.getRecipe(this.state.searchOptions);
         }}
       >
-        Search
+        <i className="fas fa-search"></i>Search
       </button>
     );
 
     if (this.state.spinner) {
       button = (
         <div className="as-search-btn-loading">
-          <SyncLoader color={"white"} size={10} />
+          <ScaleLoader height={20} color={"#f3ce08"} />
         </div>
       );
     }
@@ -287,7 +294,7 @@ class SearchAdvanced extends Component {
               });
             });
           }
-          if (this.state.loading) return <h2>Loading...</h2>;
+          if (this.state.loading) return <Loading />;
           return (
             <div className="Search">
               <header className="Search-header"></header>

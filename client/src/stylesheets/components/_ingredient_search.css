@@ -11,6 +11,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   /* border-radius: 5px; */
 
 }
@@ -30,6 +31,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   /* border-radius: 5px; */
 
 }
@@ -55,6 +57,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
 }
 
 .suggestions {
@@ -62,7 +65,7 @@
   border-top-width: 0;
   list-style: none;
   margin-top: 0;
-  max-height: 125px;
+  max-height: 133px;
   overflow-y: auto;
   padding-left: 0;
   background: url(../../images/blackboard.jpg);
@@ -70,6 +73,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-position: center;
   width: 215px;
 }
 
@@ -78,6 +82,7 @@
   height: 16px;
   color: white;
   font-family: 'Josefin Slab', serif;
+  transition: background-color 0.4s ease;
 }
 
 .suggestion-active,

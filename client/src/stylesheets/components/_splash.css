@@ -12,3 +12,37 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.modal-control button:hover{
+  border: 1px solid #f3ce08;
+  transform: scale(1.1); 
+}
+.modal-control button {
+  color: #f3ce08;
+  border: 1px solid rgba(110, 110, 110, 0.829);
+  transition: all 0.3s ease;
+  padding: 2px;
+}
+
+.git-link{
+  font-size: 41.2px;
+  /* position: absolute; */
+  /* bottom: 1rem;
+  left: 2rem; */
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+}
+.git-link i{
+  cursor: pointer;
+  color: #f3ce08bf;
+  transition: all .2s ease-in-out; 
+
+}
+.git-link:hover i{
+  cursor: pointer;
+  transform: scale(1.1); 
+  color: #f3ce08;
+
+}

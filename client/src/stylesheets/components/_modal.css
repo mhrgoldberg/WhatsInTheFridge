@@ -5,10 +5,11 @@
   left: 50%;
   top: 50%;
   margin-left: -250px;
-  margin-top: -200px;
+  margin-top: -250px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 5px;
   background: white;
+  z-index: 50;
 }
 
 .modal__header {
@@ -20,6 +21,7 @@
 .modal__header {
   margin: 0; 
   font-size: 1.25rem;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .modal__header h1 {
@@ -27,7 +29,7 @@
 }
 
 .modal__content {
-  padding: 1rem;
+  padding: 2rem;
   padding-bottom: 0rem;
 }
 
@@ -68,17 +70,12 @@
 
 .modal__content button {
   margin: auto;
+  color: #f3ce08;
+  border: 1px solid rgba(110, 110, 110, 0.829);
+  padding: 2px; 
 }
 
-.modal-sr {
-  /* height: 300px; */
-  position: fixed;
-  /* left: 20%; */
-  top: 20%; 
-  /* margin-left: -250px;
-  margin-top: -125px; */
-  margin: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 5px;
-  background: white;
+.modal__content button:hover {
+  border: 1px solid #f3ce08;
 }
+

@@ -31,7 +31,7 @@ class Fridge extends React.Component {
     const filteredSuggestions = await api_call.json();
 
     this.setState({
-      selectionIndex: 0,
+      selectionIndex: -1,
       filteredSuggestions,
       showSuggestions: true
     });
@@ -40,7 +40,7 @@ class Fridge extends React.Component {
   onClick = e => {
     // Update the user input and reset the rest of the state
     this.setState({
-      selectionIndex: 0,
+      selectionIndex: -1,
       filteredSuggestions: [],
       showSuggestions: false,
       userInput: e.currentTarget.innerText
@@ -74,7 +74,7 @@ class Fridge extends React.Component {
     }
     // User pressed the up arrow, decrement the index
     else if (e.keyCode === 38) {
-      if (selectionIndex === 0) {
+      if (selectionIndex === -1) {
         return;
       }
 
@@ -82,7 +82,7 @@ class Fridge extends React.Component {
     }
     // User pressed the down arrow, increment the index
     else if (e.keyCode === 40) {
-      if (selectionIndex - 1 === filteredSuggestions.length) {
+      if (selectionIndex + 1 === filteredSuggestions.length) {
         return;
       }
 
@@ -158,6 +158,8 @@ class Fridge extends React.Component {
           {ingredientInput}
           {suggestionsListComponent}
         </div>
+{/* 
+        <i class="fas fa-exclamation-triangle"></i> */}
       </div>
     );
   }

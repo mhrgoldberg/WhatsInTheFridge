@@ -24,21 +24,25 @@ const SearchRecipes = props => {
           recipes.map((recipe, i) => (recipeNames[i] = recipe.name));
           return (
             <div>
-              {props.recipes.map((recipe, i) => {
+              {props.recipes.map((recipe) => {
                 if (recipeNames.includes(recipe.recipe.label)) {
                   return (
-                      <SearchRecipeItem
-                        key={i}
-                        fridgeArr={props.fridgeArr}
-                        recipe={recipe}
-                        currentUserId={props.currentUserId}
-                        saved={true}
-                      />
+                    <SearchRecipeItem
+                      openIngredientModal={props.openIngredientModal}
+                      openHealthFactsModal={props.openHealthFactsModal}
+                      key={recipe.recipe.url}
+                      fridgeArr={props.fridgeArr}
+                      recipe={recipe}
+                      currentUserId={props.currentUserId}
+                      saved={true}
+                    />
                   );
                 } else {
                   return (
                     <SearchRecipeItem
-                      key={i}
+                      openIngredientModal={props.openIngredientModal}
+                      openHealthFactsModal={props.openHealthFactsModal}
+                      key={recipe.recipe.url}
                       fridgeArr={props.fridgeArr}
                       recipe={recipe}
                       currentUserId={props.currentUserId}

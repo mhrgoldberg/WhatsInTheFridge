@@ -67,8 +67,8 @@ const mutations = {
     }
   `,
   TOGGLE_INGREDIENTS_MODAL: gql`
-    mutation ToggleIngredientsModal( $ingredientsData: [String]!) {
-      toggleIngredientsModal(ingredientsData: $ingredientsData) {
+    mutation toggleIngredientsModal( $ingredientsData: [String]!) {
+      toggleIngredientsModal(ingredientsData: $ingredientsData) @client {
         ingredientsModal @client
         ingredientsData @client
       }

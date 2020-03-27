@@ -18,7 +18,7 @@ class GroceryList extends React.Component {
           if (loading) return <Loading />;
           if (error) return <li>Error</li>;
           let ingredientArr = data.user.savedIngredients;
-          if (ingredientArr.length === 0) return <div className="ingredient-string" id="empty">Empty!</div>;
+          if (ingredientArr.length === 0) return <div className="ingredient-string" id="empty">No groceries to buy!</div>;
           return (
             <ul id="grocery-list">
               {ingredientArr.map((ingredient, i) => {
@@ -58,7 +58,6 @@ class GroceryList extends React.Component {
                               });
                             }}
                           >
-                            x
                           </div>
                         )}
                       </Mutation>

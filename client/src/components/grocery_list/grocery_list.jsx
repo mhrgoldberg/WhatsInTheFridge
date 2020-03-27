@@ -1,6 +1,5 @@
 import React from "react";
 import { Query, Mutation } from "react-apollo";
-// import NutritionPieChart from "../nutrition_pie_chart";
 import queries from "../../graphql/queries";
 import mutations from "../../graphql/mutations";
 import Loading from "../loading";
@@ -34,10 +33,6 @@ class GroceryList extends React.Component {
                           {ingredient.name}
                         </div>
                       </div>
-                      {/* <div className="ingredient-chart"> */}
-                      {/* <button id="ingredient-nutrition-button">Health Facts</button> */}
-                      {/* <NutritionPieChart carbs={ingredient.carbsTotal} proteins={ingredient.proteinTotal} fats={ingredient.fatsTotal} /> */}
-                      {/* </div> */}
                       <Mutation
                         mutation={REMOVE_INGREDIENT}
                         refetchQueries={() => {

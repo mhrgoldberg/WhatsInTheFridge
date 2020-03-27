@@ -95,9 +95,6 @@ class SearchRecipeItem extends Component {
         <Mutation mutation={SAVE_RECIPE}>
           {(saveRecipe, { loading, error }) => (
             <Mutation
-<<<<<<< HEAD
-              mutation={SAVE_INGREDIENT}>
-=======
               mutation={SAVE_INGREDIENT}
               refetchQueries={() => {
                 return [
@@ -108,7 +105,6 @@ class SearchRecipeItem extends Component {
                 ];
               }}
             >
->>>>>>> master
               {/* {error && <p>Error :( Please try again</p>} */}
               {(saveIngredient, { loading, error }) => (
                 <button

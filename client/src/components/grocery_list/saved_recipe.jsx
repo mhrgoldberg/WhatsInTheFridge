@@ -1,7 +1,6 @@
 import React from "react";
 import NutritionPieChart from "../nutrition_pie_chart";
 import { Mutation } from "react-apollo";
-// import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 
@@ -17,12 +16,10 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-name">{recipe.name}</div>
         <div className="recipe-info">{calories} Calories</div>
         <div className="recipe-info">{recipe.servings} Servings</div>
-        {/* <div className="recipe-url-button"> */}
         <div className="buttons-parallel">
           <a href={recipe.recipeURL} className="reset-margin-padding" target="_blank" rel="noopener noreferrer">
             <button id="icon-btn"><i className="fas fa-external-link-alt"></i></button>
           </a>
-        {/* </div> */}
         <div className="recipe-url-button">
         <Mutation mutation={REMOVE_RECIPE}
         refetchQueries={() => {
@@ -55,13 +52,8 @@ const SavedRecipe = ({ recipe, currentUserId }) => {
         <div className="recipe-image">
           <img src={recipe.imageURL} />
         </div>
-      </div>
-      {/* <div>
-        <NutritionPieChart carbs={recipe.carbsTotal} proteins={recipe.proteinTotal} fats={recipe.fatsTotal} />
-      </div> */}
-    
+      </div> 
   </li>
-
 };
 
 export default SavedRecipe;

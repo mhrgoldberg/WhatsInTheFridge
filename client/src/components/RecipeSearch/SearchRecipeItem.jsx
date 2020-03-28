@@ -79,6 +79,22 @@ class SearchRecipeItem extends Component {
     }
   };
 
+  saveRecipe = recipe => {
+    return (
+      <Mutation mutation={SAVE_RECIPE}>
+        {(saveRecipe, { loading, error }) => (
+          saveRecipe({
+            variables: this.state.variables
+          })
+          .catch(err => console.log(err))
+          .then(recipe => {
+            return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)
+          })
+        )}
+      </Mutation>
+    )
+  }
+
   render() {
     let savedButton;
     const {
@@ -89,62 +105,62 @@ class SearchRecipeItem extends Component {
     if (this.state.saved === true) {
       savedButton = <h5 className="saved">Recipe Saved <i className="fas fa-bookmark"></i></h5>;
     } else if (this.state.saving) {
-      savedButton = <h5 className="saved">adding ingredients to grocery list...</h5>;
+      savedButton = <h5 className="saved">Updating grocery list...</h5>;
     } else {
       savedButton = (
-        <Mutation mutation={SAVE_RECIPE}>
-          {(saveRecipe, { loading, error }) => (
-            <Mutation
-              mutation={SAVE_INGREDIENT}
-              refetchQueries={() => {
-                return [
-                  {
-                    query: GET_CURRENT_USER_INGREDIENTS,
-                    variables: { id: this.props.currentUserId }
-                  }
-                ];
-              }}
-            >
-              {/* {error && <p>Error :( Please try again</p>} */}
-              {(saveIngredient, { loading, error }) => (
-                <button
-                  id="sr-save-recipe-btn"
-                  onClick={() => {
-                    this.setState({ saving: true });
-                    saveRecipe({
-                      variables: this.state.variables,
-                      refetchQueries: [
-                        {
-                          query: GET_CURRENT_USER_RECIPES,
-                          options: { pollInterval: 50 },
-                          variables: { id: this.props.currentUserId }
-                        }
-                      ]
-                    })
-                      // .catch(err => console.log(err))
-                      .then(recipe => {
-                        return this.parseMultipleIngredients(
-                          recipe.data.saveRecipe.ingredients
-                        );
-                      })
-                      .then(ingredients => {
-                        ingredients.forEach(
-                          async ingredient =>
-                            await saveIngredient({ variables: ingredient })
-                        );
-                      })
-                      // .catch(err => console.log(err))
-                      .then(() =>
-                        this.setState({ saving: false, saved: true })
-                      );
-                  }}
-                >
-                  Save Recipe <i className="far fa-bookmark"></i>
-                </button>
-              )}
-            </Mutation>
-          )}
-        </Mutation>
+        // <Mutation mutation={SAVE_RECIPE}>
+        //   {(saveRecipe, { loading, error }) => (
+        //     <Mutation
+        //       mutation={SAVE_INGREDIENT}
+        //       refetchQueries={() => {
+        //         return [
+        //           {
+        //             query: GET_CURRENT_USER_INGREDIENTS,
+        //             variables: { id: this.props.currentUserId }
+        //           }
+        //         ];
+        //       }}
+        //     >
+        //       {/* {error && <p>Error :( Please try again</p>} */}
+        //       {(saveIngredient, { loading, error }) => (
+        //         <button
+        //           id="sr-save-recipe-btn"
+        //           onClick={() => {
+        //             this.setState({ saving: true });
+        //             saveRecipe({
+        //               variables: this.state.variables,
+        //               refetchQueries: [
+        //                 {
+        //                   query: GET_CURRENT_USER_RECIPES,
+        //                   options: { pollInterval: 50 },
+        //                   variables: { id: this.props.currentUserId }
+        //                 }
+        //               ]
+        //             })
+        //               // .catch(err => console.log(err))
+        //               .then(recipe => {
+        //                 return this.parseMultipleIngredients(
+        //                   recipe.data.saveRecipe.ingredients
+        //                 );
+        //               })
+        //               .then(ingredients => {
+        //                 ingredients.forEach(
+        //                   async ingredient =>
+        //                     await saveIngredient({ variables: ingredient })
+        //                 );
+        //               })
+        //               // .catch(err => console.log(err))
+        //               .then(() =>
+        //                 this.setState({ saving: false, saved: true })
+        //               );
+        //           }}
+        //         >
+        //           Save Recipe <i className="far fa-bookmark"></i>
+        //         </button>
+        //       )}
+        //     </Mutation>
+        //   )}
+        // </Mutation>
       );
     }
 

@@ -27,6 +27,8 @@ class SearchRecipeItem extends Component {
       saving: false,
     };
     this.parseMultipleIngredients = this.parseMultipleIngredients.bind(this);
+    this.saveRecipe = this.saveRecipe.bind(this);
+    this.saveIngredients = this.saveIngredients.bind(this);
   }
 
   parseMultipleIngredients = async ingredientLines => {
@@ -79,7 +81,7 @@ class SearchRecipeItem extends Component {
     }
   };
 
-  saveRecipe = recipe => {
+  saveRecipe = () => {
     return (
       <Mutation mutation={SAVE_RECIPE}>
         {(saveRecipe, { loading, error }) => (
@@ -88,8 +90,23 @@ class SearchRecipeItem extends Component {
           })
           .catch(err => console.log(err))
           .then(recipe => {
-            return this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients)
+            let parsedIngredients = this.parseMultipleIngredients(recipe.data.saveRecipe.ingredients);
+            parsedIngredients.forEach(ingredient => this.saveIngredient(ingredient));
+            this.setState({ saving: false, saved: true })
           })
+        )}
+      </Mutation>
+    )
+  };
+
+  saveIngredient = ingredient => {
+    return (
+      <Mutation mutation={SAVE_INGREDIENT}>
+        {(saveIngredient, { loading, error }) => (
+          saveIngredient({
+            variables: ingredient
+          })
+          .catch(err => console.log(err))
         )}
       </Mutation>
     )
@@ -108,59 +125,12 @@ class SearchRecipeItem extends Component {
       savedButton = <h5 className="saved">Updating grocery list...</h5>;
     } else {
       savedButton = (
-        // <Mutation mutation={SAVE_RECIPE}>
-        //   {(saveRecipe, { loading, error }) => (
-        //     <Mutation
-        //       mutation={SAVE_INGREDIENT}
-        //       refetchQueries={() => {
-        //         return [
-        //           {
-        //             query: GET_CURRENT_USER_INGREDIENTS,
-        //             variables: { id: this.props.currentUserId }
-        //           }
-        //         ];
-        //       }}
-        //     >
-        //       {/* {error && <p>Error :( Please try again</p>} */}
-        //       {(saveIngredient, { loading, error }) => (
-        //         <button
-        //           id="sr-save-recipe-btn"
-        //           onClick={() => {
-        //             this.setState({ saving: true });
-        //             saveRecipe({
-        //               variables: this.state.variables,
-        //               refetchQueries: [
-        //                 {
-        //                   query: GET_CURRENT_USER_RECIPES,
-        //                   options: { pollInterval: 50 },
-        //                   variables: { id: this.props.currentUserId }
-        //                 }
-        //               ]
-        //             })
-        //               // .catch(err => console.log(err))
-        //               .then(recipe => {
-        //                 return this.parseMultipleIngredients(
-        //                   recipe.data.saveRecipe.ingredients
-        //                 );
-        //               })
-        //               .then(ingredients => {
-        //                 ingredients.forEach(
-        //                   async ingredient =>
-        //                     await saveIngredient({ variables: ingredient })
-        //                 );
-        //               })
-        //               // .catch(err => console.log(err))
-        //               .then(() =>
-        //                 this.setState({ saving: false, saved: true })
-        //               );
-        //           }}
-        //         >
-        //           Save Recipe <i className="far fa-bookmark"></i>
-        //         </button>
-        //       )}
-        //     </Mutation>
-        //   )}
-        // </Mutation>
+        <button
+          id="sr-save-recipe-btn"
+          onClick={() => {this.saveRecipe()}}
+        >
+          Save Recipe <i className="far fa-bookmark"></i>
+        </button>
       );
     }
 

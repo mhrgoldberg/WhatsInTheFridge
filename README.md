@@ -4,7 +4,7 @@
 
 **What’s in the Fridge?** helps users find recipes based upon ingredients they already have in their fridge! We drew inspiration from many recipe sites but ulitmately decided to create our own unique take on how to search for dinner tonight.
 
-<img width="922" alt="Screenshot 2020-01-21 20 09 24" src="https://user-images.githubusercontent.com/34895686/72864872-7be54d80-3c8a-11ea-9220-93d416e28963.png">
+![Screen Shot 2020-03-06 at 2 42 42 PM](https://user-images.githubusercontent.com/34895686/80053572-1cd5e580-84d2-11ea-9583-93b0ff3368ef.png)
 
 ### Technologies & Technical Challenges
 * Node JS

@@ -32,9 +32,9 @@ There are three main components to the site, the fridge, recipe search, and groc
 
 ### Fridge
 
-The fridge is a list of food items that the user inputs based upon the food items the user has. This list populates the main search inputs. 
+The fridge is what makes this recipe search engiene unique. Instead of searching for a recipe directly users can input their food items directly into the fridge with a convenient autofill feature which utilizes keyboard and mouse inputs to select to select from a list of food item suggestions from the EDAMAM autofill api.
 
-![](https://user-images.githubusercontent.com/29221213/73306539-0b868100-41e2-11ea-8628-ddb2e0254810.png)
+![Screen Shot 2020-03-13 at 9 50 37 AM](https://user-images.githubusercontent.com/34895686/80053895-d765e800-84d2-11ea-8a03-0baccff86cd9.png)
 
 ### Search 
 

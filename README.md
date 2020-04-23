@@ -171,9 +171,7 @@ Below is a snapshot of the main functionality of the advanced search. The advanc
 
 ### Search Results
 
-The search results show a picture of the recipe and provides 4 action options for users. A user has the option to follow a link to the actual recipe or save the recipe. In addition, a user can expand either the health facts or the ingredients from the recipe. 
-
-![Screen Shot 2020-03-13 at 9 50 37 AM](https://user-images.githubusercontent.com/34895686/80053895-d765e800-84d2-11ea-8a03-0baccff86cd9.png)
+The Edamam API is unique becuase it compiles recipes from many different sources and provides an analysis of the recipes health information. Every recipe result in our app has a button which opens a modal displaying the macronutrients and calories for the recipe. Utelizing Chart.js we created a useful data visualization to breakdown the macronutrient balance for a quick visual assesment to judge if the recipe fits into your diet!
 
 ![](https://user-images.githubusercontent.com/29221213/73307250-75ebf100-41e3-11ea-80f0-bcfb08f4ce3a.png)
 

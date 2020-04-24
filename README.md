@@ -175,7 +175,9 @@ The Edamam API is unique becuase it compiles recipes from many different sources
 
 ![Screen Shot 2020-03-13 at 9 50 37 AM](https://user-images.githubusercontent.com/34895686/80053895-d765e800-84d2-11ea-8a03-0baccff86cd9.png)
 
+### Grocery List
 
+Whenever a user saves a recipe ingredients that are not already in the fridge are added to the grocery list. Ingredients are parsed from the recipe by the Edamam ingredient API then added to the list. While you are shopping you can login and check off the items off the list as you go. 
 
 
 

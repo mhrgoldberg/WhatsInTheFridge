@@ -5,8 +5,8 @@ import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import { ScaleLoader } from "react-spinners";
-import AnimateHeight from 'react-animate-height';
-import Loading from "../loading"
+import AnimateHeight from "react-animate-height";
+import Loading from "../loading";
 const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
@@ -38,8 +38,8 @@ class SearchAdvanced extends Component {
         alcoholFree: false,
         peanutFree: false,
         sugarConscious: false,
-        treeNutFree: false
-      }
+        treeNutFree: false,
+      },
     };
     this.updateSearchAdvancedState = this.updateSearchAdvancedState.bind(this);
   }
@@ -50,7 +50,7 @@ class SearchAdvanced extends Component {
     this.setState({ searchOptions });
   }
 
-  getRecipe = async payload => {
+  getRecipe = async (payload) => {
     const recipeName2 = this.props.fridgeArr.join(", ");
     const num_ingredients = payload.maxIngredients;
     let dietString = "";
@@ -118,14 +118,14 @@ class SearchAdvanced extends Component {
       payload.alcoholFree,
       payload.peanutFree,
       payload.sugarConscious,
-      payload.treeNutFree
+      payload.treeNutFree,
     ];
 
     let healthValues = [
       "alcohol-free",
       "peanut-free",
       "sugar-conscious",
-      "tree-nut-free"
+      "tree-nut-free",
     ];
 
     healthChoices.map((choice, i) => {
@@ -136,30 +136,26 @@ class SearchAdvanced extends Component {
       }
     });
 
-    try {
-      const api_call = await fetch(
-        `https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
-      );  
-      const data = await api_call.json();
- 
-      const parsedData = this.checkRecipeArr(data.hits);
-      
-      await this.props.addToRecipes(parsedData);
-      this.setState({ spinner: false, firstSearch: true });
-    } catch (err) {
-      // this.setState({ error: "No results found" });
-    }
+    const api_call = await fetch(
+      `https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`
+    );
+    const data = await api_call.json();
+
+    const parsedData = this.checkRecipeArr(data.hits);
+
+    await this.props.addToRecipes(parsedData);
+    this.setState({ spinner: false, firstSearch: true });
   };
 
-  checkRecipeArr = recipesArr => {
+  checkRecipeArr = (recipesArr) => {
     let validRecipes = [];
-    recipesArr.forEach(recipe => {
+    recipesArr.forEach((recipe) => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
     });
     return validRecipes;
   };
 
-  checkFridge = recipe => {
+  checkFridge = (recipe) => {
     for (let i = 0; i < this.props.fridgeArr.length; i++) {
       const fridgeIngredient = this.props.fridgeArr[i];
       let valid = false;
@@ -198,17 +194,12 @@ class SearchAdvanced extends Component {
     );
 
     let form = (
-      <AnimateHeight
-      duration={ 250 }
-      height={ height }
-      animateOpacity={ true }
-    >
+      <AnimateHeight duration={250} height={height} animateOpacity={true}>
         <SearchAdvancedForm
           updateSearchAdvancedState={this.updateSearchAdvancedState}
           searchOptions={this.state.searchOptions}
           getRecipe={this.getRecipe}
         />
-
       </AnimateHeight>
     );
     let searchResult;
@@ -217,7 +208,6 @@ class SearchAdvanced extends Component {
       // this.setState({ advancedOptions: false });
       instructions = null;
       searchResult = (
-        
         <SearchRecipes
           openIngredientModal={this.props.openIngredientModal}
           openHealthFactsModal={this.props.openHealthFactsModal}
@@ -232,8 +222,11 @@ class SearchAdvanced extends Component {
     if (localRecipeArr.length === 0 && this.state.firstSearch) {
       instructions = null;
       searchResult = (
-        <div id="empty">No recipes found. Please try a differnet combination of fridge items or advanced search options.</div>
-      )
+        <div id="empty">
+          No recipes found. Please try a differnet combination of fridge items
+          or advanced search options.
+        </div>
+      );
     }
 
     let button = (
@@ -261,7 +254,7 @@ class SearchAdvanced extends Component {
         onClick={() =>
           this.setState({
             advancedOptions: !this.state.advancedOptions,
-            height: height === 0 ? 'auto' : 0,
+            height: height === 0 ? "auto" : 0,
           })
         }
       >
@@ -269,13 +262,13 @@ class SearchAdvanced extends Component {
       </h2>
     );
 
-    if (height === 'auto') {
+    if (height === "auto") {
       searchResult = null;
       advancedSearchToggle = (
         <h2
           onClick={() =>
             this.setState({
-              height: height === 0 ? 'auto' : 0,
+              height: height === 0 ? "auto" : 0,
             })
           }
         >
@@ -285,12 +278,12 @@ class SearchAdvanced extends Component {
     }
     return (
       <ApolloConsumer>
-        {client => {
+        {(client) => {
           if (!this.state.currentUserId) {
-            client.query({ query: CURRENT_USER }).then(data => {
+            client.query({ query: CURRENT_USER }).then((data) => {
               this.setState({
                 currentUserId: data.data.currentUser,
-                loading: false
+                loading: false,
               });
             });
           }

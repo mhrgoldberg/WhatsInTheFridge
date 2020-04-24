@@ -16,12 +16,12 @@ class Search extends Component {
     this.state = {
       recipes: [],
       currentUserId: null,
-      loading: true
+      loading: true,
     };
     this.getRecipe = this.getRecipe.bind(this);
   }
 
-  getRecipe = async e => {
+  getRecipe = async (e) => {
     const recipeName = this.props.fridgeArr.join(", ");
     e.preventDefault();
     const api_call = await fetch(
@@ -33,27 +33,32 @@ class Search extends Component {
     this.setState({ recipes: parsedData });
   };
 
-  checkRecipeArr = recipesArr => {
+  checkRecipeArr = (recipesArr) => {
     let validRecipes = [];
-    recipesArr.forEach(recipe => {
+    recipesArr.forEach((recipe) => {
       if (this.checkFridge(recipe)) validRecipes.push(recipe);
     });
     return validRecipes;
   };
 
-  checkFridge = recipe => {
+  checkFridge = (data) => {
+    // Iterate through fridge list
     for (let i = 0; i < this.props.fridgeArr.length; i++) {
       const fridgeIngredient = this.props.fridgeArr[i];
+      // Default "valid" boolean to false until ingredient is found in recipe ingredient list
       let valid = false;
-      for (let j = 0; j < recipe.recipe.ingredientLines.length; j++) {
-        const ingredientString = recipe.recipe.ingredientLines[j];
+      for (let j = 0; j < data.recipe.ingredientLines.length; j++) {
+        const ingredientString = data.recipe.ingredientLines[j];
         if (ingredientString.includes(fridgeIngredient)) {
+          // if the ingredient is found search no further and check next fridge ingredient
           valid = true;
           break;
-        };
+        }
       }
+      // if ingredient is not found in list imediately stop searching and early return false
       if (!valid) return false;
     }
+    // if we have searched every ingredient in the fridge and they have been found return true
     return true;
   };
 
@@ -71,12 +76,12 @@ class Search extends Component {
     }
     return (
       <ApolloConsumer>
-        {client => {
+        {(client) => {
           if (!this.state.currentUserId) {
-            client.query({ query: CURRENT_USER }).then(data => {
+            client.query({ query: CURRENT_USER }).then((data) => {
               this.setState({
                 currentUserId: data.data.currentUser,
-                loading: false
+                loading: false,
               });
             });
           }
@@ -86,9 +91,7 @@ class Search extends Component {
               <div className="search-top">
                 <SearchForm getRecipe={this.getRecipe} />
               </div>
-              <div className="search-bottom">
-                {searchResult}
-              </div>
+              <div className="search-bottom">{searchResult}</div>
             </div>
           );
         }}

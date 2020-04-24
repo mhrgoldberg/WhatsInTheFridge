@@ -1,6 +1,6 @@
+
 import React from "react";
 import { Query } from "react-apollo";
-import NutritionPieChart from "../nutrition_pie_chart";
 import queries from '../../graphql/queries';
 import SavedRecipe from './saved_recipe';
 import Loading from "../loading";

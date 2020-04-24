@@ -1,8 +1,6 @@
 import React from "react";
 import SearchRecipeItem from "./SearchRecipeItem";
-
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
 import Queries from "../../graphql/queries";
 import Loading from "../loading";
 

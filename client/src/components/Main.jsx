@@ -10,7 +10,7 @@ import queries from "./../graphql/queries";
 import SavedRecipesList from "./grocery_list/saved_recipes";
 import Loading from "./loading.jsx";
 import NutritionPieChart from "./nutrition_pie_chart";
-const { CURRENT_USER, HEALTH_MODAL_STATUS } = queries;
+const { CURRENT_USER } = queries;
 class Main extends Component {
   constructor(props) {
     super(props);

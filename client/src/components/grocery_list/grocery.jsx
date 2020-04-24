@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Query, ApolloConsumer } from "react-apollo";
+import { ApolloConsumer } from "react-apollo";
 import GroceryList from "./grocery_list";
-import SavedRecipesList from "./saved_recipes";
 import queries from "../../graphql/queries";
 import Loading from "../loading"
-const { CURRENT_USER, GET_CURRENT_USER_INGREDIENTS, GET_INGREDIENT } = queries;
+const { CURRENT_USER } = queries;
 
 class Grocery extends Component {
   constructor(props) {

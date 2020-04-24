@@ -30,7 +30,6 @@ class Login extends Component {
 
   render() {
     let errors; 
-    let errorMessage; 
     return (
       <div>
         <Mutation
@@ -52,11 +51,6 @@ class Login extends Component {
                       username: this.state.username,
                       password: this.state.password
                     }
-                  })
-                  .catch(err => {
-                    // errorMessage = err.message.split(":");
-                    // errors = <p className="login-errors">{errorMessage[errorMessage.length-1]}</p>;
-                    // console.log(err);
                   })
                 }}
               >

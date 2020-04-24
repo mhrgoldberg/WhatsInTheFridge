@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import SearchAdvancedForm from "./SearchAdvancedForm";
 import SearchRecipes from "./SearchRecipes";
 import { ApolloConsumer } from "react-apollo";
-import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import { ScaleLoader } from "react-spinners";
 import AnimateHeight from "react-animate-height";
 import Loading from "../loading";
-const { VERIFY_USER } = mutations;
 const { CURRENT_USER } = queries;
 const API_KEY = require("../../api_keys.js").RECIPE_API_KEY;
 const API_ID = require("../../api_keys.js").RECIPE_API_ID;
@@ -128,13 +126,14 @@ class SearchAdvanced extends Component {
       "tree-nut-free",
     ];
 
-    healthChoices.map((choice, i) => {
+    healthChoices.forEach((choice, i) => {
       if (choice) {
-        healthString += "&health=" + `${healthValues[i]}`;
+        healthString += `&health=${healthValues[i]}`;
       } else {
         healthString += "";
       }
     });
+    console.log(`https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`)
 
     const api_call = await fetch(
       `https://cors-anywhere.herokuapp.com/api.edamam.com/search?q=${recipeName2}&app_id=${API_ID}&app_key=${API_KEY}&from=${0}&to=${50}&ingr=${num_ingredients}${dietString}${healthString}${dishString}${calString}${timeString}${excludeString}`

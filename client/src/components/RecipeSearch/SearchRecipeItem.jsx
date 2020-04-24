@@ -194,7 +194,7 @@ class SearchRecipeItem extends Component {
           </div>
         </div>
         <div className="recipe-pic">
-          <img src={this.props.recipe.recipe.image} />
+          <img src={this.props.recipe.recipe.image} alt=""/>
         </div>
       </div>
     );

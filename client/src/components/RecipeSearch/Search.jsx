@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Mutation, ApolloConsumer } from "react-apollo";
+import { ApolloConsumer } from "react-apollo";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
 import SearchForm from "./SearchForm";

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Mutation } from "react-apollo";
-// import { Link } from "react-router-dom";
 import mutations from "../../graphql/mutations";
 import queries from "../../graphql/queries";
-const { SAVE_RECIPE, SAVE_INGREDIENT, TOGGLE_INGREDIENTS_MODAL } = mutations;
+const { SAVE_RECIPE, SAVE_INGREDIENT } = mutations;
 const { GET_CURRENT_USER_INGREDIENTS, GET_CURRENT_USER_RECIPES } = queries;
 
 class SearchRecipeItem extends Component {

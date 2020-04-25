@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./index.css";
 import App from "./components/App.jsx";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-client";
@@ -10,7 +9,6 @@ import { ApolloProvider } from "react-apollo";
 import { onError } from "apollo-link-error";
 import { ApolloLink } from "apollo-link";
 import { HashRouter } from "react-router-dom";
-// import { Mutation } from "react-apollo";
 import mutations from "./graphql/mutations";
 import queries from "./graphql/queries";
 
@@ -33,7 +31,6 @@ async function setupClient() {
   }
 
   const httpLink = createHttpLink({
-    // comment out uri when pushing to heroku
     uri,
     headers: {
       authorization: localStorage.getItem("auth-token")
@@ -63,11 +60,7 @@ async function setupClient() {
         }
       }
     }
-    // onError: ({ networkError, graphQLErrors }) => {
-    //   console.log("graphQLErrors", graphQLErrors);
-    //   console.log("networkError", networkError);
-    // }
-    // }
+
   });
 }
 
@@ -76,16 +69,6 @@ async function populateCache() {
   await cache.writeData({
     data: {
       isLoggedIn: Boolean(token),
-      healthModal: false,
-      ingredientsModal: false,
-      healthFactsData: {
-        calories: 0,
-        servings: 0,
-        carb: 0,
-        protein: 0,
-        fat: 0
-      },
-      ingredientsData: []
     }
   });
 
